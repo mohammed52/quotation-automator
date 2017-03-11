@@ -3,3 +3,6 @@ ReactAnimationTransitionGroup
 ReactCSSTransition:
 http://stackoverflow.com/questions/32673573/can-react-animate-a-component-being-hidden-removed
 --
+Emmet for JSX autocomplete:
+https://gist.github.com/max-mykhailenko/41d0c3991d92f38dcbc6
+--
