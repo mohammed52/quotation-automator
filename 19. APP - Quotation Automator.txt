@@ -1,2 +1,5 @@
 ReactAnimationTransitionGroup
 --
+ReactCSSTransition:
+http://stackoverflow.com/questions/32673573/can-react-animate-a-component-being-hidden-removed
+--

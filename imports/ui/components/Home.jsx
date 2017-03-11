@@ -1,6 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import { Meteor } from 'meteor/meteor';
 import { LinkContainer } from 'react-router-bootstrap'
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+
 
 var ReactBootstrap = require('react-bootstrap');
 var Button = ReactBootstrap.Button;
@@ -50,7 +52,9 @@ export default class Home extends Component {
               <div className="container-fluid icon-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at ante. Mauris eleifend, quam a vulputate dictum, massa quam dapibus leo, eget vulputate orci purus ut lorem</div>
               </div>
             </div>
-
+            <ReactCSSTransitionGroup transitionName="example" transitionEnterTimeout={700} transitionLeaveTimeout={700}>
+              <div className="container-fluid testbg-1 test-anim"> Hello Wordl 2</div>   
+            </ReactCSSTransitionGroup>
           </div>
     );
   }
