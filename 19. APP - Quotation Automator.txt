@@ -3,6 +3,27 @@ ReactAnimationTransitionGroup
 ReactCSSTransition:
 http://stackoverflow.com/questions/32673573/can-react-animate-a-component-being-hidden-removed
 --
-Emmet for JSX autocomplete:
+Emmet for JSX expansion:
 https://gist.github.com/max-mykhailenko/41d0c3991d92f38dcbc6
 --
+Fast-Quote.com - your Loyal customers deserver it !
+--
+Rapid Quotes for your clients -> More Business for you
+--
+CSS transitions and animations when a React component enters or leaves the DOM
+--
+.example-enter - start of anim
+--
+durations need to be specified in both the CSS and the render method
+--
+Component Slide:
+https://medium.com/front-end-developers/sliding-react-components-4873e232907e#.gs0mcrull
+--
+JS doesn't have to be compiled to be executed
+--
+JavaScript Robotics:
+https://cylonjs.com/
+nodebots.io
+johnny-five.io , Rick Waldron creator
+--
+

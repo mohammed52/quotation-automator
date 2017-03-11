@@ -8,12 +8,27 @@ var ReactBootstrap = require('react-bootstrap');
 var Button = ReactBootstrap.Button;
 
 export default class Home extends Component {
+  constructor(props) {
+
+    super(props);
+    this.state = {
+      showdiv: true
+    };
+
+    this.btnClicked = this.btnClicked.bind(this)
+  } 
+
   componentDidMount(){
     Meteor.call("logStringToConsole", "test");
     console.log("componentDidMount");
   }
 
+  btnClicked(){
+    this.setState({showdiv: !this.state.showdiv});
+  }
+
   render() {
+    
     return (
           <div>
           <div className="wrapper-home testbg-1 text-center no-padding">
@@ -52,9 +67,13 @@ export default class Home extends Component {
               <div className="container-fluid icon-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at ante. Mauris eleifend, quam a vulputate dictum, massa quam dapibus leo, eget vulputate orci purus ut lorem</div>
               </div>
             </div>
-            <ReactCSSTransitionGroup transitionName="example" transitionEnterTimeout={700} transitionLeaveTimeout={700}>
-              <div className="container-fluid testbg-1 test-anim"> Hello Wordl 2</div>   
+            
+        <ReactCSSTransitionGroup transitionName="example" transitionEnterTimeout={300} transitionLeaveTimeout={300} transitionAppearTimeout={300}>
+              {this.state.showdiv == true &&
+                <div className="container-fluid testbg-1 test-anim"> Hello Wordl 2</div>   
+              }
             </ReactCSSTransitionGroup>
+            <Button onClick={this.btnClicked}>Click Me</Button>
           </div>
     );
   }

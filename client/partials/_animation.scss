@@ -3,24 +3,21 @@
   width: 400px;
 }
 
-.example-enter {
+.example-enter { //start enter
   opacity: 0.01;
-  width: 0px;
+
 }
 
-.example-enter.example-enter-active {
+.example-enter.example-enter-active { //end of enter, completely entered
   opacity: 1;
-  width: 100px;
-  transition: 700ms;
+  transition: opacity 500ms ease-in;
 }
 
-.example-leave {
-  opacity: 1;
-  width: 100px;
+.example-leave { //start leaving
+ opacity: 1;
 }
 
-.example-leave.example-leave-active {
+.example-leave.example-leave-active { //end of leaving
   opacity: 0.01;
-  width: 0px;
-  transition: 700ms;
+  transition: opacity 300ms ease-in;
 }
