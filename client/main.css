@@ -134,20 +134,20 @@ fieldset[disabled] .btn-colors.active {
 
 .test-anim {
   background-color: yellow;
-  width: 400px; }
+  width: 80%; }
 
-.example-enter {
-  opacity: 0.01; }
+.background-enter {
+  transform: translate(100%); }
 
-.example-enter.example-enter-active {
-  opacity: 1;
-  transition: opacity 500ms ease-in; }
+.background-enter.background-enter-active {
+  transform: translate(0%);
+  transition: transform 300ms ease-in-out; }
 
-.example-leave {
-  opacity: 1; }
+.background-leave {
+  transform: translate(0%); }
 
-.example-leave.example-leave-active {
-  opacity: 0.01;
-  transition: opacity 300ms ease-in; }
+.background-leave.background-leave-active {
+  transform: translate(-100%);
+  transition: transform 300ms ease-in-out; }
 
 /*# sourceMappingURL=main.css.map */

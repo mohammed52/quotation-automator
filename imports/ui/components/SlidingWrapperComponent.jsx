@@ -1,8 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { Meteor } from 'meteor/meteor';
-import { LinkContainer } from 'react-router-bootstrap'
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
-import SlidingWrapperComponent from './SlidingWrapperComponent'
+
 
 var ReactBootstrap = require('react-bootstrap');
 var Button = ReactBootstrap.Button;
@@ -30,13 +28,8 @@ export default class Home extends Component {
   render() {
     
     return (
-          <div>            
-        <ReactCSSTransitionGroup transitionName="background" transitionEnterTimeout={300} transitionLeaveTimeout={300}>
-              {this.state.showdiv == true &&
-                <SlidingWrapperComponent page="slidingWrapper" key="1" />   
-              }
-            </ReactCSSTransitionGroup>
-            <Button onClick={this.btnClicked}>Click Me</Button>
+          <div className="container-fluid testbg-1 test-anim">
+              Hello World 1 2
           </div>
     );
   }
