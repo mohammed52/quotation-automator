@@ -17,15 +17,17 @@ class AppContainer extends Component {
   render() {
     return (
       <div className="testbg-1">
-      <WrapperWithNavBar /> {this.props.children} <br />
-      <AccountsUIWrapper />
-        <Footer /></div>
+      <WrapperWithNavBar /> 
+        {this.props.children}
+        <Footer />
+      </div>
     );
   }
 }
  
 AppContainer.propTypes = {
   polls: PropTypes.array.isRequired,
+  children: PropTypes.object,
 };
 
 export default createContainer(() => {

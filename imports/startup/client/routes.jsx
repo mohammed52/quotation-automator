@@ -8,21 +8,10 @@ import Home from '../../ui/components/Home'
 import Signup from '../../ui/components/Signup'
 import Login from '../../ui/components/Login'
 
-
-var SearchLayout = React.createClass({
-  render: function() {
-    return (
-      <div>
-          {this.props.children}
-      </div>
-      )
-  }
-})
-
 export const renderRoutes = () => (
     <Router history={browserHistory}>
     <Route path="/" component={AppContainer}>
-      <IndexRoute component={Home} />
+      <IndexRoute component={Login} />
         <Route path="home" component={Home} />
         <Route path="voteyoucan" component={VoteYouCan} />
         <Route path="login" component={Login} />

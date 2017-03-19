@@ -21,5 +21,9 @@ https://medium.com/front-end-developers/sliding-react-components-4873e232907e#.g
 --
 JS doesn't have to be compiled to be executed
 --
-Will release a production quality Fire Rated Metal Door Quote Calculator App and then market Meteor Development Services
+Will release a production Pallet Rack Calculator and Continue with FCC Projects
+--
+ESLint for Meteor - https://guide.meteor.com/code-style.html
+--
+Will Only have motivation to code when what you are coding is exactly/bare minimmum what you need
 --

@@ -15,7 +15,17 @@
     // Tons of rules you can use, for example...
     "quotes": [0, "double"],
     "no-undef": 2,
-    "no-unused-vars": 1
+    "no-unused-vars": 1,
+    "no-console": 0
+
   },
-  "parser": "babel-eslint"
+  "parser": "babel-eslint",
+  
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+
+  "extends": ["eslint:recommended", "plugin:react/recommended"]
 }
