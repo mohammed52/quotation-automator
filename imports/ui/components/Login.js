@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import { Link } from 'react-router';
 import ReactDOM from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -14,43 +15,51 @@ var ControlLabel = ReactBootstrap.ControlLabel;
 
 // App component - represents the whole app
 class Login extends Component {
+
+  constructor(props) {
+    super(props);
+    this.onSubmit = this.onSubmit.bind(this);
+    this.onSignUp = this.onSignUp.bind(this);
+  }
+
+  onSubmit(event) {
+      console.log("submit")
+  }
+
+  onSignUp(event) {
+      console.log("Create New Account")
+  }
     
   render() {
     return (
       <div>
-        <Form horizontal>
-    <FormGroup controlId="formHorizontalEmail">
-      <Col componentClass={ControlLabel} sm={2}>
-        Email
-      </Col>
-      <Col sm={10}>
-        <FormControl type="email" placeholder="Email" />
-      </Col>
-    </FormGroup>
+      <br/>
+        <form onSubmit={this.onSubmit}>
+          <div>
+            <input
+              type="email"
+              name="email"
+              ref={(c) => { this.email = c; }}
+              placeholder="Enter your Email"
+            />
 
-    <FormGroup controlId="formHorizontalPassword">
-      <Col componentClass={ControlLabel} sm={2}>
-        Password
-      </Col>
-      <Col sm={10}>
-        <FormControl type="password" placeholder="Password" />
-      </Col>
-    </FormGroup>
-
-    <FormGroup>
-      <Col smOffset={2} sm={10}>
-        <Checkbox>Remember me</Checkbox>
-      </Col>
-    </FormGroup>
-
-    <FormGroup>
-      <Col smOffset={2} sm={10}>
-        <Button type="submit">
-          Sign in
-        </Button>
-      </Col>
-    </FormGroup>
-  </Form>
+          </div>
+          <div>
+            <input
+              type="password"
+              name="password"
+              ref={(c) => { this.password = c; }}
+              placeholder="password"
+            />
+          </div>
+          <button type="submit" className="btn-primary">
+            Sign In
+          </button>
+        </form>
+        <br/>
+        <Link to="/signup" className="">
+        Create a New Account
+        </Link>
 
       </div>
     );

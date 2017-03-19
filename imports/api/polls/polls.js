@@ -27,7 +27,7 @@ class PollsCollection extends Mongo.Collection {
 
 // Meteor.call("logStringToConsole", "test");
 
-export const Polls = new PollsCollection('Polls');
+export const Polls = new Mongo.Collection('polls');
 
 // Polls.deny({
 //   insert() { return true; },
