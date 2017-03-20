@@ -15,7 +15,7 @@ import { Router, Route, Link, IndexRoute, browserHistory } from 'react-router'
 // var Nav = ReactBootstrap.Nav;
 
 // Task component - represents a single todo item
-export default class WrapperWithNavBar extends Component {
+export default class LoggedOutWrapperWithNavBar extends Component {
 
   render() {
     // Give tasks a different className when they are checked off,
@@ -47,11 +47,11 @@ export default class WrapperWithNavBar extends Component {
       </Nav>
       <Nav pullRight>
         <LinkContainer to="/home">
-    <NavItem eventKey={1}>New Quote</NavItem>
+    <NavItem eventKey={1}>Logged Out</NavItem>
   </LinkContainer>
 
   <LinkContainer to="/home">
-    <NavItem eventKey={1}>View All</NavItem>
+    <NavItem eventKey={1}>Logged Out-3</NavItem>
   </LinkContainer>
 
       </Nav>
@@ -63,7 +63,7 @@ export default class WrapperWithNavBar extends Component {
   }
 }
  
-WrapperWithNavBar.propTypes = {
+LoggedOutWrapperWithNavBar.propTypes = {
   // This component gets the task to display through a React prop.
   // We can use propTypes to indicate it is required
 

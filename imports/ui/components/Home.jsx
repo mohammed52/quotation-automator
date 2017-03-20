@@ -3,6 +3,8 @@ import { Meteor } from 'meteor/meteor';
 import { LinkContainer } from 'react-router-bootstrap'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import SlidingWrapperComponent from './SlidingWrapperComponent'
+import HomeLoggedIn from './HomeLoggedin'
+import HomeLoggedOut from './HomeLoggedOut'
 
 var ReactBootstrap = require('react-bootstrap');
 var Button = ReactBootstrap.Button;
@@ -28,16 +30,17 @@ export default class Home extends Component {
   }
 
   render() {
-    
+    const {user, connected} = this.props;
+
     return (
-          <div>            
-        <ReactCSSTransitionGroup transitionName="background" transitionEnterTimeout={300} transitionLeaveTimeout={300}>
-              {this.state.showdiv == true &&
-                <SlidingWrapperComponent page="slidingWrapper" key="1" />   
-              }
-            </ReactCSSTransitionGroup>
-            <Button onClick={this.btnClicked}>Click Me</Button>
+          <div>   
+          {user===null ?  <HomeLoggedOut />: <HomeLoggedIn />}         
           </div>
     );
   }
 }
+
+Home.propTypes = {
+  user: React.PropTypes.object,      // current meteor user
+  connected: React.PropTypes.bool,   // server connection status
+};

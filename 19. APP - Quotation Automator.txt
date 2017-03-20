@@ -27,3 +27,13 @@ ESLint for Meteor - https://guide.meteor.com/code-style.html
 --
 Will Only have motivation to code when what you are coding is exactly/bare minimmum what you need
 --
+Apps/Portfolio to Make - Make copies of popular apps
+--
+createContainer - allows you to create a container component which provides data to your presentational components
+--
+react-router routes are different, bootstrap navbar routes are different
+--
+context - pass data through the component tree without having to pass the props down manually at every level
+--
+If contextType is note defined, context will be an empty object
+--

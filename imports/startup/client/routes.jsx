@@ -3,19 +3,14 @@ import { Router, Route, browserHistory, IndexRoute } from 'react-router'
 // import '....imports/ui/Test1.js'
 
 import AppContainer from '../../ui/containers/AppContainer.jsx'
-import VoteYouCan from '../../ui/components/VoteYouCan'
-import Home from '../../ui/components/Home'
-import Signup from '../../ui/components/Signup'
-import Login from '../../ui/components/Login'
+// import VoteYouCan from '../../ui/components/VoteYouCan'
+import HomeContainer from '../../ui/containers/HomeContainer'
 
 export const renderRoutes = () => (
     <Router history={browserHistory}>
     <Route path="/" component={AppContainer}>
-      <IndexRoute component={Login} />
-        <Route path="home" component={Home} />
-        <Route path="voteyoucan" component={VoteYouCan} />
-        <Route path="login" component={Login} />
-        <Route path="signup" component={Signup} />
+      <IndexRoute component={HomeContainer} />
+        <Route path="home" component={HomeContainer} />
       </Route>    
   </Router>
 
