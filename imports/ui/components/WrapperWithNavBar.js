@@ -30,11 +30,11 @@ export default class WrapperWithNavBar extends Component {
           <Navbar inverse collapseOnSelect className="no-margin">
     <Navbar.Header>
       
+      <LinkContainer to="/" style={{ cursor: 'pointer' }}>
       <Navbar.Brand>
-        <LinkContainer to="/" style={{ cursor: 'pointer' }}>
-          <span style={{ width: 225 }}>React-Bootstrap</span>
-        </LinkContainer>
+          <div style={{ cursor: 'pointer' }}>React-Bootstrap</div>
       </Navbar.Brand>
+      </LinkContainer>
       
       <Navbar.Toggle />
     </Navbar.Header>
