@@ -38,5 +38,5 @@ App.propTypes = {
 };
 
 App.contextTypes = {
-  router: React.PropTypes.object,
+  router: React.PropTypes.object.isRequired,
 };

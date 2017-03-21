@@ -1,7 +1,12 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
+import { browserHistory } from 'react-router';
+
 var ReactBootstrap = require('react-bootstrap');
 var Button = ReactBootstrap.Button;
 var Modal = ReactBootstrap.Modal;
+var FormGroup = ReactBootstrap.FormGroup;
+var ControlLabel = ReactBootstrap.ControlLabel;
+var FormControl = ReactBootstrap.FormControl;
 
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -28,6 +33,12 @@ export default class HomeLoggedIn extends Component {
   onCreateNew(){
     console.log("create new")
   }
+  
+  onCreateNewProject(){
+    console.log("create new project")
+    browserHistory.push('/newpalletrack');
+  }
+
   componentDidMount(){
     this.setState({
       showModal: true
@@ -57,16 +68,29 @@ export default class HomeLoggedIn extends Component {
 
             <Modal show={this.state.showModal} onHide={this.close}>
           <Modal.Header closeButton>
-            <Modal.Title>Modal heading-2</Modal.Title>
+            <Modal.Title>Create New Project</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <h4>Text in a modal</h4>
-            <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</p>
+            <FormGroup controlId="formControlsTextarea">
+          
+          <ControlLabel>Company</ControlLabel>
+          <FormControl 
+          componentClass="textarea"
+          placeholder="company name, address and contact details (to be used in quotation)" 
+          // defaultValue="Name of company"
+          id="id-text-name" />
 
-            <h4>Overflowing text to show scroll behavior</h4>
-            <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+          <ControlLabel>Project</ControlLabel>
+          <FormControl 
+          componentClass="input" 
+          placeholder="project name" 
+          // defaultValue="Name of project"
+          id="id-text-ingredients"/>
+
+          </FormGroup>
           </Modal.Body>
           <Modal.Footer>
+            <Button bsStyle="primary" onClick={this.onCreateNewProject}>Create Project</Button>
             <Button onClick={this.close}>Close</Button>
           </Modal.Footer>
           </Modal>
@@ -74,3 +98,7 @@ export default class HomeLoggedIn extends Component {
     );
   }
 }
+
+// HomeLoggedIn.propTypes = {
+//     browserHistory: PropTypes.object.isRequired
+//   }
