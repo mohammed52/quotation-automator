@@ -37,3 +37,4 @@ context - pass data through the component tree without having to pass the props 
 --
 If contextType is note defined, context will be an empty object
 --
+react no longeer likes commas at the end of method declarations
