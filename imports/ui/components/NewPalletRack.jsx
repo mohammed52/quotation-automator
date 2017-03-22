@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { Meteor } from 'meteor/meteor';
+import { browserHistory } from 'react-router';
 // import { LinkContainer } from 'react-router-bootstrap'
 // import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 // import SlidingWrapperComponent from './SlidingWrapperComponent'
@@ -28,7 +29,18 @@ export default class NewPalletRack extends Component {
   // btnClicked(){
   //   this.setState({showdiv: !this.state.showdiv});
   // }
+  componentWillMount(){
+    if(Meteor.user()==null){
+      browserHistory.push('/');
+    }
+    
 
+    console.log("componentWillMount");
+  }
+
+  componentWillUpdate(){
+    console.log("componentWillUpdate");
+  }
   render() {
     // const {user, connected} = this.props;
 

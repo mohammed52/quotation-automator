@@ -15,10 +15,17 @@ var ReactBootstrap = require('react-bootstrap');
 var Button = ReactBootstrap.Button;
 // App component - represents the whole app
 export default class App extends Component {
-    
+  
+  componentWillMount(){
+    console.log("componentWillMount")
+    console.log("")
+  }
+
   render() {
     const {user, connected} = this.props;
-    console.log("will render accounts ui wrapper");
+    console.log("render()");
+    console.log(this.context.location.pathname);
+
     return (
       <div className="testbg-1">
       {user===null? <LoggedOutWrapperWithNavBar /> : <WrapperWithNavBar />} 
@@ -39,4 +46,5 @@ App.propTypes = {
 
 App.contextTypes = {
   router: React.PropTypes.object.isRequired,
+  location: React.PropTypes.object
 };
