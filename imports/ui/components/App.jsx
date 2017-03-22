@@ -24,7 +24,7 @@ export default class App extends Component {
   render() {
     const {user, connected} = this.props;
     console.log("render()");
-    console.log(this.context.location.pathname);
+    // console.log(this.context.location.pathname);
 
     return (
       <div className="testbg-1">
