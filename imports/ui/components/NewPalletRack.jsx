@@ -9,9 +9,9 @@ export default class NewPalletRack extends Component {
   }
 
   componentWillUpdate(){
-    console.log("componentWillUpdate");
-    const user = this.props.user;
-    if(Meteor.user()){
+    console.log("componentWillUpdate");    
+    const user = Meteor.user();
+    if(user!==null){
       console.log("user EXISTS")
     } else {
       console.log("user is null")

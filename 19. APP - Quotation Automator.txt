@@ -40,4 +40,7 @@ If contextType is note defined, context will be an empty object
 react no longeer likes commas at the end of method declarations
 --
 Wasted 01 say on re routing when user not available, was already implement in Home Component
+user property does not update instantly,  
+--
+ppl have a lot to say about Meteor dying, as long as Galaxy Revenues are solid, Meteor framework has a future, similar to Apple
 --
