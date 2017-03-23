@@ -25,6 +25,16 @@ export default class NewPalletRack extends Component {
     return (
           <div>   
           New Pallet Rack
+          <div className="container-fluid row">
+            <div className="col-sm-6 testbg-1">
+              <br/>
+              <div className="well">hello</div>
+            </div>
+            <div className="col-sm-6 testbg-2">
+              <br/>
+              <div className="well">hello</div>
+            </div>
+          </div>
           </div>
     );
   }

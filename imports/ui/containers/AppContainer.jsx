@@ -11,6 +11,9 @@ import { Router, Route, Link, IndexRoute, browserHistory } from 'react-router'
 import { createContainer } from 'meteor/react-meteor-data'
 import { Polls } from '../../api/polls/polls.js'
 
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 var ReactBootstrap = require('react-bootstrap');
 var Button = ReactBootstrap.Button;
 // App component - represents the whole app
