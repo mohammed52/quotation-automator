@@ -13,6 +13,7 @@ import { Polls } from '../../api/polls/polls.js'
 
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'react-bootstrap-table/dist/react-bootstrap-table-all.min.css';
 
 var ReactBootstrap = require('react-bootstrap');
 var Button = ReactBootstrap.Button;
