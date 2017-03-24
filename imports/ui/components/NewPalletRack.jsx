@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { Meteor } from 'meteor/meteor';
 import { browserHistory } from 'react-router';
-import {BootstrapTable, TableHeaderColumn} from 'react-bootstrap-table';
+import FrameTable from './FrameTable'
 
 export default class NewPalletRack extends Component {
 
@@ -25,30 +25,19 @@ export default class NewPalletRack extends Component {
       browserHistory.push('/');
     }
 
-    var products = [{
-      id: 1,
-      name: "Product1",
-      price: 120
-  }, {
-      id: 2,
-      name: "Product2",
-      price: 80
-  }];
-
-
 
     return (
           <div>   
           New Pallet Rack
           <div className="container-fluid row">
             <div className="col-sm-6 testbg-1">
-            <BootstrapTable data={products} striped hover>
-      <TableHeaderColumn isKey dataField='id'>Product ID</TableHeaderColumn>
-      <TableHeaderColumn dataField='name'>Product Name</TableHeaderColumn>
-      <TableHeaderColumn dataField='price' columnClassName="columnClassNameFormat">Product Price</TableHeaderColumn>
-  </BootstrapTable>
+
               <br/>
-              <div className="well">hello</div>
+              <div className="well">
+                <div className="container-fluid frame-wrapper">  
+                  <FrameTable />
+                </div>
+              </div>
             </div>
             <div className="col-sm-6 testbg-2">
               <br/>
