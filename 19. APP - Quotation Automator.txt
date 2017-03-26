@@ -46,3 +46,5 @@ ppl have a lot to say about Meteor dying, as long as Galaxy Revenues are solid, 
 --
 Export objects from an external file
 --
+componentWillReceiveProps() , check Meteor.user() prop here to re-route
+--

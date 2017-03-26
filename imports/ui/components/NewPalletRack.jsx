@@ -14,18 +14,26 @@ export default class NewPalletRack extends Component {
     const user = this.props.user;
     console.log(user)    
   }
-  render() {
-    // const {user, connected} = this.props;
-    const user = this.props.user;
-    console.log(user)
+
+  componentWillReceiveProps(nextProps){
+    console.log("componentWillReceiveProps")
+
+      const user = nextProps.user;
+      console.log(user)
         if(user!==null){
       console.log("user EXISTS")
     } else {
       console.log("user is null")
       browserHistory.push('/');
     }
-
-
+  }
+  
+  componentDidUpdate(){
+    console.log("componentDidUpdate")
+      const user = this.props.user;
+    console.log(user) 
+  }
+  render() {
     return (
           <div>   
           New Pallet Rack
