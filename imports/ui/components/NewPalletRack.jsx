@@ -21,6 +21,7 @@ export default class NewPalletRack extends Component {
       const user = nextProps.user;
       console.log(user)
         if(user!==null){
+
       console.log("user EXISTS")
     } else {
       console.log("user is null")

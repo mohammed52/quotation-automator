@@ -14,11 +14,11 @@ const FrameTable = React.createClass({
 
   createRows() {
     let rows = [];
-    for (let i = 1; i < 3; i++) {
+    for (let i = 1; i < 2; i++) {
       rows.push({
         id: i,
         title: 'Title ' + i,
-        count: i * 3
+        count: i * 2
       });
     }
 
