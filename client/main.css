@@ -161,4 +161,7 @@ fieldset[disabled] .btn-colors.active {
 .frame-wrapper {
   max-width: 400px; }
 
+.table-frame {
+  overflow-y: hidden !important; }
+
 /*# sourceMappingURL=main.css.map */

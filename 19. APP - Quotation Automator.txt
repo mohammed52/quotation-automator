@@ -50,3 +50,7 @@ componentWillReceiveProps() , check Meteor.user() prop here to re-route
 --
 initialize state in the constructor when using ES6 classes, and define the getInitialState method when using React.createClass
 --
+set Radio names all same and only one option will be selected at a time
+--
+Radio Btn Selection
+http://jsbin.com/oveniw/1/edit

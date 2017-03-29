@@ -36,7 +36,9 @@ const FrameTable = React.createClass({
         columns={this._columns}
         rowGetter={this.rowGetter}
         rowsCount={this._rows.length}
-        minHeight={75} />);
+        minHeight={75} 
+        className="table-frame"/>
+        );
   }
 });
 
