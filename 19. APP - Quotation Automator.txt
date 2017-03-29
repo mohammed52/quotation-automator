@@ -48,3 +48,5 @@ Export objects from an external file
 --
 componentWillReceiveProps() , check Meteor.user() prop here to re-route
 --
+initialize state in the constructor when using ES6 classes, and define the getInitialState method when using React.createClass
+--

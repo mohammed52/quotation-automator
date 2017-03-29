@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { Meteor } from 'meteor/meteor';
 import { browserHistory } from 'react-router';
 import FrameTable from './FrameTable'
+import BaysTable from './BaysTable'
 
 export default class NewPalletRack extends Component {
 
@@ -43,7 +44,13 @@ export default class NewPalletRack extends Component {
 
               <br/>
               <div className="well">
-                <div className="container-fluid frame-wrapper">  
+                <div className="container-fluid frame-wrapper center-text testbg-1">  
+                  <h4>Frame</h4>
+                  <FrameTable />
+                </div>
+
+                <div className="container-fluid frame-wrapper center-text testbg-1">  
+                  <h4>Bays</h4>
                   <FrameTable />
                 </div>
               </div>

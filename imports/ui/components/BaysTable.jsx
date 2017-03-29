@@ -6,9 +6,9 @@ const FrameTable = React.createClass({
   getInitialState() {
     this.createRows();
     this._columns = [
-      { key: 'id', name: 'Description' },
-      { key: 'title', name: 'Height' },
-      { key: 'count', name: 'Qty.' } ];
+      { key: 'id', name: 'Bay Type' },
+      { key: 'title', name: 'Length' },
+      { key: 'count', name: 'Number of Levels' } ];
 
     return null;
   },
