@@ -6,10 +6,8 @@
   margin: 10px;
   padding: 10px; }
 
-.frame-wrapper {
-  max-width: 400px; }
-
-.table-frame {
-  overflow-y: hidden !important; }
+.borderless td {
+  border: none !important;
+  vertical-align: middle; }
 
 /*# sourceMappingURL=_palletRackInputStyling.css.map */
