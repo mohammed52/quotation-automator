@@ -19,8 +19,8 @@ export default class NewPalletRack extends Component {
   
   constructor(props) {
     super(props);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleSubmit2 = this.handleSubmit2.bind(this);
+    this.btnGenerateQuote = this.btnGenerateQuote.bind(this);
+    this.btnCancel = this.btnCancel.bind(this);
   }
 
 
@@ -54,12 +54,12 @@ export default class NewPalletRack extends Component {
     console.log(user) 
   }
 
-  handleSubmit(){
-    console.log("submit form")
+  btnGenerateQuote(){
+    console.log("Generate Quote...")
   }
 
-  handleSubmit2(){
-    console.log("submit form 2")
+  btnCancel(){
+    console.log("cancel...")
   }
   render() {
     return (
@@ -70,35 +70,32 @@ export default class NewPalletRack extends Component {
           <div className="container-fluid row">
             <div className="col-sm-6 testbg-1">
 
-              <h4>Settings</h4>
+              <h4>Project Settings</h4>
               <div className="well">
-
-              <ControlLabel>Rack Details</ControlLabel>
-              <Input
-                type="text"
-                defaultValue="My Name"
-                label="Name"
-                placeholder="Full name"
-                />
-              <FormControl 
+              <FormGroup controlId="formControlsTextarea">
+                <ControlLabel>Description</ControlLabel>
+                <FormControl 
                 type="textarea" 
-                placeholder="add details" 
-                controlId="id-rack-details"/>
-              <br />
+                placeholder="description" 
+                controlId="id-project-description"/>
+              </FormGroup>
+              
                 <div className="row">
                   <div className="col-xs-6">
-                    <ControlLabel>Cost</ControlLabel>
+                    <ControlLabel>Project Cost (per kg)</ControlLabel>
                     <FormControl 
-                      componentClass="text" 
-                      defaultValue="140"
-                      controlId="id-cost"/>
+                      type="text" 
+                      controlId="id-project-cost"
+                      defaultValue="140" />
+
                   </div>
                   <div className="col-xs-6">
-                    <ControlLabel>Project Rate</ControlLabel>
+                    <ControlLabel>Project Rate (per kg)</ControlLabel>
                     <FormControl 
-                      componentClass="text" 
-                      defaultValue="180"
+                      type="text" 
+                      defaultValue="190"
                       controlId="id-project-rate"/>
+                      
                   </div>
                 </div>
               </div>
@@ -117,8 +114,8 @@ export default class NewPalletRack extends Component {
                     <tbody>
                       <tr>
                         <td>1</td>
-                        <td><FormControl type="text" placeholder="15" /></td>
-                        <td><FormControl type="text" placeholder="10" /></td>
+                        <td><FormControl type="text" placeholder="15" controlId="id-frame1-height"/></td>
+                        <td><FormControl type="text" placeholder="10" controlId="id-frame1-qty"/></td>
                       </tr>
                     </tbody>
                   </Table>
@@ -141,24 +138,24 @@ export default class NewPalletRack extends Component {
                     <tbody>
                       <tr>
                         <td>1</td>
-                        <td><FormControl type="text" placeholder="15" /></td>
-                        <td><FormControl type="text" placeholder="10" /></td>
-                        <td><FormControl type="text" placeholder="5" /></td>
-                        <td><FormControl type="text" placeholder="3000" /></td>
+                        <td><FormControl type="text" placeholder="12" controlId="id-bay1-length"/></td>
+                        <td><FormControl type="text" placeholder="10" controlId="id-bay1-qty"/></td>
+                        <td><FormControl type="text" placeholder="5" controlId="id-bay1-levelsCount"/></td>
+                        <td><FormControl type="text" placeholder="3000" controlId="id-bay1-loadPerLevel"/></td>
                       </tr>
                       <tr>
                         <td>2</td>
-                        <td><FormControl type="text" placeholder="15" /></td>
-                        <td><FormControl type="text" placeholder="10" /></td>
-                        <td><FormControl type="text" placeholder="4" /></td>
-                        <td><FormControl type="text" placeholder="3000" /></td>
+                        <td><FormControl type="text" placeholder="8.5" controlId="id-bay2-length"/></td>
+                        <td><FormControl type="text" placeholder="4" controlId="id-bay2-qty"/></td>
+                        <td><FormControl type="text" placeholder="4" controlId="id-bay2-levelsCount"/></td>
+                        <td><FormControl type="text" placeholder="2000" controlId="id-bay2-loadPerLevel"/></td>
                       </tr>
                       <tr>
                         <td>3</td>
-                        <td><FormControl type="text" placeholder="15" /></td>
-                        <td><FormControl type="text" placeholder="10" /></td>
-                        <td><FormControl type="text" placeholder="3" /></td>
-                        <td><FormControl type="text" placeholder="3000" /></td>
+                        <td><FormControl type="text" placeholder="4" controlId="id-bay3-length"/></td>
+                        <td><FormControl type="text" placeholder="2" controlId="id-bay3-count"/></td>
+                        <td><FormControl type="text" placeholder="3" controlId="id-bay3-qty"/></td>
+                        <td><FormControl type="text" placeholder="1000" controlId="id-bay3-loadPerLevel"/></td>
                       </tr>
                     </tbody>
                   </Table>
@@ -166,27 +163,32 @@ export default class NewPalletRack extends Component {
               </div>
 
               <div className="well">
-                
-                <FormControl type="text" placeholder="Search" />
-                      <FormGroup>
-      <Radio inline name="option">
-        1
-      </Radio>
-      {' '}
-      <Radio inline name="option">
-        2
-      </Radio>
-      {' '}
-      <Radio inline name="option">
-        3
-      </Radio>
-    </FormGroup>
+                <FormGroup>
+                  <ControlLabel>Select Shelf Type: </ControlLabel>
+                  <br/>
+                  <Radio inline name="option">
+                    No Shelf (Pallet Only)
+                  </Radio>
+                  {' '}
+                  <Radio inline name="option">
+                    Metal Shelf
+                  </Radio>
+                  {' '}
+                  <Radio inline name="option">
+                    Pallet Support Bars
+                  </Radio>
+                </FormGroup>
 
               </div>
 
             </div>
           </div>
-          <Button type="submit" onClick={this.handleSubmit2}>Submit</Button>
+          <div className="container-fluid testbg-1 text-center">
+            <Button onClick={this.btnGenerateQuote} bsStyle="primary">Generate Quote</Button>
+            <br/>
+            <br/>
+              <Button onClick={this.btnCancel} bsStyle="default" bsSize="small">Cancel</Button>
+          </div>
           </form>
           </div>
     );

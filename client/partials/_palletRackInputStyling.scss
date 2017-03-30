@@ -9,5 +9,9 @@
 
 .borderless td{
     border: none !important;
-    vertical-align: middle;
+    vertical-align: middle !important;
+}
+
+.table > tbody > tr > td {
+     vertical-align: middle !important;
 }

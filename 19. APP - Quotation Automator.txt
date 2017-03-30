@@ -54,3 +54,6 @@ set Radio names all same and only one option will be selected at a time
 --
 Radio Btn Selection
 http://jsbin.com/oveniw/1/edit
+--
+shift+F10 , right click
+--
