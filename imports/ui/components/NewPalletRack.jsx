@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { Meteor } from 'meteor/meteor';
 import { browserHistory } from 'react-router';
+import $ from "jquery"
 // import FrameTable from './FrameTable'
 // import BaysTable from './BaysTable'
 
@@ -56,6 +57,43 @@ export default class NewPalletRack extends Component {
 
   btnGenerateQuote(){
     console.log("Generate Quote...")
+    // console.log($("#id-project-description").val())
+    const specs = {
+                  projectSettings: {
+                    description: $("#id-project-description").val(),
+                    projectCost: $("#id-project-cost").val(),
+                    projectRate: $("#id-project-rate").val()
+                  },
+                  frames: {
+                    frame1:
+                      {
+                        height: $("#id-frame1-height").val(),
+                        qty: $("#id-frame1-qty").val()
+                      }
+                  },
+                  bays: {
+                    bay1: {
+                      length: $("#id-bay1-length").val(),
+                      qty: $("#id-bay1-qty").val(),
+                      levels: $("#id-bay1-levels").val(),
+                      loadPerLevel: $("#id-bay1-loadPerLevel").val(),
+                    },
+                    bay2: {
+                      length: $("#id-bay2-length").val(),
+                      qty: $("#id-bay2-qty").val(),
+                      levels: $("#id-bay2-levels").val(),
+                      loadPerLevel: $("#id-bay1-loadPerLevel").val()
+                    },
+                    bay3: {
+                      length: $("#id-bay3-length").val(),
+                      qty: $("#id-bay3-qty").val(),
+                      levels: $("#id-bay3-levels").val(),
+                      loadPerLevel: $("#id-bay1-loadPerLevel").val()
+                    },
+                  }
+                  }
+    console.log($("option:selected" ).val())
+    console.log(specs)
   }
 
   btnCancel(){
@@ -77,7 +115,8 @@ export default class NewPalletRack extends Component {
                 <FormControl 
                 type="textarea" 
                 placeholder="description" 
-                controlId="id-project-description"/>
+                id="id-project-description"
+                defaultValue="test description-1"/>
               </FormGroup>
               
                 <div className="row">
@@ -85,7 +124,7 @@ export default class NewPalletRack extends Component {
                     <ControlLabel>Project Cost (per kg)</ControlLabel>
                     <FormControl 
                       type="text" 
-                      controlId="id-project-cost"
+                      id="id-project-cost"
                       defaultValue="140" />
 
                   </div>
@@ -94,7 +133,7 @@ export default class NewPalletRack extends Component {
                     <FormControl 
                       type="text" 
                       defaultValue="190"
-                      controlId="id-project-rate"/>
+                      id="id-project-rate"/>
                       
                   </div>
                 </div>
@@ -114,8 +153,14 @@ export default class NewPalletRack extends Component {
                     <tbody>
                       <tr>
                         <td>1</td>
-                        <td><FormControl type="text" placeholder="15" controlId="id-frame1-height"/></td>
-                        <td><FormControl type="text" placeholder="10" controlId="id-frame1-qty"/></td>
+                        <td><FormControl type="text" 
+                              placeholder="15" 
+                              id="id-frame1-height"
+                              defaultValue="15"/></td>
+                        <td><FormControl type="text" 
+                              placeholder="10" 
+                              id="id-frame1-qty"
+                              defaultValue="10"/></td>
                       </tr>
                     </tbody>
                   </Table>
@@ -138,24 +183,51 @@ export default class NewPalletRack extends Component {
                     <tbody>
                       <tr>
                         <td>1</td>
-                        <td><FormControl type="text" placeholder="12" controlId="id-bay1-length"/></td>
-                        <td><FormControl type="text" placeholder="10" controlId="id-bay1-qty"/></td>
-                        <td><FormControl type="text" placeholder="5" controlId="id-bay1-levelsCount"/></td>
-                        <td><FormControl type="text" placeholder="3000" controlId="id-bay1-loadPerLevel"/></td>
+                        <td><FormControl type="text" 
+                                placeholder="12" 
+                                id="id-bay1-length"
+                                defaultValue="12"/></td>
+                        <td><FormControl type="text" 
+                                placeholder="10" 
+                                id="id-bay1-qty"
+                                defaultValue="10"/></td>
+                        <td><FormControl type="text" placeholder="5" 
+                        id="id-bay1-levels"
+                        defaultValue="5"/></td>
+                        <td><FormControl type="text" placeholder="3000" 
+                        id="id-bay1-loadPerLevel"
+                        defaultValue="3000"/></td>
                       </tr>
                       <tr>
                         <td>2</td>
-                        <td><FormControl type="text" placeholder="8.5" controlId="id-bay2-length"/></td>
-                        <td><FormControl type="text" placeholder="4" controlId="id-bay2-qty"/></td>
-                        <td><FormControl type="text" placeholder="4" controlId="id-bay2-levelsCount"/></td>
-                        <td><FormControl type="text" placeholder="2000" controlId="id-bay2-loadPerLevel"/></td>
+                        <td><FormControl type="text" placeholder="8.5" 
+                              id="id-bay2-length"
+                              defaultValue="8.5"/></td>
+                        <td><FormControl type="text" placeholder="4" 
+                              id="id-bay2-qty"
+                              defaultValue="4"/></td>
+                        <td><FormControl type="text" placeholder="4" 
+                              id="id-bay2-levels"
+                              defaultValue="4"/></td>
+                        <td><FormControl type="text" placeholder="2000" 
+                              id="id-bay2-loadPerLevel"
+                              defaultValue="2000"/></td>
                       </tr>
                       <tr>
                         <td>3</td>
-                        <td><FormControl type="text" placeholder="4" controlId="id-bay3-length"/></td>
-                        <td><FormControl type="text" placeholder="2" controlId="id-bay3-count"/></td>
-                        <td><FormControl type="text" placeholder="3" controlId="id-bay3-qty"/></td>
-                        <td><FormControl type="text" placeholder="1000" controlId="id-bay3-loadPerLevel"/></td>
+                        <td><FormControl type="text" placeholder="4" 
+                              id="id-bay3-length"
+                              defaultValue="4"/></td>
+                        <td><FormControl type="text" 
+                              placeholder="2" 
+                              id="id-bay3-count"
+                              defaultValue="2"/></td>
+                        <td><FormControl type="text" placeholder="3" 
+                              id="id-bay3-levels"
+                              defaultValue="2"/></td>
+                        <td><FormControl type="text" placeholder="1000" 
+                              id="id-bay3-loadPerLevel"
+                              defaultValue="1000"/></td>
                       </tr>
                     </tbody>
                   </Table>
@@ -166,7 +238,7 @@ export default class NewPalletRack extends Component {
                 <FormGroup>
                   <ControlLabel>Select Shelf Type: </ControlLabel>
                   <br/>
-                  <Radio inline name="option">
+                  <Radio inline name="option" defaultChecked>
                     No Shelf (Pallet Only)
                   </Radio>
                   {' '}
