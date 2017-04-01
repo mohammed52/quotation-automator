@@ -19,6 +19,7 @@ export default class HomeLoggedIn extends Component {
     this.onCreateNew = this.onCreateNew.bind(this);
     this.open = this.open.bind(this);
     this.close = this.close.bind(this);
+    this.viewAll = this.viewAll.bind(this);
   }
   
   close() {
@@ -43,8 +44,16 @@ export default class HomeLoggedIn extends Component {
     this.setState({
       showModal: true
     });
+    
+  }
+
+  viewAll(){
+    browserHistory.push('/allquotes');
   }
   render() {
+    // console.log(this.context)
+    // console.log(this.context.user)
+    
     return (
           <div className="container-fluid row testbg-1 text-center">
             <div className="col-sm-6 center-block container-fluid testbg-2">
@@ -52,7 +61,7 @@ export default class HomeLoggedIn extends Component {
               <Button bsStyle="primary" bsSize="large" onClick={this.open}>Create New</Button>
               <br/>
               <br/>
-              <Button bsStyle="info" bsSize="small">View All</Button>
+              <Button bsStyle="info" bsSize="small" onClick={this.viewAll}>View All</Button>
               <br/>
             </div>
             <div className="col-sm-6 container-fluid testbg-2">
@@ -102,3 +111,7 @@ export default class HomeLoggedIn extends Component {
 // HomeLoggedIn.propTypes = {
 //     browserHistory: PropTypes.object.isRequired
 //   }
+
+HomeLoggedIn.contextTypes = {
+  user: React.PropTypes.object
+}

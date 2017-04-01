@@ -15,10 +15,19 @@ var ReactBootstrap = require('react-bootstrap');
 var Button = ReactBootstrap.Button;
 // App component - represents the whole app
 export default class App extends Component {
+
+  getChildContext() {
+    // console.log("getChildContext()")
+    // console.log(this.props.user)
+    // console.log("Meteor.user()")
+    // console.log(Meteor.user())
+
+    return {user: this.props.user};
+  }
   
   componentWillMount(){
     // console.log("componentWillMount")
-    console.log("")
+    // console.log("")
   }
 
   render() {
@@ -45,6 +54,11 @@ App.propTypes = {
 };
 
 App.contextTypes = {
-  router: React.PropTypes.object.isRequired,
-  location: React.PropTypes.object
+  // router: React.PropTypes.object.isRequired
+  // location: React.PropTypes.object,
+  // user: React.PropTypes.object
 };
+
+App.childContextTypes = {
+  user: React.PropTypes.object
+}

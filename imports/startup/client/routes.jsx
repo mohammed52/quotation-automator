@@ -5,6 +5,7 @@ import { Router, Route, browserHistory, IndexRoute } from 'react-router'
 import AppContainer from '../../ui/containers/AppContainer.jsx'
 // import VoteYouCan from '../../ui/components/VoteYouCan'
 import HomeContainer from '../../ui/containers/HomeContainer'
+import AllQuotes from '../../ui/components/AllQuotes'
 import NewPalletRackContainer from '../../ui/containers/NewPalletRackContainer'
 
 export const renderRoutes = () => (
@@ -13,6 +14,7 @@ export const renderRoutes = () => (
       <IndexRoute component={HomeContainer} />
         <Route path="/home" component={HomeContainer} />
         <Route path="/newpalletrack" component={NewPalletRackContainer} />
+        <Route path="/allquotes" component={AllQuotes} />
       </Route>    
   </Router>
 

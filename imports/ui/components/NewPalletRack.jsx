@@ -95,7 +95,8 @@ export default class NewPalletRack extends Component {
                       levels: $("#id-bay3-levels").val(),
                       loadPerLevel: $("#id-bay1-loadPerLevel").val()
                     },
-                  }
+                  },
+                  shelfType: this.state.selectedShelfOption
                   }
 
     console.log(this.state.selectedShelfOption);
@@ -104,7 +105,7 @@ export default class NewPalletRack extends Component {
   }
 
   btnCancel(){
-    console.log("cancel...")
+    browserHistory.push('/');
   }
 
   handleOptionChange(changeEvent){

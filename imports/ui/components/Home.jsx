@@ -22,7 +22,7 @@ export default class Home extends Component {
 
   componentDidMount(){
     Meteor.call("logStringToConsole", "test");
-    console.log("componentDidMount");
+    // console.log("componentDidMount");
   }
 
   btnClicked(){
