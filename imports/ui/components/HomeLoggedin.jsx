@@ -1,5 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import { browserHistory } from 'react-router';
+import {setShowNewProjectModalFlag} from '../../redux/actions/actions' 
+import {connect} from 'react-redux'
+
 
 var ReactBootstrap = require('react-bootstrap');
 var Button = ReactBootstrap.Button;
@@ -7,6 +10,7 @@ var Modal = ReactBootstrap.Modal;
 var FormGroup = ReactBootstrap.FormGroup;
 var ControlLabel = ReactBootstrap.ControlLabel;
 var FormControl = ReactBootstrap.FormControl;
+
 
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -16,6 +20,7 @@ export default class HomeLoggedIn extends Component {
   constructor(props) {
     super(props);
     this.state = { showModal: false };
+
     this.onCreateNew = this.onCreateNew.bind(this);
     this.open = this.open.bind(this);
     this.close = this.close.bind(this);
@@ -41,6 +46,7 @@ export default class HomeLoggedIn extends Component {
   }
 
   componentDidMount(){
+
     this.setState({
       showModal: true
     });
@@ -115,3 +121,19 @@ export default class HomeLoggedIn extends Component {
 HomeLoggedIn.contextTypes = {
   user: React.PropTypes.object
 }
+
+const mapStateToProp =(state, ownProps)=>{
+  return {
+    showNewProjectModal: state.showNewProjectModal
+  }
+}
+
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return {
+    switchFlag(newVal){
+      dispatch(setShowNewProjectModalFlag(newVal))
+    }
+  }
+}
+
+// export default connect(mapStateToProp, mapDispatchToProps)(HomeLoggedIn)

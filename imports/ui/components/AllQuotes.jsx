@@ -40,14 +40,12 @@ export default class AllQuotes extends Component {
     // console.log(user)    
   }
 
-  componentWillReceiveProps(nextProps){
+  componentWillReceiveProps(nextProps, nextContext){
 
-    // const user = nextProps.user;
-    // if(user!==null){
-
-    // } else {
-    //   browserHistory.push('/');
-    // }
+    const user = nextContext.user;
+    if(user==null){
+      browserHistory.push('/');
+    }
   }
   
   componentDidUpdate(){
