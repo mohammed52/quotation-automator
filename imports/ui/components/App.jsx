@@ -17,13 +17,13 @@ var Button = ReactBootstrap.Button;
 export default class App extends Component {
   
   componentWillMount(){
-    console.log("componentWillMount")
+    // console.log("componentWillMount")
     console.log("")
   }
 
   render() {
     const {user, connected} = this.props;
-    console.log("render()");
+    // console.log("render()");
     // console.log(this.context.location.pathname);
 
     return (

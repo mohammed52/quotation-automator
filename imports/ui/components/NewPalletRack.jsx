@@ -22,37 +22,42 @@ export default class NewPalletRack extends Component {
     super(props);
     this.btnGenerateQuote = this.btnGenerateQuote.bind(this);
     this.btnCancel = this.btnCancel.bind(this);
+    this.handleOptionChange = this.handleOptionChange.bind(this);
+
+    this.state = {
+        selectedShelfOption: "noShelf"
+    }
   }
 
 
   componentWillMount(){
-    console.log("componentWillMount");
+    // console.log("componentWillMount")
   }
 
   componentWillUpdate(){
-    console.log("componentWillUpdate");
-    const user = this.props.user;
-    console.log(user)    
+    // console.log("componentWillUpdate");
+    // const user = this.props.user;
+    // console.log(user)    
   }
 
   componentWillReceiveProps(nextProps){
-    console.log("componentWillReceiveProps")
+    // console.log("componentWillReceiveProps")
 
-      const user = nextProps.user;
-      console.log(user)
-        if(user!==null){
+    const user = nextProps.user;
+    // console.log(user)
+    if(user!==null){
 
-      console.log("user EXISTS")
+      // console.log("user EXISTS")
     } else {
-      console.log("user is null")
+      // console.log("user is null")
       browserHistory.push('/');
     }
   }
   
   componentDidUpdate(){
-    console.log("componentDidUpdate")
-      const user = this.props.user;
-    console.log(user) 
+    // console.log("componentDidUpdate")
+    //   const user = this.props.user;
+    // console.log(user) 
   }
 
   btnGenerateQuote(){
@@ -92,12 +97,22 @@ export default class NewPalletRack extends Component {
                     },
                   }
                   }
-    console.log($("option:selected" ).val())
+
+    console.log(this.state.selectedShelfOption);
+
     console.log(specs)
   }
 
   btnCancel(){
     console.log("cancel...")
+  }
+
+  handleOptionChange(changeEvent){
+    console.log("changed");
+    this.setState({
+      selectedShelfOption: changeEvent.target.value
+  });
+
   }
   render() {
     return (
@@ -238,15 +253,27 @@ export default class NewPalletRack extends Component {
                 <FormGroup>
                   <ControlLabel>Select Shelf Type: </ControlLabel>
                   <br/>
-                  <Radio inline name="option" defaultChecked>
+                  <Radio inline name="option" 
+                      id="id-radio-noshelf" 
+                      onChange={this.handleOptionChange}
+                      value = "noShelf"
+                      checked={this.state.selectedShelfOption === 'noShelf'}>
                     No Shelf (Pallet Only)
                   </Radio>
                   {' '}
-                  <Radio inline name="option">
+                  <Radio 
+                      inline name="option" 
+                      onChange={this.handleOptionChange}
+                      value = "metalShelf"
+                      checked={this.state.selectedShelfOption === 'metalShelf'}>
                     Metal Shelf
                   </Radio>
                   {' '}
-                  <Radio inline name="option">
+                  <Radio 
+                      inline name="option" 
+                      onChange={this.handleOptionChange}
+                      value = "palletSupportBars"
+                      checked={this.state.selectedShelfOption === 'palletSupportBars'}>
                     Pallet Support Bars
                   </Radio>
                 </FormGroup>

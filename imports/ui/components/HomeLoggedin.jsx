@@ -31,11 +31,11 @@ export default class HomeLoggedIn extends Component {
   }
 
   onCreateNew(){
-    console.log("create new")
+    // console.log("create new")
   }
   
   onCreateNewProject(){
-    console.log("create new project")
+    // console.log("create new project")
     browserHistory.push('/newpalletrack');
   }
 
