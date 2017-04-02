@@ -29,7 +29,7 @@ Will Only have motivation to code when what you are coding is exactly/bare minim
 --
 Apps/Portfolio to Make - Make copies of popular apps
 --
-createContainer - allows you to create a container component which provides data to your presentational components
+Meteor createContainer - allows you to create a container component which provides data to your presentational components
 --
 react-router routes are different, bootstrap navbar routes are different
 --
@@ -40,7 +40,7 @@ If contextType is note defined, context will be an empty object
 react no longeer likes commas at the end of method declarations
 --
 Wasted 01 say on re routing when user not available, was already implement in Home Component
-user property does not update instantly,  
+Meteor.user() property does not update instantly,  
 --
 ppl have a lot to say about Meteor dying, as long as Galaxy Revenues are solid, Meteor framework has a future, similar to Apple
 --
@@ -60,4 +60,6 @@ shift+F10 , right click
 test push
 --
 childContextTypes: see React Context tut
+--
+fixtures server side logging before Meteor Server Restarted message on the console
 --

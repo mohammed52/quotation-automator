@@ -9,7 +9,7 @@ import Footer from '../components/Footer'
 
 import { Router, Route, Link, IndexRoute, browserHistory } from 'react-router'
 import { createContainer } from 'meteor/react-meteor-data'
-import { Polls } from '../../api/polls/polls.js'
+// import { Polls } from '../../api/polls/polls.js'
 
 var ReactBootstrap = require('react-bootstrap');
 var Button = ReactBootstrap.Button;

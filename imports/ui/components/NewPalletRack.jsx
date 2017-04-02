@@ -64,11 +64,14 @@ class NewPalletRack extends Component {
   btnGenerateQuote(){
     console.log("Generate Quote...")
     // console.log($("#id-project-description").val())
+    const companyProjectTitle = this.props.companyProjectTitle
     const specs = {
                   projectSettings: {
                     description: $("#id-project-description").val(),
                     projectCost: $("#id-project-cost").val(),
-                    projectRate: $("#id-project-rate").val()
+                    projectRate: $("#id-project-rate").val(),
+                    companyName: companyProjectTitle.companyName,
+                    projectTitle: companyProjectTitle.projectTitle
                   },
                   frames: {
                     frame1:
