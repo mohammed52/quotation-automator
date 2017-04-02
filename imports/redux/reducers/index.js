@@ -1,11 +1,13 @@
-import {combineReducers} from 'redux'
+import { combineReducers } from 'redux'
+// import todos from './todos'
+// import visibilityFilter from './visibilityFilter'
+        
+import backgroundColor from './backgroundColor'
+import showModalFlag from './showModalFlag'
 
-import showNewProjectModal from './showNewProjectModal'
-
-console.log("reducer index")
-
-const FastQuoteCombinedReducers = combineReducers({
-  showNewProjectModal
+const TodosCombinedReducers = combineReducers({
+  backgroundColor,
+  showModalFlag
 })
 
-export default FastQuoteCombinedReducers
+export default TodosCombinedReducers

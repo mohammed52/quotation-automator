@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { browserHistory } from 'react-router';
-import {setShowNewProjectModalFlag} from '../../redux/actions/actions' 
+import {updateModalFlag} from '../../redux/actions/actions' 
 import {connect} from 'react-redux'
 
 
@@ -15,13 +15,14 @@ var FormControl = ReactBootstrap.FormControl;
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-export default class HomeLoggedIn extends Component {
+class HomeLoggedIn extends Component {
 
   constructor(props) {
     super(props);
+    const showModalFlag = this.props
     this.state = { showModal: false };
 
-    this.onCreateNew = this.onCreateNew.bind(this);
+    this.onCreateNewProject = this.onCreateNewProject.bind(this);
     this.open = this.open.bind(this);
     this.close = this.close.bind(this);
     this.viewAll = this.viewAll.bind(this);
@@ -29,6 +30,9 @@ export default class HomeLoggedIn extends Component {
   
   close() {
     this.setState({ showModal: false });
+    const showModalFlag = this.props.showModalFlag
+    const {switchFlag} = this.props
+    if(showModalFlag) switchFlag(false)
   }
 
   
@@ -42,14 +46,35 @@ export default class HomeLoggedIn extends Component {
   
   onCreateNewProject(){
     // console.log("create new project")
+    
+    const showModalFlag = this.props.showModalFlag
+    console.log("showModalFlag: ", showModalFlag)
+    const {switchFlag} = this.props
+    if(showModalFlag) switchFlag(false)
+
     browserHistory.push('/newpalletrack');
+
+  }
+  
+  componentWillMount(){
+    const showModalFlag = this.props.showModalFlag
+    console.log("showModalFlag: ", showModalFlag)
+    if(showModalFlag){
+      this.setState({
+          showModal: true
+        })   
+    }else{
+      this.setState({
+          showModal: false
+        })
+    }
   }
 
   componentDidMount(){
 
-    this.setState({
-      showModal: true
-    });
+    // this.setState({
+    //   showModal: true
+    // });
     
   }
 
@@ -114,9 +139,11 @@ export default class HomeLoggedIn extends Component {
   }
 }
 
-// HomeLoggedIn.propTypes = {
-//     browserHistory: PropTypes.object.isRequired
-//   }
+HomeLoggedIn.propTypes = {
+    // browserHistory: PropTypes.object.isRequired,
+    showModalFlag: PropTypes.bool,
+    switchFlag: PropTypes.func
+  }
 
 HomeLoggedIn.contextTypes = {
   user: React.PropTypes.object
@@ -124,16 +151,18 @@ HomeLoggedIn.contextTypes = {
 
 const mapStateToProp =(state, ownProps)=>{
   return {
-    showNewProjectModal: state.showNewProjectModal
+    showModalFlag: state.showModalFlag
   }
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     switchFlag(newVal){
-      dispatch(setShowNewProjectModalFlag(newVal))
+      console.log("newVal")
+      console.log(newVal)
+      dispatch(updateModalFlag(newVal))
     }
   }
 }
 
-// export default connect(mapStateToProp, mapDispatchToProps)(HomeLoggedIn)
+export default connect(mapStateToProp, mapDispatchToProps)(HomeLoggedIn)
