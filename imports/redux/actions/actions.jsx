@@ -11,3 +11,10 @@ export const updateModalFlag = (newVal) => {
     payload: false
   }
 }
+
+export const setCompanyProjectTitle = (obj) => {
+  return {
+    type: 'SET_COMPANY_PROJECT_TITLE',
+    payload: obj
+  }
+}

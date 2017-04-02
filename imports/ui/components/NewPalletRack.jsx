@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { Meteor } from 'meteor/meteor';
 import { browserHistory } from 'react-router';
 import $ from "jquery"
+import {connect} from 'react-redux'
 // import FrameTable from './FrameTable'
 // import BaysTable from './BaysTable'
 
@@ -16,7 +17,7 @@ var Table = ReactBootstrap.Table;
 var FieldGroup = ReactBootstrap.FieldGroup;
 var Input = ReactBootstrap.Input;
 
-export default class NewPalletRack extends Component {
+class NewPalletRack extends Component {
   
   constructor(props) {
     super(props);
@@ -116,6 +117,8 @@ export default class NewPalletRack extends Component {
 
   }
   render() {
+    const companyProjectTitle = this.props.companyProjectTitle
+
     return (
           <div>   
           New Pallet Rack
@@ -127,7 +130,27 @@ export default class NewPalletRack extends Component {
               <h4>Project Settings</h4>
               <div className="well">
               <FormGroup controlId="formControlsTextarea">
-                <ControlLabel>Description</ControlLabel>
+              
+              <div className="row">
+                  <div className="col-xs-6">
+                    <ControlLabel>Company Name</ControlLabel>
+                    <FormControl 
+                      type="text" 
+                      id="id-company-name"
+                      defaultValue={companyProjectTitle.companyName} />
+
+                  </div>
+                  <div className="col-xs-6">
+                    <ControlLabel>Project</ControlLabel>
+                    <FormControl 
+                      type="text" 
+                      defaultValue={companyProjectTitle.projectTitle}
+                      id="id-project-title"/>
+                      
+                  </div>
+                </div>
+
+              <ControlLabel>Racks Description</ControlLabel>
                 <FormControl 
                 type="textarea" 
                 placeholder="description" 
@@ -298,4 +321,28 @@ export default class NewPalletRack extends Component {
 NewPalletRack.propTypes = {
   user: React.PropTypes.object,      // current meteor user
   connected: React.PropTypes.bool,   // server connection status
+  companyProjectTitle: React.PropTypes.object
+
 };
+
+NewPalletRack.contextTyoes = {
+  router: PropTypes.object
+}
+
+const mapStateToProp =(state, ownProps)=>{
+  return {
+    companyProjectTitle: state.companyProjectTitle
+  }
+}
+
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return {
+    // switchFlag(newVal){
+    //   console.log("newVal")
+    //   console.log(newVal)
+    //   dispatch(updateModalFlag(newVal))
+    // }
+  }
+}
+
+export default connect(mapStateToProp, mapDispatchToProps)(NewPalletRack)

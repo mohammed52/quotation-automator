@@ -11,7 +11,8 @@ const middleware = applyMiddleware(promise(), thunk, createLogger())
 
 const sampleStore = {
         backgroundColor: "lightgrey",
-        showModalFlag: true
+        showModalFlag: true,
+        companyProjectTitle: {companyName: "Dummy Company", projectTitle: "Dummy Project"}
 }
 
 let store = createStore(TodosCombinedReducers, sampleStore, middleware)

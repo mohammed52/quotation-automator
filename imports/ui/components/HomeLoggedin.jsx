@@ -1,8 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import { browserHistory } from 'react-router';
-import {updateModalFlag} from '../../redux/actions/actions' 
+import {updateModalFlag, setCompanyProjectTitle} from '../../redux/actions/actions' 
 import {connect} from 'react-redux'
-
+import $ from "jquery"
 
 var ReactBootstrap = require('react-bootstrap');
 var Button = ReactBootstrap.Button;
@@ -19,8 +19,8 @@ class HomeLoggedIn extends Component {
 
   constructor(props) {
     super(props);
-    const showModalFlag = this.props
-    this.state = { showModal: false };
+    const showModalFlag = this.props.showModalFlag
+    this.state = { showModal: showModalFlag };
 
     this.onCreateNewProject = this.onCreateNewProject.bind(this);
     this.open = this.open.bind(this);
@@ -52,7 +52,23 @@ class HomeLoggedIn extends Component {
     const {switchFlag} = this.props
     if(showModalFlag) switchFlag(false)
 
-    browserHistory.push('/newpalletrack');
+    console.log($("#id-company-name").val())
+    console.log($("#id-project-title").val())
+
+    // browserHistory.push('/newpalletrack', 
+    //   { companyName: $("#id-company-name").val(), 
+    //   projectTitle: $("#id-project-title").val() });
+    const {setCompanyProjectTitle} = this.props
+
+    browserHistory.push({pathname: '/newpalletrack',
+      state: { companyName: $("#id-company-name").val(), 
+      projectTitle: $("#id-project-title").val() }
+    });
+
+    setCompanyProjectTitle({companyName: $("#id-company-name").val(),
+                              projectTitle: $("#id-project-title").val()})
+
+
 
   }
   
@@ -118,14 +134,16 @@ class HomeLoggedIn extends Component {
           componentClass="textarea"
           placeholder="company name, address and contact details (to be used in quotation)" 
           // defaultValue="Name of company"
-          id="id-text-name" />
+          id="id-company-name" 
+          defaultValue="MEK"/>
 
           <ControlLabel>Project</ControlLabel>
           <FormControl 
           componentClass="input" 
           placeholder="project name" 
           // defaultValue="Name of project"
-          id="id-text-ingredients"/>
+          id="id-project-title"
+          defaultValue="Yamaha Port Qasim"/>
 
           </FormGroup>
           </Modal.Body>
@@ -142,7 +160,8 @@ class HomeLoggedIn extends Component {
 HomeLoggedIn.propTypes = {
     // browserHistory: PropTypes.object.isRequired,
     showModalFlag: PropTypes.bool,
-    switchFlag: PropTypes.func
+    switchFlag: PropTypes.func,
+    setCompanyProjectTitle: PropTypes.func
   }
 
 HomeLoggedIn.contextTypes = {
@@ -151,7 +170,8 @@ HomeLoggedIn.contextTypes = {
 
 const mapStateToProp =(state, ownProps)=>{
   return {
-    showModalFlag: state.showModalFlag
+    showModalFlag: state.showModalFlag,
+    companyProjectTitle: state.companyProjectTitle
   }
 }
 
@@ -161,6 +181,12 @@ const mapDispatchToProps = (dispatch, ownProps) => {
       console.log("newVal")
       console.log(newVal)
       dispatch(updateModalFlag(newVal))
+    },
+
+    setCompanyProjectTitle(obj){
+      console.log("setCompanyProjectTitle")
+      console.log(obj)
+      dispatch(setCompanyProjectTitle(obj))
     }
   }
 }

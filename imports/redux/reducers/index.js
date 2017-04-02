@@ -4,10 +4,12 @@ import { combineReducers } from 'redux'
         
 import backgroundColor from './backgroundColor'
 import showModalFlag from './showModalFlag'
+import companyProjectTitle from './companyProjectTitle'
 
 const TodosCombinedReducers = combineReducers({
   backgroundColor,
-  showModalFlag
+  showModalFlag,
+  companyProjectTitle
 })
 
 export default TodosCombinedReducers
