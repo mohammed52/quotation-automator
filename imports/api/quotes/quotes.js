@@ -14,7 +14,7 @@ class QuotesCollection extends Mongo.Collection {
   }
 }
 
-export const Quotes = new QuotesCollection('Quotes');
+export const Quotes = new QuotesCollection('quotes');
 
 Quotes.deny({
   insert() { return true; },

@@ -5,6 +5,8 @@ import { Quotes } from '../../api/quotes/quotes.js';
 // create some sample data.
 Meteor.startup(() => {
 
+  Quotes.remove({});
+
   Meteor.call("logStringToConsole", "fixtures logged-1");
   const tempData = {
     projectTitle: "Test Project"
