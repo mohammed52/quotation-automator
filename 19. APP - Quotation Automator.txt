@@ -63,3 +63,4 @@ childContextTypes: see React Context tut
 --
 fixtures server side logging before Meteor Server Restarted message on the console
 --
+update simple schema package, check github page 
