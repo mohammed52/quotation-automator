@@ -15,6 +15,7 @@
     "factory": "^1.0.3",
     "faker": "^4.1.0",
     "meteor-node-stubs": "~0.2.0",
+    "random-number": "0.0.7",
     "react": "^15.4.2",
     "react-addons-css-transition-group": "^15.4.2",
     "react-addons-pure-render-mixin": "^15.4.2",

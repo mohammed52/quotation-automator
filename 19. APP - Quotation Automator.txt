@@ -65,5 +65,10 @@ fixtures server side logging before Meteor Server Restarted message on the conso
 --
 update simple schema package, check github page 
 --
-Problem: can't find npm module meteor/factory
+Problem: can't find npm module meteor/factory? ANS: use import { Factory } from 'meteor/dburles:factory'
+--
+JS, React and Anguar UI areas are covered, lots of npm modules for lots of uses, 
+leadership vaccum present in other areas to lead the future of JS development, to gell together full stack JS development
+remove Web app experience pain points for the end users/visitors: Optimistic UI and Code splitting, 
+working and providing leadership in important JS Frameworks areas that no body else is working in
 --
