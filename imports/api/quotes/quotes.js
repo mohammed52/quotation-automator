@@ -1,8 +1,9 @@
 import { Mongo } from 'meteor/mongo';
 // import { SimpleSchema } from 'meteor/aldeed:simple-schema';
 import SimpleSchema from 'simpl-schema'
-// import { Factory } from 'meteor/factory';
-// import faker from 'faker';
+import { Factory } from 'meteor/dburles:factory';
+import { PublicationCollector } from 'meteor/johanbrook:publication-collector';
+import faker from 'faker';
 // import { Meteor } from 'meteor/meteor';
 
 class QuotesCollection extends Mongo.Collection {
@@ -27,14 +28,13 @@ Quotes.schema = new SimpleSchema({
   }
 });
 
+// factory helps us encode test data,A package for creating test data or for generating fixtures
+Factory.define('quote', Quotes, {
+  projectTitle: () => faker.lorem.sentence()
+});
+
 Quotes.attachSchema(Quotes.schema);
 
 Quotes.publicFields = {
   projectTitle: 1,
 };
-
-// Factory.define('todo', Todos, {
-//   listId: () => Factory.get('list'),
-//   text: () => faker.lorem.sentence(),
-//   createdAt: () => new Date(),
-// });
