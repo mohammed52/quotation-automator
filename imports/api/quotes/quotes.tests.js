@@ -14,8 +14,9 @@ if (Meteor.isServer) {
 			it('builds correctly from factory', () => {
         const quote = Factory.create('quote');
         assert.typeOf(quote, 'object');
-        assert.isString(quote.projectTitle, 'projectTitle is not a string');
-        assert.match(quote.projectTitle, /^/, 'regexp matches');
+        assert.isString(quote.projectSettings.companyName, 'companyName is not a string');
+        assert.isString(quote.projectSettings.projectTitle, 'projectTitle is not a string');
+        // assert.match(quote.projectTitle, /^/, 'regexp matches');
       });
 		});
 }

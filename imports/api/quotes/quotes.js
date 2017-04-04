@@ -21,20 +21,46 @@ Quotes.deny({
   insert() { return true; },
 });
 
-Quotes.schema = new SimpleSchema({
-  projectTitle: {
-    type: String,
-    max: 100,
-  }
+const schemaCompanyName = new SimpleSchema({
+    companyName: {
+        type: String,
+        max: 100,
+    },
+    projectTitle: {
+      type: String,
+        max: 100,
+    }
 });
+
+Quotes.schema = new SimpleSchema({
+    projectSettings: {
+        type: schemaCompanyName,
+
+    }
+});
+//     "mailingAddress.city": {
+//         type: String
+//     }
+// });
+
+
+// Quotes.schema = new SimpleSchema({
+//   projectTitle: {
+//     type: String,
+//     max: 100,
+//   }
+// });
 
 // factory helps us encode test data,A package for creating test data or for generating fixtures
 Factory.define('quote', Quotes, {
-  projectTitle: () => faker.lorem.sentence()
+  projectSettings: {
+    companyName: () => faker.lorem.sentence(),
+    projectTitle: ()=> faker.lorem.sentence()
+  }
 });
 
 Quotes.attachSchema(Quotes.schema);
 
 Quotes.publicFields = {
-  projectTitle: 1,
+  projectSettings: 1,
 };
