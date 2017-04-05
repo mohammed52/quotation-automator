@@ -3,6 +3,9 @@ import { Meteor } from 'meteor/meteor';
 import { browserHistory } from 'react-router';
 import $ from "jquery"
 import {connect} from 'react-redux'
+import { insert } from '../../api/quotes/methods.js';
+import { displayError } from '../helpers/errors.js';
+
 // import FrameTable from './FrameTable'
 // import BaysTable from './BaysTable'
 
@@ -65,47 +68,47 @@ class NewPalletRack extends Component {
     console.log("Generate Quote...")
     // console.log($("#id-project-description").val())
     const companyProjectTitle = this.props.companyProjectTitle
-    const specs = {
+    insert.call({
                   projectSettings: {
                     description: $("#id-project-description").val(),
-                    projectCost: $("#id-project-cost").val(),
-                    projectRate: $("#id-project-rate").val(),
+                    projectCost: Number($("#id-project-cost").val()),
+                    projectRate: Number($("#id-project-rate").val()),
                     companyName: companyProjectTitle.companyName,
                     projectTitle: companyProjectTitle.projectTitle
                   },
-                  frames: {
-                    frame1:
-                      {
-                        height: $("#id-frame1-height").val(),
-                        qty: $("#id-frame1-qty").val()
-                      }
-                  },
-                  bays: {
-                    bay1: {
-                      length: $("#id-bay1-length").val(),
-                      qty: $("#id-bay1-qty").val(),
-                      levels: $("#id-bay1-levels").val(),
-                      loadPerLevel: $("#id-bay1-loadPerLevel").val(),
-                    },
-                    bay2: {
-                      length: $("#id-bay2-length").val(),
-                      qty: $("#id-bay2-qty").val(),
-                      levels: $("#id-bay2-levels").val(),
-                      loadPerLevel: $("#id-bay1-loadPerLevel").val()
-                    },
-                    bay3: {
-                      length: $("#id-bay3-length").val(),
-                      qty: $("#id-bay3-qty").val(),
-                      levels: $("#id-bay3-levels").val(),
-                      loadPerLevel: $("#id-bay1-loadPerLevel").val()
-                    },
-                  },
-                  shelfType: this.state.selectedShelfOption
-                  }
+                  // frames: {
+                  //   frame1:
+                  //     {
+                  //       height: $("#id-frame1-height").val(),
+                  //       qty: $("#id-frame1-qty").val()
+                  //     }
+                  // },
+                  // bays: {
+                  //   bay1: {
+                  //     length: $("#id-bay1-length").val(),
+                  //     qty: $("#id-bay1-qty").val(),
+                  //     levels: $("#id-bay1-levels").val(),
+                  //     loadPerLevel: $("#id-bay1-loadPerLevel").val(),
+                  //   },
+                  //   bay2: {
+                  //     length: $("#id-bay2-length").val(),
+                  //     qty: $("#id-bay2-qty").val(),
+                  //     levels: $("#id-bay2-levels").val(),
+                  //     loadPerLevel: $("#id-bay1-loadPerLevel").val()
+                  //   },
+                  //   bay3: {
+                  //     length: $("#id-bay3-length").val(),
+                  //     qty: $("#id-bay3-qty").val(),
+                  //     levels: $("#id-bay3-levels").val(),
+                  //     loadPerLevel: $("#id-bay1-loadPerLevel").val()
+                  //   },
+                  // },
+                  shelfType: this.state.selectedShelfOption,
+                  userId: this.props.user._id
+                  }, displayError);
+    // console.log(specs)
+    // insert.call(specs, displayError);
 
-    console.log(this.state.selectedShelfOption);
-
-    console.log(specs)
   }
 
   btnCancel(){

@@ -40,25 +40,31 @@ export const insert = new ValidatedMethod({
     shelfType: {
       type: String,
       max: 100,
-    }
+    },
+  userId: { 
+    type: String, 
+    regEx: SimpleSchema.RegEx.Id, 
+    optional: true 
+  }
 }).validator(),
-  run({ requirementsObj }) {
+  run({ projectSettings, shelfType, userId }) {
     // const list = Lists.findOne(listId);
 
     // if (list.isPrivate() && list.userId !== this.userId) {
     //   throw new Meteor.Error('api.todos.insert.accessDenied',
     //     'Cannot add todos to a private list that is not yours');
     // }
-
+    // console.log();
     const quote = {
       projectSettings: {
-        companyName: requirementsObj.projectSettings.companyName,
-        projectTitle: requirementsObj.projectSettings.projectTitle,
-        description: requirementsObj.projectSettings.description,
-        projectRate: requirementsObj.projectSettings.projectRate,
-        projectCost: requirementsObj.projectSettings.projectCost,
+        companyName: projectSettings.companyName,
+        projectTitle: projectSettings.projectTitle,
+        description: projectSettings.description,
+        projectRate: projectSettings.projectRate,
+        projectCost: projectSettings.projectCost,
       },
-      shelfType: requirementsObj.shelfType
+      shelfType: shelfType,
+      userId: userId,
     };
 
     Quotes.insert(quote);

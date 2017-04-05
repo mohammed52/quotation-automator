@@ -2,7 +2,7 @@ import { Mongo } from 'meteor/mongo';
 // import { SimpleSchema } from 'meteor/aldeed:simple-schema';
 import SimpleSchema from 'simpl-schema'
 import { Factory } from 'meteor/dburles:factory';
-import { PublicationCollector } from 'meteor/johanbrook:publication-collector';
+// import { PublicationCollector } from 'meteor/johanbrook:publication-collector';
 import faker from 'faker';
 
 // import {rn} from 'random-number'
@@ -13,6 +13,7 @@ var rn = require('random-number');
 class QuotesCollection extends Mongo.Collection {
   insert(doc, callback) {
     const ourDoc = doc;
+    console.log(doc)
     ourDoc.createdAt = ourDoc.createdAt || new Date();
     const result = super.insert(ourDoc, callback);
     return result;
@@ -55,7 +56,13 @@ Quotes.schema = new SimpleSchema({
     shelfType: {
       type: String,
       max: 100,
-    }
+    },
+  userId: { 
+    type: String, 
+    regEx: SimpleSchema.RegEx.Id, 
+    optional: true 
+  }
+
 });
 
 
@@ -82,4 +89,5 @@ Quotes.attachSchema(Quotes.schema);
 Quotes.publicFields = {
   projectSettings: 1,
   shelfType: 1,
+  userId: 1,
 };
