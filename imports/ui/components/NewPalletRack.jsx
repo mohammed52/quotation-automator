@@ -94,13 +94,19 @@ class NewPalletRack extends Component {
                   //     length: $("#id-bay2-length").val(),
                   //     qty: $("#id-bay2-qty").val(),
                   //     levels: $("#id-bay2-levels").val(),
-                  //     loadPerLevel: $("#id-bay1-loadPerLevel").val()
+                  //     loadPerLevel: $("#id-bay2-loadPerLevel").val()
                   //   },
                   //   bay3: {
                   //     length: $("#id-bay3-length").val(),
                   //     qty: $("#id-bay3-qty").val(),
                   //     levels: $("#id-bay3-levels").val(),
-                  //     loadPerLevel: $("#id-bay1-loadPerLevel").val()
+                  //     loadPerLevel: $("#id-bay3-loadPerLevel").val()
+                  //   },
+                  //   bay4: {
+                  //     length: $("#id-bay4-length").val(),
+                  //     qty: $("#id-bay4-qty").val(),
+                  //     levels: $("#id-bay4-levels").val(),
+                  //     loadPerLevel: $("#id-bay4-loadPerLevel").val()
                   //   },
                   // },
                   shelfType: this.state.selectedShelfOption,
@@ -272,6 +278,22 @@ class NewPalletRack extends Component {
                               defaultValue="2"/></td>
                         <td><FormControl type="text" placeholder="1000" 
                               id="id-bay3-loadPerLevel"
+                              defaultValue="1000"/></td>
+                      </tr>
+                      <tr>
+                        <td>3</td>
+                        <td><FormControl type="text" placeholder="4" 
+                              id="id-bay4-length"
+                              defaultValue="4"/></td>
+                        <td><FormControl type="text" 
+                              placeholder="2" 
+                              id="id-bay4-count"
+                              defaultValue="2"/></td>
+                        <td><FormControl type="text" placeholder="3" 
+                              id="id-bay4-levels"
+                              defaultValue="2"/></td>
+                        <td><FormControl type="text" placeholder="1000" 
+                              id="id-bay4-loadPerLevel"
                               defaultValue="1000"/></td>
                       </tr>
                     </tbody>
