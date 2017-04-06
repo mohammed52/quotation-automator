@@ -83,7 +83,7 @@ class NewPalletRack extends Component {
                   //       qty: $("#id-frame1-qty").val()
                   //     }
                   // },
-                  // bays: {
+                  // bays: [
                   //   bay1: {
                   //     length: $("#id-bay1-length").val(),
                   //     qty: $("#id-bay1-qty").val(),
@@ -108,7 +108,7 @@ class NewPalletRack extends Component {
                   //     levels: $("#id-bay4-levels").val(),
                   //     loadPerLevel: $("#id-bay4-loadPerLevel").val()
                   //   },
-                  // },
+                  // ],
                   shelfType: this.state.selectedShelfOption,
                   userId: this.props.user._id
                   }, displayError);
