@@ -12,15 +12,15 @@ import { Quotes } from './quotes.js';
 if (Meteor.isServer) {
 		describe('quotes', () => {
 			it('builds correctly from factory', () => {
-const quote = Factory.create('quote');
-assert.typeOf(quote, 'object');
-assert.isString(quote.projectSettings.companyName, 'companyName is not a string');
-assert.isString(quote.projectSettings.projectTitle, 'projectTitle is not a string');
-assert.isString(quote.shelfType, 'projectTitle is not a string');
-expect(quote.projectSettings.projectRate).to.satisfy(function(num){return (num>=170 && num<=300)});
-expect(quote.projectSettings.projectCost).to.satisfy(function(num){return (num>=120 && num<=300)});
+        const quote = Factory.create('quote');
+        assert.typeOf(quote, 'object');
+        assert.isString(quote.projectSettings.companyName, 'companyName is not a string');
+        assert.isString(quote.projectSettings.projectTitle, 'projectTitle is not a string');
+        assert.isString(quote.shelfType, 'projectTitle is not a string');
+        expect(quote.projectSettings.projectRate).to.satisfy(function(num){return (num>=170 && num<=300)});
+        expect(quote.projectSettings.projectCost).to.satisfy(function(num){return (num>=120 && num<=300)});
 
-// assert.match(quote.projectTitle, /^/, 'regexp matches');
-});
-});
+      // assert.match(quote.projectTitle, /^/, 'regexp matches');
+      });
+  });
 }

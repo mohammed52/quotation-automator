@@ -49,14 +49,32 @@ const schemaProjectSettings = new SimpleSchema({
     }
 });
 
+const schemaFrame = new SimpleSchema({
+  frameHeight: {
+    type: Number,
+    min: 0,
+  },
+  frameDepth: {
+    type: Number,
+    min: 0,
+  },
+  frameQty: {
+    type: Number,
+    min: 0,
+  }
+});
+
 Quotes.schema = new SimpleSchema({
-    projectSettings: {
-        type: schemaProjectSettings
-    },
-    shelfType: {
-      type: String,
-      max: 100,
-    },
+  projectSettings: {
+    type: schemaProjectSettings
+  },
+  frames: {
+    type: schemaFrame
+  },
+  shelfType: {
+    type: String,
+    max: 100,
+  },
   userId: { 
     type: String, 
     regEx: SimpleSchema.RegEx.Id, 
@@ -65,11 +83,28 @@ Quotes.schema = new SimpleSchema({
 
 });
 
-
 var rnOptions = {
-  min:  130
-, max:  300
-, integer: true
+  min:  100, 
+  max:  300, 
+  integer: true
+}
+
+var rnFrameDepth = {
+  min:  2.5, 
+  max:  4.5, 
+  integer: false
+}
+
+var rnFrameHeight = {
+  min:  5, 
+  max:  120, 
+  integer: true
+}
+
+var rnFrameQty = {
+  min:  1, 
+  max:  200, 
+  integer: true
 }
 
 // factory helps us encode test data,A package for creating test data or for generating fixtures
@@ -81,7 +116,12 @@ Factory.define('quote', Quotes, {
     projectRate: ()=> rn(rnOptions),
     projectCost: ()=> rn(rnOptions),
   },
-  shelfType: "no-shelf"
+  shelfType: "no-shelf",
+  frames: {
+    frameHeight: ()=> rn(rnOptions),
+    frameDepth: ()=> rn(rnFrameDepth),
+    frameQty: ()=> rn(rnFrameQty),
+  }
 });
 
 Quotes.attachSchema(Quotes.schema);

@@ -281,7 +281,7 @@ class NewPalletRack extends Component {
                               defaultValue="1000"/></td>
                       </tr>
                       <tr>
-                        <td>3</td>
+                        <td>4</td>
                         <td><FormControl type="text" placeholder="4" 
                               id="id-bay4-length"
                               defaultValue="4"/></td>
