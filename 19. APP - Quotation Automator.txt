@@ -76,3 +76,5 @@ Use react-addons-test-utils to test react components
 --
 For testing in mocha, we are specifing titles and using asserts to throw erreos
 --
+problem: "frame" is not allowed in schema??? have wasted 02 hours
+--

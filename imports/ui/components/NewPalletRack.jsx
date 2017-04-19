@@ -66,9 +66,9 @@ class NewPalletRack extends Component {
 
   btnGenerateQuote(){
     console.log("Generate Quote...")
-    // console.log($("#id-project-description").val())
-    const companyProjectTitle = this.props.companyProjectTitle
-    insert.call({
+    const companyProjectTitle = this.props.companyProjectTitle;
+
+    const specs = {
                   projectSettings: {
                     description: $("#id-project-description").val(),
                     projectCost: Number($("#id-project-cost").val()),
@@ -76,12 +76,11 @@ class NewPalletRack extends Component {
                     companyName: companyProjectTitle.companyName,
                     projectTitle: companyProjectTitle.projectTitle
                   },
-                  // frames: {
-                  //   frame1:
-                  //     {
-                  //       height: $("#id-frame1-height").val(),
-                  //       qty: $("#id-frame1-qty").val()
-                  //     }
+                  // frame: "Hello Frame", 
+                  // {
+                  //   frameHeight: Number($("#id-frame1-height").val()),
+                  //   frameDepth: Number($("#id-frame1-depth").val()),
+                  //   frameQty: Number($("#id-frame1-qty").val())
                   // },
                   // bays: [
                   //   bay1: {
@@ -110,9 +109,13 @@ class NewPalletRack extends Component {
                   //   },
                   // ],
                   shelfType: this.state.selectedShelfOption,
+                  shelfType2: "noShelf",
                   userId: this.props.user._id
-                  }, displayError);
-    // console.log(specs)
+                  };
+    console.log(specs)
+
+    insert.call(specs, displayError);
+    
     // insert.call(specs, displayError);
 
   }
@@ -197,6 +200,7 @@ class NewPalletRack extends Component {
                       <tr>
                         <th>#</th>
                         <th>Height (ft)</th>
+                        <th>Depth</th>
                         <th>Qty.</th>
                       </tr>
 
@@ -208,6 +212,10 @@ class NewPalletRack extends Component {
                               placeholder="15" 
                               id="id-frame1-height"
                               defaultValue="15"/></td>
+                        <td><FormControl type="text" 
+                              placeholder="3" 
+                              id="id-frame1-depth"
+                              defaultValue="3"/></td>
                         <td><FormControl type="text" 
                               placeholder="10" 
                               id="id-frame1-qty"

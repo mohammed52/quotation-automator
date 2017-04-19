@@ -7,6 +7,7 @@ import faker from 'faker';
 
 // import {rn} from 'random-number'
 // import { Meteor } from 'meteor/meteor';
+SimpleSchema.debug = true
 
 var rn = require('random-number');
 
@@ -30,6 +31,7 @@ const schemaProjectSettings = new SimpleSchema({
     companyName: {
       type: String,
       max: 100,
+      label: "Company Name",
     },
     projectTitle: {
       type: String,
@@ -53,32 +55,45 @@ const schemaFrame = new SimpleSchema({
   frameHeight: {
     type: Number,
     min: 0,
+    label: "Frame Height",
   },
   frameDepth: {
     type: Number,
     min: 0,
+    label: "Frame Depth",
   },
   frameQty: {
     type: Number,
     min: 0,
+    label: "Frame Qty",
   }
 });
 
 Quotes.schema = new SimpleSchema({
   projectSettings: {
-    type: schemaProjectSettings
+    type: schemaProjectSettings,
+    label: "Frame Height",
   },
-  frames: {
-    type: schemaFrame
-  },
+  // frame: {
+  //   type: String,
+  //   max: 100,
+  //   label: "Frame-1",
+  // },
   shelfType: {
     type: String,
     max: 100,
+    label: "Frame Height",
+  },
+  shelfType2: {
+    type: String,
+    max: 100,
+    label: "ShelfType2",
   },
   userId: { 
     type: String, 
     regEx: SimpleSchema.RegEx.Id, 
-    optional: true 
+    optional: true,
+    label: "Frame Height",
   }
 
 });
@@ -86,25 +101,29 @@ Quotes.schema = new SimpleSchema({
 var rnOptions = {
   min:  100, 
   max:  300, 
-  integer: true
+  integer: true,
+  label: "Frame Height",
 }
 
 var rnFrameDepth = {
   min:  2.5, 
   max:  4.5, 
-  integer: false
+  integer: false,
+  label: "Frame Height",
 }
 
 var rnFrameHeight = {
   min:  5, 
   max:  120, 
-  integer: true
+  integer: true,
+  label: "Frame Height",
 }
 
 var rnFrameQty = {
   min:  1, 
   max:  200, 
-  integer: true
+  integer: true,
+  label: "Frame Height",
 }
 
 // factory helps us encode test data,A package for creating test data or for generating fixtures
@@ -117,11 +136,12 @@ Factory.define('quote', Quotes, {
     projectCost: ()=> rn(rnOptions),
   },
   shelfType: "no-shelf",
-  frames: {
-    frameHeight: ()=> rn(rnOptions),
-    frameDepth: ()=> rn(rnFrameDepth),
-    frameQty: ()=> rn(rnFrameQty),
-  }
+  shelfType2: "no-shelf",
+  // frame: {
+  //   frameHeight: ()=> rn(rnFrameHeight),
+  //   frameDepth: ()=> rn(rnFrameDepth),
+  //   frameQty: ()=> rn(rnFrameQty),
+  // }
 });
 
 Quotes.attachSchema(Quotes.schema);
@@ -130,4 +150,5 @@ Quotes.publicFields = {
   projectSettings: 1,
   shelfType: 1,
   userId: 1,
+  frame: 1,
 };

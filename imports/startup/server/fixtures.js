@@ -16,12 +16,13 @@ Meteor.startup(() => {
             "companyName": "MEKW",
             "projectTitle": "Yamaha Port QasimW"
           },
-          "frames": {
-            "frame1": {
-              "height": "150",
-              "qty": "100"
-            }
-          },
+          "frame": "Hello Test Frame", 
+          // {
+          //     "frameHeight": "20",
+          //     "frameQty": "100",
+          //     "frameDepth": "3",
+
+          // },
           "bays": {
             "bay1": {
               "length": "120",
@@ -41,7 +42,9 @@ Meteor.startup(() => {
               "loadPerLevel": "30001"
             }
           },
-          "shelfType": "noShelfW"
+          "shelfType": "noShelfW",
+          "shelfType2": "noShelfX",
+
     }
 
     let timestamp = (new Date()).getTime();
