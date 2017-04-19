@@ -6,48 +6,13 @@ import { DDPRateLimiter } from 'meteor/ddp-rate-limiter';
 
 import { Quotes } from './quotes.js';
 // import { Lists } from '../lists/lists.js';
-import { check } from 'meteor/check';
-
-const schemaProjectSettings = new SimpleSchema({
-    companyName: {
-      type: String,
-      max: 100,
-    },
-    projectTitle: {
-      type: String,
-      max: 100,
-    },
-    description: {
-      type: String,
-      max: 100,
-    },
-    projectRate: {
-      type: Number,
-      min: 0,
-    },
-    projectCost: {
-      type: Number,
-      min: 0,
-    }
-});
+// import { check } from 'meteor/check';
+import {schemaQuotes} from '../helpers';
 
 export const insert = new ValidatedMethod({
   name: 'quotes.insert',
-  validate: new SimpleSchema({
-    projectSettings: {
-        type: schemaProjectSettings
-    },
-    shelfType: {
-      type: String,
-      max: 100,
-    },
-  userId: { 
-    type: String, 
-    regEx: SimpleSchema.RegEx.Id, 
-    optional: true 
-  }
-}).validator(),
-  run({ projectSettings, shelfType, userId }) {
+  validate: schemaQuotes.validator(),
+  run({ projectSettings, shelfType, userId, frame, createdAt }) {
     // const list = Lists.findOne(listId);
 
     // if (list.isPrivate() && list.userId !== this.userId) {
@@ -65,6 +30,8 @@ export const insert = new ValidatedMethod({
       },
       shelfType: shelfType,
       userId: userId,
+      frame: frame,
+      createdAt: createdAt
     };
 
     Quotes.insert(quote);

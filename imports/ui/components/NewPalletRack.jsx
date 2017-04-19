@@ -76,7 +76,7 @@ class NewPalletRack extends Component {
                     companyName: companyProjectTitle.companyName,
                     projectTitle: companyProjectTitle.projectTitle
                   },
-                  // frame: "Hello Frame", 
+                  frame: "Hello Frame", 
                   // {
                   //   frameHeight: Number($("#id-frame1-height").val()),
                   //   frameDepth: Number($("#id-frame1-depth").val()),
@@ -109,8 +109,8 @@ class NewPalletRack extends Component {
                   //   },
                   // ],
                   shelfType: this.state.selectedShelfOption,
-                  shelfType2: "noShelf",
-                  userId: this.props.user._id
+                  userId: this.props.user._id,
+                  createdAt: new Date()
                   };
     console.log(specs)
 

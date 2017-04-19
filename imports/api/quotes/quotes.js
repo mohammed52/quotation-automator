@@ -4,6 +4,7 @@ import SimpleSchema from 'simpl-schema'
 import { Factory } from 'meteor/dburles:factory';
 // import { PublicationCollector } from 'meteor/johanbrook:publication-collector';
 import faker from 'faker';
+import {schemaQuotes} from '../helpers';
 
 // import {rn} from 'random-number'
 // import { Meteor } from 'meteor/meteor';
@@ -27,76 +28,7 @@ Quotes.deny({
   insert() { return true; },
 });
 
-const schemaProjectSettings = new SimpleSchema({
-    companyName: {
-      type: String,
-      max: 100,
-      label: "Company Name",
-    },
-    projectTitle: {
-      type: String,
-      max: 100,
-    },
-    description: {
-      type: String,
-      max: 100,
-    },
-    projectRate: {
-      type: Number,
-      min: 0,
-    },
-    projectCost: {
-      type: Number,
-      min: 0,
-    }
-});
-
-const schemaFrame = new SimpleSchema({
-  frameHeight: {
-    type: Number,
-    min: 0,
-    label: "Frame Height",
-  },
-  frameDepth: {
-    type: Number,
-    min: 0,
-    label: "Frame Depth",
-  },
-  frameQty: {
-    type: Number,
-    min: 0,
-    label: "Frame Qty",
-  }
-});
-
-Quotes.schema = new SimpleSchema({
-  projectSettings: {
-    type: schemaProjectSettings,
-    label: "Frame Height",
-  },
-  // frame: {
-  //   type: String,
-  //   max: 100,
-  //   label: "Frame-1",
-  // },
-  shelfType: {
-    type: String,
-    max: 100,
-    label: "Frame Height",
-  },
-  shelfType2: {
-    type: String,
-    max: 100,
-    label: "ShelfType2",
-  },
-  userId: { 
-    type: String, 
-    regEx: SimpleSchema.RegEx.Id, 
-    optional: true,
-    label: "Frame Height",
-  }
-
-});
+Quotes.schema = schemaQuotes;
 
 var rnOptions = {
   min:  100, 
@@ -136,8 +68,8 @@ Factory.define('quote', Quotes, {
     projectCost: ()=> rn(rnOptions),
   },
   shelfType: "no-shelf",
-  shelfType2: "no-shelf",
-  // frame: {
+  frame: "Test Frame",
+  // {
   //   frameHeight: ()=> rn(rnFrameHeight),
   //   frameDepth: ()=> rn(rnFrameDepth),
   //   frameQty: ()=> rn(rnFrameQty),
@@ -151,4 +83,5 @@ Quotes.publicFields = {
   shelfType: 1,
   userId: 1,
   frame: 1,
+  createdAt: 1
 };

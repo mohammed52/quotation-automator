@@ -23,28 +23,27 @@ Meteor.startup(() => {
           //     "frameDepth": "3",
 
           // },
-          "bays": {
-            "bay1": {
-              "length": "120",
-              "qty": "100",
-              "levels": "50",
-              "loadPerLevel": "30000"
-            },
-            "bay2": {
-              "length": "8.05",
-              "qty": "40",
-              "levels": "40",
-              "loadPerLevel": "30001"
-            },
-            "bay3": {
-              "length": "4",
-              "levels": "2",
-              "loadPerLevel": "30001"
-            }
-          },
+          // "bays": {
+          //   "bay1": {
+          //     "length": "120",
+          //     "qty": "100",
+          //     "levels": "50",
+          //     "loadPerLevel": "30000"
+          //   },
+          //   "bay2": {
+          //     "length": "8.05",
+          //     "qty": "40",
+          //     "levels": "40",
+          //     "loadPerLevel": "30001"
+          //   },
+          //   "bay3": {
+          //     "length": "4",
+          //     "levels": "2",
+          //     "loadPerLevel": "30001"
+          //   }
+          // },
           "shelfType": "noShelfW",
-          "shelfType2": "noShelfX",
-
+          createdAt: new Date()
     }
 
     let timestamp = (new Date()).getTime();
