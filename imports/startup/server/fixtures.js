@@ -11,37 +11,46 @@ Meteor.startup(() => {
   const tempData = {
           "projectSettings": {
             "description": "test description-1W",
-            "projectCost": "1400",
-            "projectRate": "1900",
+            "projectCost": 140,
+            "projectRate": 190,
             "companyName": "MEKW",
             "projectTitle": "Yamaha Port QasimW"
           },
-          "frame": "Hello Test Frame", 
-          // {
-          //     "frameHeight": "20",
-          //     "frameQty": "100",
-          //     "frameDepth": "3",
-
-          // },
-          // "bays": {
-          //   "bay1": {
-          //     "length": "120",
-          //     "qty": "100",
-          //     "levels": "50",
-          //     "loadPerLevel": "30000"
-          //   },
-          //   "bay2": {
-          //     "length": "8.05",
-          //     "qty": "40",
-          //     "levels": "40",
-          //     "loadPerLevel": "30001"
-          //   },
-          //   "bay3": {
-          //     "length": "4",
-          //     "levels": "2",
-          //     "loadPerLevel": "30001"
-          //   }
-          // },
+          "frame": {
+              "frameHeight": 20,
+              "frameQty": 100,
+              "frameDepth": 3,
+          },
+          "bays": [
+            {
+              "bay": 1,
+              "length": 120,
+              "qty": 100,
+              "levels": 50,
+              "loadPerLevel": 30000
+            },
+            {
+              "bay": 2,
+              "length": 8.05,
+              "qty": 40,
+              "levels": 40,
+              "loadPerLevel": 30001
+            },
+            {
+              "bay": 3,
+              "length": 4,
+              "qty": 10, 
+              "levels": 2,
+              "loadPerLevel": 30001
+            },
+            {
+              "bay": 4,
+              "length": 4,
+              "qty": 10,
+              "levels": 2,
+              "loadPerLevel": 30001
+            }
+          ],
           "shelfType": "noShelfW",
           createdAt: new Date()
     }

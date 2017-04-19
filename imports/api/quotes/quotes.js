@@ -5,6 +5,7 @@ import { Factory } from 'meteor/dburles:factory';
 // import { PublicationCollector } from 'meteor/johanbrook:publication-collector';
 import faker from 'faker';
 import {schemaQuotes} from '../helpers';
+import { _ } from 'meteor/underscore';
 
 // import {rn} from 'random-number'
 // import { Meteor } from 'meteor/meteor';
@@ -68,12 +69,37 @@ Factory.define('quote', Quotes, {
     projectCost: ()=> rn(rnOptions),
   },
   shelfType: "no-shelf",
-  frame: "Test Frame",
-  // {
-  //   frameHeight: ()=> rn(rnFrameHeight),
-  //   frameDepth: ()=> rn(rnFrameDepth),
-  //   frameQty: ()=> rn(rnFrameQty),
-  // }
+  frame: {
+    frameHeight: ()=> rn(rnFrameHeight),
+    frameDepth: ()=> rn(rnFrameDepth),
+    frameQty: ()=> rn(rnFrameQty),
+  },
+  bays: [{
+              "bay": 1,
+              "length": 120,
+              "qty": 100,
+              "levels": 50,
+              "loadPerLevel": 30000
+            },
+            {
+              "bay": 2,
+              "length": 8.05,
+              "qty": 40,
+              "levels": 40,
+              "loadPerLevel": 30001
+            },
+            {
+              "bay": 3,
+              "length": 4,
+              "levels": 2,
+              "loadPerLevel": 30001
+            },
+            {
+              "bay": 4,
+              "length": "4",
+              "levels": "2",
+              "loadPerLevel": 30001
+        }]
 });
 
 Quotes.attachSchema(Quotes.schema);

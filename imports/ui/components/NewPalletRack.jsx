@@ -76,38 +76,41 @@ class NewPalletRack extends Component {
                     companyName: companyProjectTitle.companyName,
                     projectTitle: companyProjectTitle.projectTitle
                   },
-                  frame: "Hello Frame", 
-                  // {
-                  //   frameHeight: Number($("#id-frame1-height").val()),
-                  //   frameDepth: Number($("#id-frame1-depth").val()),
-                  //   frameQty: Number($("#id-frame1-qty").val())
-                  // },
-                  // bays: [
-                  //   bay1: {
-                  //     length: $("#id-bay1-length").val(),
-                  //     qty: $("#id-bay1-qty").val(),
-                  //     levels: $("#id-bay1-levels").val(),
-                  //     loadPerLevel: $("#id-bay1-loadPerLevel").val(),
-                  //   },
-                  //   bay2: {
-                  //     length: $("#id-bay2-length").val(),
-                  //     qty: $("#id-bay2-qty").val(),
-                  //     levels: $("#id-bay2-levels").val(),
-                  //     loadPerLevel: $("#id-bay2-loadPerLevel").val()
-                  //   },
-                  //   bay3: {
-                  //     length: $("#id-bay3-length").val(),
-                  //     qty: $("#id-bay3-qty").val(),
-                  //     levels: $("#id-bay3-levels").val(),
-                  //     loadPerLevel: $("#id-bay3-loadPerLevel").val()
-                  //   },
-                  //   bay4: {
-                  //     length: $("#id-bay4-length").val(),
-                  //     qty: $("#id-bay4-qty").val(),
-                  //     levels: $("#id-bay4-levels").val(),
-                  //     loadPerLevel: $("#id-bay4-loadPerLevel").val()
-                  //   },
-                  // ],
+                  frame: {
+                    frameHeight: Number($("#id-frame1-height").val()),
+                    frameDepth: Number($("#id-frame1-depth").val()),
+                    frameQty: Number($("#id-frame1-qty").val())
+                  },
+                  bays: [
+                    {
+                      bay: 1,
+                      length: Number($("#id-bay1-length").val()),
+                      qty: Number($("#id-bay1-qty").val()),
+                      levels: Number($("#id-bay1-levels").val()),
+                      loadPerLevel: Number($("#id-bay1-loadPerLevel").val()),
+                    },
+                    {
+                      bay: 2,
+                      length: Number($("#id-bay2-length").val()),
+                      qty: Number($("#id-bay2-qty").val()),
+                      levels: Number($("#id-bay2-levels").val()),
+                      loadPerLevel: Number($("#id-bay2-loadPerLevel").val())
+                    },
+                    {
+                      bay: 3,
+                      length: Number($("#id-bay3-length").val()),
+                      qty: Number($("#id-bay3-qty").val()),
+                      levels: Number($("#id-bay3-levels").val()),
+                      loadPerLevel: Number($("#id-bay3-loadPerLevel").val())
+                    },
+                    {
+                      bay: 4,
+                      length: Number($("#id-bay4-length").val()),
+                      qty: Number($("#id-bay4-qty").val()),
+                      levels: Number($("#id-bay4-levels").val()),
+                      loadPerLevel: Number($("#id-bay4-loadPerLevel").val())
+                    }
+                  ],
                   shelfType: this.state.selectedShelfOption,
                   userId: this.props.user._id,
                   createdAt: new Date()
@@ -279,7 +282,7 @@ class NewPalletRack extends Component {
                               defaultValue="4"/></td>
                         <td><FormControl type="text" 
                               placeholder="2" 
-                              id="id-bay3-count"
+                              id="id-bay3-qty"
                               defaultValue="2"/></td>
                         <td><FormControl type="text" placeholder="3" 
                               id="id-bay3-levels"
@@ -295,7 +298,7 @@ class NewPalletRack extends Component {
                               defaultValue="4"/></td>
                         <td><FormControl type="text" 
                               placeholder="2" 
-                              id="id-bay4-count"
+                              id="id-bay4-qty"
                               defaultValue="2"/></td>
                         <td><FormControl type="text" placeholder="3" 
                               id="id-bay4-levels"

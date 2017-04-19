@@ -1,5 +1,34 @@
 import SimpleSchema from 'simpl-schema'
 
+const schemaBay = new SimpleSchema({
+  bay: {
+    type: Number,
+    min: 0,
+    label: "Bay Number",
+  },
+  length: {
+    type: Number,
+    min: 0,
+    label: "Bay Length",
+  },
+  qty: {
+    type: Number,
+    min: 0,
+    label: "Bay Qty",
+  },
+  levels: {
+    type: Number,
+    min: 0,
+    label: "Number of Levels",
+  },
+  loadPerLevel: {
+    type: Number,
+    min: 0,
+    label: "Load Per Level",
+  },
+
+});
+
 const schemaFrame = new SimpleSchema({
   frameHeight: {
     type: Number,
@@ -9,7 +38,7 @@ const schemaFrame = new SimpleSchema({
   frameDepth: {
     type: Number,
     min: 0,
-    label: "Frame Depth",
+    label: "Frame Depth-1",
   },
   frameQty: {
     type: Number,
@@ -44,12 +73,21 @@ const schemaProjectSettings = new SimpleSchema({
 export const schemaQuotes = new SimpleSchema({
   projectSettings: {
     type: schemaProjectSettings,
-    label: "Frame Height",
+    label: "Project Settings",
   },
   frame: {
-    type: String,
+    type: schemaFrame,
     max: 100,
-    label: "frame string",
+    label: "Frame Object",
+  },
+  bays: {
+    type: Array,
+    minCount: 1,
+    maxCount: 4,
+    label: "Bays",
+  },
+  'bays.$': {
+    type: schemaBay
   },
   shelfType: {
     type: String,
