@@ -119,6 +119,8 @@ class NewPalletRack extends Component {
 
     insert.call(specs, displayError);
     
+    // browserHistory.push('/showquote');
+    browserHistory.push('/allquotes');
     // insert.call(specs, displayError);
 
   }

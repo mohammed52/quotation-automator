@@ -6,6 +6,7 @@ import AppContainer from '../../ui/containers/AppContainer.jsx'
 // import VoteYouCan from '../../ui/components/VoteYouCan'
 import HomeContainer from '../../ui/containers/HomeContainer'
 import AllQuotes from '../../ui/components/AllQuotes'
+import ShowQuote from '../../ui/components/ShowQuote'
 import NewPalletRackContainer from '../../ui/containers/NewPalletRackContainer'
 
 export const renderRoutes = () => (
@@ -15,6 +16,7 @@ export const renderRoutes = () => (
         <Route path="/home" component={HomeContainer} />
         <Route path="/newpalletrack" component={NewPalletRackContainer} />
         <Route path="/allquotes" component={AllQuotes} />
+        <Route path="/showquote" compinent={ShowQuote} />
       </Route>    
   </Router>
 

@@ -79,3 +79,5 @@ For testing in mocha, we are specifing titles and using asserts to throw errors
 Q: "frame" is not allowed in schema error??? have wasted 02 hours
 ANS: schema is defined in methods file in api directory, verfiy correct declaration
 --
+"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" --auto-open-devtools-for-tabs
+--
