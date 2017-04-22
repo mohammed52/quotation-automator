@@ -120,13 +120,15 @@ class NewPalletRack extends Component {
     insert.call(specs, displayError);
     
     // browserHistory.push('/showquote');
-    browserHistory.push('/allquotes');
+    browserHistory.push({
+      pathname: '/showquote',
+      state: specs});
     // insert.call(specs, displayError);
 
   }
 
   btnCancel(){
-    browserHistory.push('/');
+    browserHistory.push({pathname: '/',state: { some: 'state' }});
   }
 
   handleOptionChange(changeEvent){

@@ -16,7 +16,7 @@ export const renderRoutes = () => (
         <Route path="/home" component={HomeContainer} />
         <Route path="/newpalletrack" component={NewPalletRackContainer} />
         <Route path="/allquotes" component={AllQuotes} />
-        <Route path="/showquote" compinent={ShowQuote} />
+        <Route path="/showquote" component={ShowQuote} />
       </Route>    
   </Router>
 

@@ -81,3 +81,6 @@ ANS: schema is defined in methods file in api directory, verfiy correct declarat
 --
 "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" --auto-open-devtools-for-tabs
 --
+Q: "ShowQuote" component not showing at redirection from "NewPalletRackSpecs" ??? wasted 02 hours
+ANS: 
+--

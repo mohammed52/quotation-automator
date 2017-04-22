@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { Meteor } from 'meteor/meteor';
 import { browserHistory } from 'react-router';
 import $ from "jquery"
+import {UprightWeightTable, BeamConnectorTable} from '../helpers/WeightCapacityTables'
 // import FrameTable from './FrameTable'
 // import BaysTable from './BaysTable'
 
@@ -18,16 +19,15 @@ import $ from "jquery"
 
 export default class ShowQuote extends Component {
   
-  constructor(props) {
-    super(props);
+  // constructor(props) {
+    // super(props);
     // this.btnGenerateQuote = this.btnGenerateQuote.bind(this);
     // this.btnCancel = this.btnCancel.bind(this);
     // this.handleOptionChange = this.handleOptionChange.bind(this);
 
-    this.state = {
-        // selectedShelfOption: "noShelf"
-    }
-  }
+    // this.state = {
+    // }
+  // }
 
 
   componentWillMount(){
@@ -64,6 +64,10 @@ export default class ShowQuote extends Component {
 
   render() {
     console.log(this.context.user)
+    console.log(this.props.location.state)
+    console.log(UprightWeightTable)
+    console.log(BeamConnectorTable)
+
     return (
           <div> Show Quote
           </div>
@@ -71,10 +75,11 @@ export default class ShowQuote extends Component {
   }
 }
 
-// NewPalletRack.propTypes = {
-//   user: React.PropTypes.object,      // current meteor user
-//   connected: React.PropTypes.bool,   // server connection status
-// };
+ShowQuote.propTypes = {
+  user: React.PropTypes.object,      // current meteor user
+  connected: React.PropTypes.bool,   // server connection status
+  location: React.PropTypes.object
+};
 
 ShowQuote.contextTypes = {
   user: React.PropTypes.object
