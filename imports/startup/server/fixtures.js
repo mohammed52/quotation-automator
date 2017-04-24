@@ -26,29 +26,29 @@ Meteor.startup(() => {
               "bay": 1,
               "length": 120,
               "qty": 100,
-              "levels": 50,
-              "loadPerLevel": 30000
+              "levels": 5,
+              "loadPerLevel": 4000
             },
             {
               "bay": 2,
               "length": 8.05,
               "qty": 40,
-              "levels": 40,
-              "loadPerLevel": 30001
+              "levels": 7,
+              "loadPerLevel": 3000
             },
             {
               "bay": 3,
               "length": 4,
               "qty": 10, 
               "levels": 2,
-              "loadPerLevel": 30001
+              "loadPerLevel": 2000
             },
             {
               "bay": 4,
               "length": 4,
               "qty": 10,
               "levels": 2,
-              "loadPerLevel": 30001
+              "loadPerLevel": 1000
             }
           ],
           "shelfType": "noShelfW",

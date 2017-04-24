@@ -3,28 +3,33 @@ import SimpleSchema from 'simpl-schema'
 const schemaBay = new SimpleSchema({
   bay: {
     type: Number,
-    min: 0,
+    min: 1,
     label: "Bay Number",
+    max: 4
   },
   length: {
     type: Number,
     min: 0,
     label: "Bay Length",
+    max: 500
   },
   qty: {
     type: Number,
-    min: 0,
+    min: 1,
     label: "Bay Qty",
+    max: 500
   },
   levels: {
     type: Number,
-    min: 0,
+    min: 1,
     label: "Number of Levels",
+    max: 15
   },
   loadPerLevel: {
     type: Number,
-    min: 0,
+    min: 100,
     label: "Load Per Level",
+    max: 4000
   },
 
 });
@@ -32,18 +37,21 @@ const schemaBay = new SimpleSchema({
 const schemaFrame = new SimpleSchema({
   frameHeight: {
     type: Number,
-    min: 0,
+    min: 4,
     label: "Frame Height",
+    max: 60
   },
   frameDepth: {
     type: Number,
-    min: 0,
+    min: 1,
     label: "Frame Depth-1",
+    max: 15
   },
   frameQty: {
     type: Number,
-    min: 0,
+    min: 1,
     label: "Frame Qty",
+    max: 600
   }
 });
 
@@ -62,11 +70,13 @@ const schemaProjectSettings = new SimpleSchema({
     },
     projectRate: {
       type: Number,
-      min: 0,
+      min: 160,
+      max: 300
     },
     projectCost: {
       type: Number,
-      min: 0,
+      min: 100,
+      max: 150
     }
 });
 

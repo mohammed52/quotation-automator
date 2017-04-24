@@ -79,6 +79,7 @@ For testing in mocha, we are specifing titles and using asserts to throw errors
 Q: "frame" is not allowed in schema error??? have wasted 02 hours
 ANS: schema is defined in methods file in api directory, verfiy correct declaration
 --
+Auto Open Dev Tools for Chrome:
 "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" --auto-open-devtools-for-tabs
 --
 Q: "ShowQuote" component not showing at redirection from "NewPalletRackSpecs" ??? wasted 02 hours
@@ -92,4 +93,11 @@ Ans: some typo, removed "default" keyword
 --
 ST3 snippets:
 In preferences -> setings-> user key bindings: https://gist.github.com/harthur/2951063
+--
+ctrl+m : closing bracket
+--
+Q: ST3 snippets not working? wasted 4 hours
+Ans: check the code you pasted in User Key Bindings, not for windows keyboard
+--
+ST3 snippets , use more
 --
