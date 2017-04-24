@@ -65,10 +65,10 @@ class NewPalletRack extends Component {
   }
 
   btnGenerateQuote(){
-    console.log("Generate Quote...")
+    // console.log("Generate Quote...")
     const companyProjectTitle = this.props.companyProjectTitle;
 
-    const specs = {
+    const rackingRequirements = {
                   projectSettings: {
                     description: $("#id-project-description").val(),
                     projectCost: Number($("#id-project-cost").val()),
@@ -115,14 +115,14 @@ class NewPalletRack extends Component {
                   userId: this.props.user._id,
                   createdAt: new Date()
                   };
-    console.log(specs)
+    // console.log(rackingRequirements)
 
-    insert.call(specs, displayError);
+    insert.call(rackingRequirements, displayError);
     
     // browserHistory.push('/showquote');
     browserHistory.push({
       pathname: '/showquote',
-      state: specs});
+      state: {rackingRequirements: rackingRequirements}});
     // insert.call(specs, displayError);
 
   }

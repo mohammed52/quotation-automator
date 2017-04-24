@@ -52,8 +52,8 @@ class HomeLoggedIn extends Component {
     const {switchFlag} = this.props
     if(showModalFlag) switchFlag(false)
 
-    console.log($("#id-company-name").val())
-    console.log($("#id-project-title").val())
+    // console.log($("#id-company-name").val())
+    // console.log($("#id-project-title").val())
 
     // browserHistory.push('/newpalletrack', 
     //   { companyName: $("#id-company-name").val(), 
@@ -74,7 +74,7 @@ class HomeLoggedIn extends Component {
   
   componentWillMount(){
     const showModalFlag = this.props.showModalFlag
-    console.log("showModalFlag: ", showModalFlag)
+    // console.log("showModalFlag: ", showModalFlag)
     if(showModalFlag){
       this.setState({
           showModal: true
@@ -184,8 +184,8 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     },
 
     setCompanyProjectTitle(obj){
-      console.log("setCompanyProjectTitle")
-      console.log(obj)
+      // console.log("setCompanyProjectTitle")
+      // console.log(obj)
       dispatch(setCompanyProjectTitle(obj))
     }
   }

@@ -82,5 +82,14 @@ ANS: schema is defined in methods file in api directory, verfiy correct declarat
 "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" --auto-open-devtools-for-tabs
 --
 Q: "ShowQuote" component not showing at redirection from "NewPalletRackSpecs" ??? wasted 02 hours
-ANS: 
+ANS: in routes.js , misspelled "compinent" in the props of route
+--
+export function, export constant:
+https://developer.mozilla.org/en/docs/web/javascript/reference/statements/export
+--
+Q: Imported function from another exported file not detected? wasted 01 hour
+Ans: some typo, removed "default" keyword
+--
+ST3 snippets:
+In preferences -> setings-> user key bindings: https://gist.github.com/harthur/2951063
 --

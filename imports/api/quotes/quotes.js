@@ -8,7 +8,7 @@ import {schemaQuotes} from '../helpers';
 import { _ } from 'meteor/underscore';
 
 // import {rn} from 'random-number'
-// import { Meteor } from 'meteor/meteor';
+// import { Meteor } from 'meteor/meteor'
 SimpleSchema.debug = true
 
 var rn = require('random-number');
@@ -16,7 +16,7 @@ var rn = require('random-number');
 class QuotesCollection extends Mongo.Collection {
   insert(doc, callback) {
     const ourDoc = doc;
-    console.log(doc)
+    // console.log(doc)
     ourDoc.createdAt = ourDoc.createdAt || new Date();
     const result = super.insert(ourDoc, callback);
     return result;

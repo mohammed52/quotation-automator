@@ -3,6 +3,7 @@ import { Meteor } from 'meteor/meteor';
 import { browserHistory } from 'react-router';
 import $ from "jquery"
 import {UprightWeightTable, BeamConnectorTable} from '../helpers/WeightCapacityTables'
+import { getFrameSpecsAndCost } from '../helpers/getFrameSpecsAndCost'
 // import FrameTable from './FrameTable'
 // import BaysTable from './BaysTable'
 
@@ -14,7 +15,7 @@ import {UprightWeightTable, BeamConnectorTable} from '../helpers/WeightCapacityT
 // var FormControl = ReactBootstrap.FormControl;
 // var Radio = ReactBootstrap.Radio;
 // var Table = ReactBootstrap.Table;
-// var FieldGroup = ReactBootstrap.FieldGroup;
+// var FieldGroup = ReactBootstrap.FieldGroup
 // var Input = ReactBootstrap.Input;
 
 export default class ShowQuote extends Component {
@@ -50,7 +51,7 @@ export default class ShowQuote extends Component {
   
   componentDidUpdate(){
     // console.log("componentDidUpdate")
-    //   const user = this.props.user;
+    //   const user = this.props.user
     // console.log(user) 
   }
 
@@ -63,10 +64,12 @@ export default class ShowQuote extends Component {
   }
 
   render() {
-    console.log(this.context.user)
-    console.log(this.props.location.state)
-    console.log(UprightWeightTable)
-    console.log(BeamConnectorTable)
+    // console.log(this.context.user)
+    // console.log(this.props.location.state)
+
+    const frameSpecsAndCost = getFrameSpecsAndCost(this.props.location.state.rackingRequirements); 
+    
+    // console.log(frameSpecsAndCost)
 
     return (
           <div> Show Quote
