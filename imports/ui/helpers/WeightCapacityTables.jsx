@@ -33,4 +33,5 @@ export const BoxBeamWeightCapacityTable = {
 export const BracingTable = [
 {bracing: "25x25x1.0mm", maxCapacityPerLevel: 1000, maxCapacityPerRack: 3000, weightPerFoot: 0.28},
 {bracing: "25x25x1.2mm", maxCapacityPerLevel: 2000, maxCapacityPerRack: 5000, weightPerFoot: 0.30},
-{bracing: "25x25x1.5mm", maxCapacityPerLevel: 3000, maxCapacityPerRack: 9000, weightPerFoot: 0.35}];
+{bracing: "25x25x1.5mm", maxCapacityPerLevel: 3000, maxCapacityPerRack: 9000, weightPerFoot: 0.35},
+{bracing: "25x25x2.0mm", maxCapacityPerLevel: 4000, maxCapacityPerRack: 16000, weightPerFoot: 0.35}];

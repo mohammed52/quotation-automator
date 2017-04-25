@@ -24,10 +24,10 @@ Meteor.startup(() => {
           "bays": [
             {
               "bay": 1,
-              "length": 120,
+              "length": 12,
               "qty": 100,
               "levels": 5,
-              "loadPerLevel": 4000
+              "loadPerLevel": 3500
             },
             {
               "bay": 2,

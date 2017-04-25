@@ -6,6 +6,7 @@ import {UprightWeightTable, BeamConnectorTable} from '../helpers/WeightCapacityT
 import { getFrameSpecsAndCost } from '../helpers/getFrameSpecsAndCost'
 import {getUprightSpecsAndCost} from '../helpers/getUprightSpecsAndCost'
 import {getBeamSpecsAndCost} from '../helpers/getBeamSpecsAndCost'
+import {getBracingSpecsAndCost} from '../helpers/getBracingSpecsAndCost'
 
 // import FrameTable from './FrameTable'
 // import BaysTable from './BaysTable'
@@ -72,15 +73,21 @@ export default class ShowQuote extends Component {
     const MAPLOG=true
     if(MAPLOG)console.log("this.props.location.state",this.props.location.state);
     var arrayCostObjects = []
-    //upright object
+
+    //1. upright object
     arrayCostObjects.push(getUprightSpecsAndCost(this.props.location.state.rackingRequirements))
     
-    //bays objects
+    //2. bays objects
     const bays = this.props.location.state.rackingRequirements.bays
-    if(MAPLOG)console.log("bays",bays);
+    // if(MAPLOG)console.log("bays",bays);
     for (var i = bays.length - 1; i >= 0; i--) {
       arrayCostObjects.push(getBeamSpecsAndCost(bays[i]))   
-    }    
+    }
+
+    //3. Bracing Object
+    arrayCostObjects.push(getBracingSpecsAndCost(this.props.location.state.rackingRequirements))
+
+    if(MAPLOG)console.log("arrayCostObjects",arrayCostObjects);    
 
     return (
           <div> Show Quote

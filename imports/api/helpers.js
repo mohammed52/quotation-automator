@@ -11,7 +11,7 @@ const schemaBay = new SimpleSchema({
     type: Number,
     min: 0,
     label: "Bay Length",
-    max: 500
+    max: 12
   },
   qty: {
     type: Number,
@@ -29,7 +29,7 @@ const schemaBay = new SimpleSchema({
     type: Number,
     min: 100,
     label: "Load Per Level",
-    max: 4000
+    max: 3500
   },
 
 });
