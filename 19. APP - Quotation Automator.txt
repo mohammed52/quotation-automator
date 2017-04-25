@@ -101,3 +101,8 @@ Ans: check the code you pasted in User Key Bindings, not for windows keyboard
 --
 ST3 snippets , use more
 --
+Copy the exact flow of Pallet Rack costing from the excel sheets
+--
+ctrl+d , ST3 select the word under the cursor
+--
+shift+del , ST3 delete line 

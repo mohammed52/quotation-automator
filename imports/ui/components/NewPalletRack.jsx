@@ -5,6 +5,7 @@ import $ from "jquery"
 import {connect} from 'react-redux'
 import { insert } from '../../api/quotes/methods.js';
 import { displayError } from '../helpers/errors.js';
+import {removeZeroValueBays} from '../helpers/removeZeroValueBays'
 
 // import FrameTable from './FrameTable'
 // import BaysTable from './BaysTable'
@@ -67,21 +68,8 @@ class NewPalletRack extends Component {
   btnGenerateQuote(){
     // console.log("Generate Quote...")
     const companyProjectTitle = this.props.companyProjectTitle;
-
-    const rackingRequirements = {
-                  projectSettings: {
-                    description: $("#id-project-description").val(),
-                    projectCost: Number($("#id-project-cost").val()),
-                    projectRate: Number($("#id-project-rate").val()),
-                    companyName: companyProjectTitle.companyName,
-                    projectTitle: companyProjectTitle.projectTitle
-                  },
-                  frame: {
-                    frameHeight: Number($("#id-frame1-height").val()),
-                    frameDepth: Number($("#id-frame1-depth").val()),
-                    frameQty: Number($("#id-frame1-qty").val())
-                  },
-                  bays: [
+  
+    var bays = [
                     {
                       bay: 1,
                       length: Number($("#id-bay1-length").val()),
@@ -110,7 +98,23 @@ class NewPalletRack extends Component {
                       levels: Number($("#id-bay4-levels").val()),
                       loadPerLevel: Number($("#id-bay4-loadPerLevel").val())
                     }
-                  ],
+                  ];
+    bays = removeZeroValueBays(bays)
+
+    const rackingRequirements = {
+                  projectSettings: {
+                    description: $("#id-project-description").val(),
+                    projectCost: Number($("#id-project-cost").val()),
+                    projectRate: Number($("#id-project-rate").val()),
+                    companyName: companyProjectTitle.companyName,
+                    projectTitle: companyProjectTitle.projectTitle
+                  },
+                  frame: {
+                    frameHeight: Number($("#id-frame1-height").val()),
+                    frameDepth: Number($("#id-frame1-depth").val()),
+                    frameQty: Number($("#id-frame1-qty").val())
+                  },
+                  bays: bays,
                   shelfType: this.state.selectedShelfOption,
                   userId: this.props.user._id,
                   createdAt: new Date()
