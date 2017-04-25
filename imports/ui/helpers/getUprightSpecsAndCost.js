@@ -5,7 +5,7 @@ import { UprightWeightTable } from './WeightCapacityTables'
 
 export function getUprightSpecsAndCost(rackingRequirements){
 	
-	const MAPLOG = false
+	const MAPLOG = true
 	
 	const maxRackCapacity = getMaxRackCapacityReqd(rackingRequirements.bays)
 	const maxLevelCapacity = getMaxLevelCapacity(rackingRequirements.bays)

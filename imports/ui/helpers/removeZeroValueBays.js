@@ -1,13 +1,8 @@
-  // { "keys": ["ctrl+shift+l"],
-  //       "command": "insert_snippet",
-  //       "args": {
-  //         "contents": "if(MAPLOG)console.log(\"$SELECTION\",$SELECTION);${0}"
-  //       }
-  // }
+
 
 
 export function removeZeroValueBays(bays){
-	const MAPLOG = true
+	const MAPLOG = false
 	if(MAPLOG)console.log("bays",bays);
 	var retArray = bays.slice()
 	if(MAPLOG)console.log(retArray);
@@ -32,6 +27,6 @@ export function removeZeroValueBays(bays){
 	if(MAPLOG)console.log("indexesToRemove",indexesToRemove);
 	if(MAPLOG)console.log("retArray", retArray)
 	
-
+  
 	return retArray
 }

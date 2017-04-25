@@ -4,6 +4,9 @@ import { browserHistory } from 'react-router';
 import $ from "jquery"
 import {UprightWeightTable, BeamConnectorTable} from '../helpers/WeightCapacityTables'
 import { getFrameSpecsAndCost } from '../helpers/getFrameSpecsAndCost'
+import {getUprightSpecsAndCost} from '../helpers/getUprightSpecsAndCost'
+import {getBeamSpecsAndCost} from '../helpers/getBeamSpecsAndCost'
+
 // import FrameTable from './FrameTable'
 // import BaysTable from './BaysTable'
 
@@ -65,11 +68,19 @@ export default class ShowQuote extends Component {
 
   render() {
     // console.log(this.context.user)
-    // console.log(this.props.location.state)
-
-    const frameSpecsAndCost = getFrameSpecsAndCost(this.props.location.state.rackingRequirements); 
     
-    // console.log(frameSpecsAndCost)
+    const MAPLOG=true
+    if(MAPLOG)console.log("this.props.location.state",this.props.location.state);
+    var arrayCostObjects = []
+    //upright object
+    arrayCostObjects.push(getUprightSpecsAndCost(this.props.location.state.rackingRequirements))
+    
+    //bays objects
+    const bays = this.props.location.state.rackingRequirements.bays
+    if(MAPLOG)console.log("bays",bays);
+    for (var i = bays.length - 1; i >= 0; i--) {
+      arrayCostObjects.push(getBeamSpecsAndCost(bays[i]))   
+    }    
 
     return (
           <div> Show Quote
