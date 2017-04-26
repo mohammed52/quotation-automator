@@ -7,7 +7,7 @@ import {BracingTable} from './WeightCapacityTables'
 
 export function getBracingSpecsAndCost(rackRequirements){
 	
-	const MAPLOG = true
+	const MAPLOG = false
 	var bracingSpecsAndCost = {description: "",
 							unitWeight: 0,
 							qty: 0};

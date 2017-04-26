@@ -7,6 +7,8 @@ import { getFrameSpecsAndCost } from '../helpers/getFrameSpecsAndCost'
 import {getUprightSpecsAndCost} from '../helpers/getUprightSpecsAndCost'
 import {getBeamSpecsAndCost} from '../helpers/getBeamSpecsAndCost'
 import {getBracingSpecsAndCost} from '../helpers/getBracingSpecsAndCost'
+import {getBeamConnectorSpecsAndCost} from '../helpers/getBeamConnectorSpecsAndCost'
+import {getBasePlateSpecsAndCost} from '../helpers/getBasePlateSpecsAndCost'
 
 // import FrameTable from './FrameTable'
 // import BaysTable from './BaysTable'
@@ -71,26 +73,41 @@ export default class ShowQuote extends Component {
     // console.log(this.context.user)
     
     const MAPLOG=true
+    
     if(MAPLOG)console.log("this.props.location.state",this.props.location.state);
     var arrayCostObjects = []
+    const bays = this.props.location.state.rackingRequirements.bays
 
     //1. upright object
     arrayCostObjects.push(getUprightSpecsAndCost(this.props.location.state.rackingRequirements))
     
     //2. bays objects
-    const bays = this.props.location.state.rackingRequirements.bays
-    // if(MAPLOG)console.log("bays",bays);
-    for (var i = bays.length - 1; i >= 0; i--) {
+    for (var i=0; i<bays.length; i++) {
       arrayCostObjects.push(getBeamSpecsAndCost(bays[i]))   
     }
 
     //3. Bracing Object
     arrayCostObjects.push(getBracingSpecsAndCost(this.props.location.state.rackingRequirements))
 
+    //4. Beam Connector Object:
+    for (var j=0; j<bays.length; j++) {
+      arrayCostObjects.push(getBeamConnectorSpecsAndCost(bays[j]))   
+    }
+
+    //5.Base Plates Object
+    arrayCostObjects.push(getBasePlateSpecsAndCost(this.props.location.state.rackingRequirements))
+
+
     if(MAPLOG)console.log("arrayCostObjects",arrayCostObjects);    
 
     return (
           <div> Show Quote
+          <div className='row'>
+            <div className="col">Hello-1</div>
+            <div className="col">Hello-2</div>
+            <div className="col">Hello-3</div>
+            <div className="col">Hello-4</div>
+          </div>
           </div>
     );
   }
