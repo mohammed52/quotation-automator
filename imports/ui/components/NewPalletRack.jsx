@@ -336,16 +336,16 @@ class NewPalletRack extends Component {
                       inline name="option" 
                       onChange={this.handleOptionChange}
                       value = "metalShelf"
-                      checked={this.state.selectedShelfOption === 'metalShelf'}>
-                    Metal Shelf
+                      checked={this.state.selectedShelfOption === 'metalShelf1.2mm'}>
+                    Metal Shelf 1.2mm
                   </Radio>
                   {' '}
                   <Radio 
                       inline name="option" 
                       onChange={this.handleOptionChange}
                       value = "palletSupportBars"
-                      checked={this.state.selectedShelfOption === 'palletSupportBars'}>
-                    Pallet Support Bars
+                      checked={this.state.selectedShelfOption === 'metalShelf1.5mm'}>
+                    Metal Shelf 1.5mm
                   </Radio>
                 </FormGroup>
 

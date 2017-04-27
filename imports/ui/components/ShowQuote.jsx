@@ -75,7 +75,7 @@ export default class ShowQuote extends Component {
   render() {
     // console.log(this.context.user)
     
-    const MAPLOG=true
+    const MAPLOG=false
     
     if(MAPLOG)console.log("this.props.location.state",this.props.location.state);
     var arrayCostObjects = []
@@ -105,7 +105,7 @@ export default class ShowQuote extends Component {
 
     if(MAPLOG)console.log("arrayCostObjects",arrayCostObjects);
     var trArr = []
-
+    let specsOnly=[];
     for (var k = 0; k < arrayCostObjects.length; k++) {
           trArr.push(
             <tr>
@@ -117,6 +117,14 @@ export default class ShowQuote extends Component {
                       </tr>
             
             )
+
+          //get total rack description
+          if(k===0) {
+            specsOnly.push(<span>{"-- "+arrayCostObjects[k].description}</span>)
+          } else {
+              specsOnly.push(<br />)
+              specsOnly.push(<span>{"-- "+arrayCostObjects[k].description}</span>)
+            }
         }
 
     var totalProjectWeight=0;
@@ -191,14 +199,16 @@ export default class ShowQuote extends Component {
 
                     </thead>
                     <tbody>
-                      <th>{("Rs. "+numberWithCommas((175*totalProjectWeight/totalRacks).toFixed(2))+"/-")}</th>
-                      <th>{totalRacks}</th>
-                      <th>{("Rs. "+numberWithCommas((175*totalProjectWeight).toFixed(2))+"/-")}</th>
+                      <tr>
+                        <th>{("Rs. "+numberWithCommas((175*totalProjectWeight/totalRacks).toFixed(2))+"/-")}</th>
+                        <th>{totalRacks}</th>
+                        <th>{("Rs. "+numberWithCommas((175*totalProjectWeight).toFixed(2))+"/-")}</th>
+                      </tr>
                     </tbody>
                   </Table>
 
               </div>
-              <h4>Multiple Quotes</h4>
+              <h4>Higher Prices</h4>
               <div className="well">
                 <Table className="table">
                     <thead>
@@ -215,6 +225,11 @@ export default class ShowQuote extends Component {
                   </Table>
 
               </div>
+              <h4>Specificaions</h4>
+              <div className="well">
+                {specsOnly}
+              </div>
+
             </div>
           </div>
           <div className="container-fluid testbg-1 text-center">
