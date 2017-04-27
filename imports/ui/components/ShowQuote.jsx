@@ -2,15 +2,17 @@ import React, { Component, PropTypes } from 'react';
 import { Meteor } from 'meteor/meteor';
 import { browserHistory } from 'react-router';
 import $ from "jquery"
-import {UprightWeightTable, BeamConnectorTable} from '../helpers/WeightCapacityTables'
-import { getFrameSpecsAndCost } from '../helpers/getFrameSpecsAndCost'
+// import {UprightWeightTable, BeamConnectorTable} from '../helpers/WeightCapacityTables'
+import {PricingTable} from '../helpers/PricingTable'
+// import { getFrameSpecsAndCost } from '../helpers/getFrameSpecsAndCost'
 import {getUprightSpecsAndCost} from '../helpers/getUprightSpecsAndCost'
 import {getBeamSpecsAndCost} from '../helpers/getBeamSpecsAndCost'
 import {getBracingSpecsAndCost} from '../helpers/getBracingSpecsAndCost'
 import {getBeamConnectorSpecsAndCost} from '../helpers/getBeamConnectorSpecsAndCost'
 import {getBasePlateSpecsAndCost} from '../helpers/getBasePlateSpecsAndCost'
 import {getNutBoltSpecsAndCost} from '../helpers/getNutBoltSpecsAndCost'
-
+import {getTotalRacksQty} from '../helpers/getTotalRacksQty'
+import {numberWithCommas} from '../helpers/numberWithCommas'
 // import FrameTable from './FrameTable'
 // import BaysTable from './BaysTable'
 
@@ -132,35 +134,28 @@ export default class ShowQuote extends Component {
               <td>{totalProjectWeight.toFixed(2)}</td>
             </tr>
             )
-
+    
+    const totalRacks = getTotalRacksQty(this.props.location.state.rackingRequirements)
+    
+    //load pricing table
+    if(MAPLOG)console.log("PricingTable",PricingTable);
+    let pricingTableArr = []
+    for (var m = 0; m < PricingTable.length; m++) {
+      pricingTableArr.push(
+        <tr>
+              <td>{PricingTable[m].description}</td>
+              <td>{"Rs."+numberWithCommas((PricingTable[m].rate*175*totalProjectWeight/totalRacks).toFixed(2))+"/-"}</td>
+              <td>{"Rs."+numberWithCommas((PricingTable[m].rate*175*totalProjectWeight).toFixed(2))+"/-"}</td>
+        </tr>
+        
+        )
+      
+    }
     return (
           <div> Show Quote
           <div className='row testbg-1'>
             <div className="container-fluid row">
             <div className="col-sm-6 testbg-1">
-
-              <h4>Project Settings</h4>
-              <div className="well">
-              
-              
-              <div className="row">
-                  <div className="col-xs-6">
-                    Hello
-                  </div>
-                  <div className="col-xs-6">
-                      Hello
-                  </div>
-                </div>
-
-                <div className="row">
-                  <div className="col-xs-6">
-              Hello
-                  </div>
-                  <div className="col-xs-6">
-                      Hello
-                  </div>
-                </div>
-              </div>
 
               <h4>Racking Specs</h4>
               <div className="well">
@@ -182,13 +177,44 @@ export default class ShowQuote extends Component {
                   </div>
             </div>
             <div className="col-sm-6 testbg-2">
-                                <h4>Bays</h4>
+              <h4>Project Quote</h4>
 
               <div className="well">
-                Hello-7
+                <Table className="table">
+                    <thead>
+                      <tr>
+                        <th>Unit Price</th>
+                        <th>Qty. of Racks</th>
+                        <th>Project Cost</th>
+                        
+                      </tr>
+
+                    </thead>
+                    <tbody>
+                      <th>{("Rs. "+numberWithCommas((175*totalProjectWeight/totalRacks).toFixed(2))+"/-")}</th>
+                      <th>{totalRacks}</th>
+                      <th>{("Rs. "+numberWithCommas((175*totalProjectWeight).toFixed(2))+"/-")}</th>
+                    </tbody>
+                  </Table>
 
               </div>
+              <h4>Multiple Quotes</h4>
+              <div className="well">
+                <Table className="table">
+                    <thead>
+                      <tr>
+                        <th>Project Type</th>
+                        <th>Unit Price</th>
+                        <th>Total Price</th>
+                      </tr>
 
+                    </thead>
+                    <tbody>
+                      {pricingTableArr}
+                    </tbody>
+                  </Table>
+
+              </div>
             </div>
           </div>
           <div className="container-fluid testbg-1 text-center">
