@@ -136,7 +136,7 @@ class NewPalletRack extends Component {
   }
 
   handleOptionChange(changeEvent){
-    console.log("changed");
+    // console.log("changed");
     this.setState({
       selectedShelfOption: changeEvent.target.value
   });
@@ -335,7 +335,7 @@ class NewPalletRack extends Component {
                   <Radio 
                       inline name="option" 
                       onChange={this.handleOptionChange}
-                      value = "metalShelf"
+                      value = "metalShelf1.2mm"
                       checked={this.state.selectedShelfOption === 'metalShelf1.2mm'}>
                     Metal Shelf 1.2mm
                   </Radio>
@@ -343,7 +343,7 @@ class NewPalletRack extends Component {
                   <Radio 
                       inline name="option" 
                       onChange={this.handleOptionChange}
-                      value = "palletSupportBars"
+                      value = "metalShelf1.5mm"
                       checked={this.state.selectedShelfOption === 'metalShelf1.5mm'}>
                     Metal Shelf 1.5mm
                   </Radio>

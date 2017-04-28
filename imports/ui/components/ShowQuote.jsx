@@ -11,6 +11,7 @@ import {getBracingSpecsAndCost} from '../helpers/getBracingSpecsAndCost'
 import {getBeamConnectorSpecsAndCost} from '../helpers/getBeamConnectorSpecsAndCost'
 import {getBasePlateSpecsAndCost} from '../helpers/getBasePlateSpecsAndCost'
 import {getNutBoltSpecsAndCost} from '../helpers/getNutBoltSpecsAndCost'
+import {getShelfSpecsAndCost} from '../helpers/getShelfSpecsAndCost'
 import {getTotalRacksQty} from '../helpers/getTotalRacksQty'
 import {numberWithCommas} from '../helpers/numberWithCommas'
 // import FrameTable from './FrameTable'
@@ -102,6 +103,11 @@ export default class ShowQuote extends Component {
     
     //6. Nut Bolts
     arrayCostObjects.push(getNutBoltSpecsAndCost(this.props.location.state.rackingRequirements))
+    
+    //7. Shelf
+    if (this.props.location.state.rackingRequirements.shelfType!="noShelf") {
+      arrayCostObjects.push(getShelfSpecsAndCost(this.props.location.state.rackingRequirements))
+    }
 
     if(MAPLOG)console.log("arrayCostObjects",arrayCostObjects);
     var trArr = []
@@ -134,7 +140,7 @@ export default class ShowQuote extends Component {
     }
 
     trArr.push(
-            <tr>
+            <tr key={l}>
               <td></td>
               <td></td>
               <td></td>
@@ -150,7 +156,7 @@ export default class ShowQuote extends Component {
     let pricingTableArr = []
     for (var m = 0; m < PricingTable.length; m++) {
       pricingTableArr.push(
-        <tr>
+        <tr key={m}>
               <td>{PricingTable[m].description}</td>
               <td>{"Rs."+numberWithCommas((PricingTable[m].rate*175*totalProjectWeight/totalRacks).toFixed(2))+"/-"}</td>
               <td>{"Rs."+numberWithCommas((PricingTable[m].rate*175*totalProjectWeight).toFixed(2))+"/-"}</td>
