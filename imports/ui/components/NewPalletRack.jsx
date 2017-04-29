@@ -104,8 +104,10 @@ class NewPalletRack extends Component {
     const rackingRequirements = {
                   projectSettings: {
                     description: $("#id-project-description").val(),
-                    projectCost: Number($("#id-project-cost").val()),
-                    projectRate: Number($("#id-project-rate").val()),
+                    // projectCost: Number($("#id-project-cost").val()),
+                    // projectRate: Number($("#id-project-rate").val()),
+                    projectCost: 140,
+                    projectRate: 170,
                     companyName: companyProjectTitle.companyName,
                     projectTitle: companyProjectTitle.projectTitle
                   },
@@ -143,7 +145,10 @@ class NewPalletRack extends Component {
 
   }
   render() {
+    const MAPLOG=true
     const companyProjectTitle = this.props.companyProjectTitle
+    const defaultProjectSpecs = this.props.defaultProjectSpecs
+    if(MAPLOG)console.log("defaultProjectSpecs",defaultProjectSpecs);
 
     return (
           <div>   
@@ -175,30 +180,23 @@ class NewPalletRack extends Component {
                       
                   </div>
                 </div>
-
-              <ControlLabel>Racks Description</ControlLabel>
-                <FormControl 
-                type="textarea" 
-                placeholder="description" 
-                id="id-project-description"
-                defaultValue="test description-1"/>
               </FormGroup>
               
                 <div className="row">
                   <div className="col-xs-6">
-                    <ControlLabel>Project Cost (per kg)</ControlLabel>
+                    <ControlLabel>Racks Description</ControlLabel>
                     <FormControl 
                       type="text" 
-                      id="id-project-cost"
+                      id="id-racks-description"
                       defaultValue="140" />
 
                   </div>
                   <div className="col-xs-6">
-                    <ControlLabel>Project Rate (per kg)</ControlLabel>
+                    <ControlLabel>Current Metal Prices</ControlLabel>
                     <FormControl 
                       type="text" 
-                      defaultValue="190"
-                      id="id-project-rate"/>
+                      defaultValue="90"
+                      id="id-metal-prices"/>
                       
                   </div>
                 </div>
@@ -378,7 +376,8 @@ NewPalletRack.contextTyoes = {
 
 const mapStateToProp =(state, ownProps)=>{
   return {
-    companyProjectTitle: state.companyProjectTitle
+    companyProjectTitle: state.companyProjectTitle,
+    defaultProjectSpecs: state.defaultProjectSpecs
   }
 }
 
