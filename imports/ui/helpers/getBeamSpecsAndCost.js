@@ -33,7 +33,7 @@ export function getBeamSpecsAndCost(index, bay){
 			// if(MAPLOG)console.log("BeamWeightPerFootTable[j].weightPerFoot",BeamWeightPerFootTable[j].weightPerFoot);
 			beamSpecsAndCost.description = "Beam-"+(index+1)+": "+BoxBeamWeightCapacityTable.table[j][0]
 			beamSpecsAndCost.unitWeight = BeamWeightPerFootTable[j].weightPerFoot*bay.length
-			beamSpecsAndCost.qty = bay.levels*2
+			beamSpecsAndCost.qty = bay.levels*2*bay.qty
 			break
 		}
 	}

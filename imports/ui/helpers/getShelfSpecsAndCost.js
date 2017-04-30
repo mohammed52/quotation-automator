@@ -6,7 +6,7 @@ import {getQtyOfShelves} from './getQtyOfShelves'
 
 export function getShelfSpecsAndCost(rackingRequirements){
 	
-	const MAPLOG = true
+	const MAPLOG = false
 
 		var shelfSpecsAndCost={description: "",
 							unitWeight: 0,

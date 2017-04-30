@@ -111,6 +111,8 @@ Q: Error - can not find module? wasted 01 hour
 Ans: typo, check import declaration
 --
 ctrl+shift+k : delete line in ST3
+
+ctrl+m : jump to closing bracket in ST3
 --
 Q: Emptying trBays Array but its not being empty? 2 hours wasted
 Q: for some reason, unable to empty an array of bom elements

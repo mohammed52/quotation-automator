@@ -5,7 +5,7 @@
 
 export function getQtyOfShelves(rackingRequirements){
 	
-	const MAPLOG = true
+	const MAPLOG = false
 	let totalShelfQty=0
 
 	for (var i = 0; i < rackingRequirements.bays.length; i++) {

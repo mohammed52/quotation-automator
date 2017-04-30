@@ -21,7 +21,7 @@ import {setProjectSpecs} from '../../redux/actions/actions'
 // import BaysTable from './BaysTable'
 
 var ReactBootstrap = require('react-bootstrap');
-// var Button = ReactBootstrap.Button;
+var Button = ReactBootstrap.Button;
 // var Modal = ReactBootstrap.Modal;
 // var FormGroup = ReactBootstrap.FormGroup;
 // var ControlLabel = ReactBootstrap.ControlLabel;
@@ -33,15 +33,10 @@ var Table = ReactBootstrap.Table;
 
 class ShowQuote extends Component {
   
-  // constructor(props) {
-    // super(props);
-    // this.btnGenerateQuote = this.btnGenerateQuote.bind(this);
-    // this.btnCancel = this.btnCancel.bind(this);
-    // this.handleOptionChange = this.handleOptionChange.bind(this);
-
-    // this.state = {
-    // }
-  // }
+  constructor(props) {
+    super(props);
+    this.btnSaveAndClose = this.btnSaveAndClose.bind(this);
+  }
 
 
   componentWillMount(){
@@ -76,10 +71,16 @@ class ShowQuote extends Component {
     // console.log("cancel...")
   }
 
+  btnSaveAndClose(){
+    const MAPLOG = false
+    if(MAPLOG)console.log("btnSaveAndClose");
+    browserHistory.push('/allquotes');
+  }
+
   render() {
     // console.log(this.context.user)
     
-    const MAPLOG=true
+    const MAPLOG=false
    
     //save last specs object
     const { saveLastSpecsObject } = this.props;
@@ -147,18 +148,34 @@ class ShowQuote extends Component {
           totalProjectWeight+=arrayCostObjects[l].unitWeight*arrayCostObjects[l].qty
     }
 
+    const totalRacks = getTotalRacksQty(this.props.location.state.rackingRequirements)
+
     trArr.push(
-            <tr key={"trArr"+"tr"+l}>
+            <tr>
               <td></td>
               <td></td>
               <td></td>
-              <td>Sub Total:</td>
-              <td>{totalProjectWeight.toFixed(2)}</td>
+              <td><strong>Total Project Weight:</strong></td>
+              <td><strong>{totalProjectWeight.toFixed(2)}</strong></td>
             </tr>
             )
     
-    const totalRacks = getTotalRacksQty(this.props.location.state.rackingRequirements)
+
+
+    trArr.push(
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>Weight Per Rack:</td>
+              <td>{(totalProjectWeight/totalRacks).toFixed(2)}</td>
+            </tr>
+            )
     
+    
+    
+    if(MAPLOG)console.log("CostPriceAddOns.price",CostPriceAddOns.price);
+    if(MAPLOG)console.log("this.props.location.state.rackingRequirements.projectSettings.currentMetalPrices",this.props.location.state.rackingRequirements.projectSettings.currentMetalPrices);
     const unitPrice = Number(this.props.location.state.rackingRequirements.projectSettings.currentMetalPrices)+Number(CostPriceAddOns.price)
     
     if(MAPLOG)console.log("unitPrice",unitPrice);
@@ -181,6 +198,56 @@ class ShowQuote extends Component {
           <div> Show Quote
           <div className='row testbg-1'>
             <div className="container-fluid row">
+            
+            <div className="col-sm-6 testbg-2">
+              <h4>Project Quote</h4>
+
+              <div className="well">
+                <Table className="table">
+                    <thead>
+                      <tr>
+                        <th>Rock Bottom Price</th>
+                        <th>Qty. of Racks</th>
+                        <th>Total Project Cost</th>
+                        
+                      </tr>
+
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th>{("Rs. "+numberWithCommas((unitPrice*totalProjectWeight/totalRacks).toFixed(2))+"/-")}</th>
+                        <th>{totalRacks}</th>
+                        <th>{("Rs. "+numberWithCommas((unitPrice*totalProjectWeight).toFixed(2))+"/-")}</th>
+                      </tr>
+                    </tbody>
+                  </Table>
+
+              </div>
+              <h4>Specificaions</h4>
+              <div className="well">
+                {specsOnly}
+              </div>
+
+              <h4>Higher Prices</h4>
+              <div className="well">
+                <Table className="table">
+                    <thead>
+                      <tr>
+                        <th>Project Type</th>
+                        <th>Rock Bottom Price</th>
+                        <th>Unit Price</th>
+                      </tr>
+
+                    </thead>
+                    <tbody>
+                      {pricingTableArr}
+                    </tbody>
+                  </Table>
+
+              </div>
+              
+
+            </div>
             <div className="col-sm-6 testbg-1">
 
               <h4>Racking Specs</h4>
@@ -202,56 +269,9 @@ class ShowQuote extends Component {
                   </Table>
                   </div>
             </div>
-            <div className="col-sm-6 testbg-2">
-              <h4>Project Quote</h4>
-
-              <div className="well">
-                <Table className="table">
-                    <thead>
-                      <tr>
-                        <th>Unit Price</th>
-                        <th>Qty. of Racks</th>
-                        <th>Project Cost</th>
-                        
-                      </tr>
-
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <th>{("Rs. "+numberWithCommas((unitPrice*totalProjectWeight/totalRacks).toFixed(2))+"/-")}</th>
-                        <th>{totalRacks}</th>
-                        <th>{("Rs. "+numberWithCommas((unitPrice*totalProjectWeight).toFixed(2))+"/-")}</th>
-                      </tr>
-                    </tbody>
-                  </Table>
-
-              </div>
-              <h4>Higher Prices</h4>
-              <div className="well">
-                <Table className="table">
-                    <thead>
-                      <tr>
-                        <th>Project Type</th>
-                        <th>Unit Price</th>
-                        <th>Total Price</th>
-                      </tr>
-
-                    </thead>
-                    <tbody>
-                      {pricingTableArr}
-                    </tbody>
-                  </Table>
-
-              </div>
-              <h4>Specificaions</h4>
-              <div className="well">
-                {specsOnly}
-              </div>
-
-            </div>
           </div>
           <div className="container-fluid testbg-1 text-center">
-            Hello-8
+            <Button onClick={this.btnSaveAndClose} bsStyle="primary">Save and Close</Button>
           </div>
           </div>
           </div>
@@ -280,7 +300,7 @@ const mapStateToProp =(state, ownProps)=>{
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     saveLastSpecsObject(object){
-      const MAPLOG = true
+      const MAPLOG = false
       if(MAPLOG)console.log("object",object);
 
       dispatch(setProjectSpecs(object))

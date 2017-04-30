@@ -12,9 +12,9 @@ const middleware = applyMiddleware(promise(), thunk, createLogger())
 const tempData = {
           "projectSettings": {
             "rackDescription": "",
-            "companyName": "",
-            "projectTitle": "",
-            "currentMetalPrice": "90"
+            "companyName": "MEK",
+            "projectTitle": "Yamaha Port Qasim",
+            "currentMetalPrices": "90"
           },
           "frame": {
               "frameHeight": "12",

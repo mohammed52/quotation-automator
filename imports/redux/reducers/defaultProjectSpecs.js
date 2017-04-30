@@ -3,7 +3,7 @@ const defaultProjectSpecs = (state = [], action) => {
 
     case "SET_PROJECT_SPECS":
       {
-        const MAPLOG = true
+        const MAPLOG = false
         if(MAPLOG)console.log("action.payload",action.payload);
           return action.payload;
       }

@@ -12,7 +12,7 @@ export function getBeamConnectorSpecsAndCost(index, bay){
 		if(BeamConnectorTable[i].capacityPerLevel>=bay.loadPerLevel){
 			beamConnectorSpecsAndCost.description="Connector-"+(index+1)+": "+BeamConnectorTable[i].connector
 			beamConnectorSpecsAndCost.unitWeight = BeamConnectorTable[i].weight
-			beamConnectorSpecsAndCost.qty = bay.qty*bay.levels*2
+			beamConnectorSpecsAndCost.qty = bay.qty*bay.levels*2*2
 			break
 		}
 	}

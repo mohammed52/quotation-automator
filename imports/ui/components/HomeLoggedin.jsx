@@ -3,6 +3,7 @@ import { browserHistory } from 'react-router';
 import {updateModalFlag, setCompanyProjectTitle} from '../../redux/actions/actions' 
 import {connect} from 'react-redux'
 import $ from "jquery"
+import {setProjectSpecs} from '../../redux/actions/actions'
 
 var ReactBootstrap = require('react-bootstrap');
 var Button = ReactBootstrap.Button;
@@ -52,29 +53,19 @@ class HomeLoggedIn extends Component {
     const {switchFlag} = this.props
     if(showModalFlag) switchFlag(false)
 
-    // console.log($("#id-company-name").val())
-    // console.log($("#id-project-title").val())
+    var defaultProjectSpecs = this.props.defaultProjectSpecs
+    var {saveLastSpecsObject} = this.props
 
-    // browserHistory.push('/newpalletrack', 
-    //   { companyName: $("#id-company-name").val(), 
-    //   projectTitle: $("#id-project-title").val() });
-    const {setCompanyProjectTitle} = this.props
+    defaultProjectSpecs.projectSettings.companyName = $("#id-company-name").val()
+    defaultProjectSpecs.projectSettings.projectTitle = $("#id-project-title").val()
+    saveLastSpecsObject(defaultProjectSpecs)
 
-    browserHistory.push({pathname: '/newpalletrack',
-      state: { companyName: $("#id-company-name").val(), 
-      projectTitle: $("#id-project-title").val() }
-    });
-
-    setCompanyProjectTitle({companyName: $("#id-company-name").val(),
-                              projectTitle: $("#id-project-title").val()})
-
-
+    browserHistory.push({pathname: '/newpalletrack'})
 
   }
   
   componentWillMount(){
     const showModalFlag = this.props.showModalFlag
-    // console.log("showModalFlag: ", showModalFlag)
     if(showModalFlag){
       this.setState({
           showModal: true
@@ -88,9 +79,6 @@ class HomeLoggedIn extends Component {
 
   componentDidMount(){
 
-    // this.setState({
-    //   showModal: true
-    // });
     
   }
 
@@ -98,8 +86,8 @@ class HomeLoggedIn extends Component {
     browserHistory.push('/allquotes');
   }
   render() {
-    // console.log(this.context)
-    // console.log(this.context.user)
+    const defaultProjectSpecs = this.props.defaultProjectSpecs
+    const {saveLastSpecsObject} = this.props.saveLastSpecsObject
     
     return (
           <div className="container-fluid row testbg-1 text-center">
@@ -135,7 +123,7 @@ class HomeLoggedIn extends Component {
           placeholder="company name, address and contact details (to be used in quotation)" 
           // defaultValue="Name of company"
           id="id-company-name" 
-          defaultValue="MEK"/>
+          defaultValue={defaultProjectSpecs.projectSettings.companyName}/>
 
           <ControlLabel>Project</ControlLabel>
           <FormControl 
@@ -143,7 +131,7 @@ class HomeLoggedIn extends Component {
           placeholder="project name" 
           // defaultValue="Name of project"
           id="id-project-title"
-          defaultValue="Yamaha Port Qasim"/>
+          defaultValue={defaultProjectSpecs.projectSettings.perojectTitle}/>
 
           </FormGroup>
           </Modal.Body>
@@ -158,10 +146,11 @@ class HomeLoggedIn extends Component {
 }
 
 HomeLoggedIn.propTypes = {
-    // browserHistory: PropTypes.object.isRequired,
     showModalFlag: PropTypes.bool,
     switchFlag: PropTypes.func,
-    setCompanyProjectTitle: PropTypes.func
+    defaultProjectSpecs: PropTypes.object,
+    saveLastSpecsObject: PropTypes.func
+
   }
 
 HomeLoggedIn.contextTypes = {
@@ -171,7 +160,7 @@ HomeLoggedIn.contextTypes = {
 const mapStateToProp =(state, ownProps)=>{
   return {
     showModalFlag: state.showModalFlag,
-    companyProjectTitle: state.companyProjectTitle
+    defaultProjectSpecs: state.defaultProjectSpecs
   }
 }
 
@@ -183,10 +172,11 @@ const mapDispatchToProps = (dispatch, ownProps) => {
       dispatch(updateModalFlag(newVal))
     },
 
-    setCompanyProjectTitle(obj){
-      // console.log("setCompanyProjectTitle")
-      // console.log(obj)
-      dispatch(setCompanyProjectTitle(obj))
+    saveLastSpecsObject(object){
+      const MAPLOG = true
+      if(MAPLOG)console.log("object",object);
+
+      dispatch(setProjectSpecs(object))
     }
   }
 }

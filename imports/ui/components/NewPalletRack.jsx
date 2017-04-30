@@ -28,9 +28,9 @@ class NewPalletRack extends Component {
     this.btnGenerateQuote = this.btnGenerateQuote.bind(this);
     this.btnCancel = this.btnCancel.bind(this);
     this.handleOptionChange = this.handleOptionChange.bind(this);
-
+    const defaultProjectSpecs = this.props.defaultProjectSpecs 
     this.state = {
-        selectedShelfOption: "noShelf"
+        selectedShelfOption: defaultProjectSpecs.shelfType
     }
   }
 
@@ -50,7 +50,7 @@ class NewPalletRack extends Component {
     if(MAPLOG)console.log("componentWillReceiveProps");
     const user = nextProps.user;
     if(user!==null){
-
+// 
     } else {
       browserHistory.push('/');
     }
@@ -63,7 +63,6 @@ class NewPalletRack extends Component {
   }
 
   btnGenerateQuote(){
-    const companyProjectTitle = this.props.companyProjectTitle;
   
     var bays = [
                     {
@@ -101,12 +100,10 @@ class NewPalletRack extends Component {
     const rackingRequirements = {
                   projectSettings: {
                     description: $("#id-project-description").val(),
-                    // projectCost: Number($("#id-project-cost").val()),
-                    // projectRate: Number($("#id-project-rate").val()),
                     racksDescription: $("#id-racks-description").val(),
                     currentMetalPrices: $("#id-current-metal-prices").val(),
-                    companyName: companyProjectTitle.companyName,
-                    projectTitle: companyProjectTitle.projectTitle
+                    companyName: $("#id-company-name").val(),
+                    projectTitle: $("#id-project-title").val()
                   },
                   frame: {
                     frameHeight: Number($("#id-frame1-height").val()),
@@ -118,11 +115,7 @@ class NewPalletRack extends Component {
                   userId: this.props.user._id,
                   createdAt: new Date()
                   };
-    // console.log(rackingRequirements)
 
-    // insert.call(rackingRequirements, displayError);
-    
-    // browserHistory.push('/showquote');
     browserHistory.push({
       pathname: '/showquote',
       state: {rackingRequirements: rackingRequirements}});
@@ -143,7 +136,6 @@ class NewPalletRack extends Component {
   }
   render() {
     const MAPLOG=false
-    const companyProjectTitle = this.props.companyProjectTitle
     const defaultProjectSpecs = this.props.defaultProjectSpecs
     if(MAPLOG)console.log("defaultProjectSpecs",defaultProjectSpecs)
 
@@ -229,14 +221,14 @@ class NewPalletRack extends Component {
                     <FormControl 
                       type="text" 
                       id="id-company-name"
-                      defaultValue={companyProjectTitle.companyName} />
+                      defaultValue={defaultProjectSpecs.projectSettings.companyName} />
 
                   </div>
                   <div className="col-xs-6">
                     <ControlLabel>Project</ControlLabel>
                     <FormControl 
                       type="text" 
-                      defaultValue={companyProjectTitle.projectTitle}
+                      defaultValue={defaultProjectSpecs.projectSettings.projectTitle}
                       id="id-project-title"/>
                       
                   </div>
@@ -256,7 +248,7 @@ class NewPalletRack extends Component {
                     <ControlLabel>Current Metal Price</ControlLabel>
                     <FormControl 
                       type="text" 
-                      defaultValue={defaultProjectSpecs.projectSettings.currentMetalPrice}
+                      defaultValue={defaultProjectSpecs.projectSettings.currentMetalPrices}
                       id="id-current-metal-prices"/>
                       
                   </div>
@@ -364,7 +356,7 @@ class NewPalletRack extends Component {
 NewPalletRack.propTypes = {
   user: React.PropTypes.object,      // current meteor user
   connected: React.PropTypes.bool,   // server connection status
-  companyProjectTitle: React.PropTypes.object
+  defaultProjectSpecs: React.PropTypes.object
 
 };
 
@@ -374,7 +366,6 @@ NewPalletRack.contextTyoes = {
 
 const mapStateToProp =(state, ownProps)=>{
   return {
-    companyProjectTitle: state.companyProjectTitle,
     defaultProjectSpecs: state.defaultProjectSpecs
   }
 }
