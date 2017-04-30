@@ -9,11 +9,52 @@ import promise from 'redux-promise-middleware'
 const middleware = applyMiddleware(promise(), thunk, createLogger())
 // const middleware = applyMiddleware(promise(), thunk)
 
+const tempData = {
+          "projectSettings": {
+            "rackDescription": "",
+            "companyName": "",
+            "projectTitle": "",
+            "currentMetalPrice": "90"
+          },
+          "frame": {
+              "frameHeight": "12",
+              "frameQty": "2",
+              "frameDepth": "3",
+          },
+          "bays": [
+            {
+              "length": "9",
+              "qty": "1",
+              "levels": "3",
+              "loadPerLevel": "2000"
+            },
+            {
+              "length": "",
+              "qty": "",
+              "levels": "",
+              "loadPerLevel": ""
+            },
+            {
+              "length": "",
+              "qty": "", 
+              "levels": "",
+              "loadPerLevel": ""
+            },
+            {
+              "length": "",
+              "qty": "",
+              "levels": "",
+              "loadPerLevel": ""
+            }
+          ],
+          "shelfType": "noShelf"
+    }
+
 const sampleStore = {
         backgroundColor: "lightgrey",
         showModalFlag: true,
-        companyProjectTitle: {companyName: "Dummy Company", projectTitle: "Dummy Project"},
-        defaultProjectSpecs: "World"
+        companyProjectTitle: {companyName: "", projectTitle: ""},
+        defaultProjectSpecs: tempData
       }
 
 let store = createStore(TodosCombinedReducers, sampleStore, middleware)

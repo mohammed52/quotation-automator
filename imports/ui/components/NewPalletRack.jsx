@@ -36,69 +36,66 @@ class NewPalletRack extends Component {
 
 
   componentWillMount(){
-    // console.log("componentWillMount")
+    const MAPLOG = false
+    if(MAPLOG)console.log("componentWillMount");
   }
 
   componentWillUpdate(){
-    // console.log("componentWillUpdate");
-    // const user = this.props.user;
-    // console.log(user)    
+    const MAPLOG = false
+    if(MAPLOG)console.log("componentWillUpdate");
   }
 
   componentWillReceiveProps(nextProps){
-    // console.log("componentWillReceiveProps")
-
+    const MAPLOG = false
+    if(MAPLOG)console.log("componentWillReceiveProps");
     const user = nextProps.user;
-    // console.log(user)
     if(user!==null){
 
-      // console.log("user EXISTS")
     } else {
-      // console.log("user is null")
       browserHistory.push('/');
     }
   }
   
   componentDidUpdate(){
-    // console.log("componentDidUpdate")
-    //   const user = this.props.user;
-    // console.log(user) 
+    const MAPLOG = false
+    if(MAPLOG)console.log("componentDidUpdate");
+
   }
 
   btnGenerateQuote(){
-    // console.log("Generate Quote...")
     const companyProjectTitle = this.props.companyProjectTitle;
   
     var bays = [
                     {
-                      bay: 1,
+                      
+                      length: Number($("#id-bay0-length").val()),
+                      qty: Number($("#id-bay0-qty").val()),
+                      levels: Number($("#id-bay0-levels").val()),
+                      loadPerLevel: Number($("#id-bay0-loadPerLevel").val())
+                    },
+                    {
+                      
                       length: Number($("#id-bay1-length").val()),
                       qty: Number($("#id-bay1-qty").val()),
                       levels: Number($("#id-bay1-levels").val()),
                       loadPerLevel: Number($("#id-bay1-loadPerLevel").val()),
                     },
                     {
-                      bay: 2,
+                      
                       length: Number($("#id-bay2-length").val()),
                       qty: Number($("#id-bay2-qty").val()),
                       levels: Number($("#id-bay2-levels").val()),
                       loadPerLevel: Number($("#id-bay2-loadPerLevel").val())
                     },
                     {
-                      bay: 3,
+                      
                       length: Number($("#id-bay3-length").val()),
                       qty: Number($("#id-bay3-qty").val()),
                       levels: Number($("#id-bay3-levels").val()),
                       loadPerLevel: Number($("#id-bay3-loadPerLevel").val())
-                    },
-                    {
-                      bay: 4,
-                      length: Number($("#id-bay4-length").val()),
-                      qty: Number($("#id-bay4-qty").val()),
-                      levels: Number($("#id-bay4-levels").val()),
-                      loadPerLevel: Number($("#id-bay4-loadPerLevel").val())
                     }
                   ];
+
     bays = removeZeroValueBays(bays)
 
     const rackingRequirements = {
@@ -106,8 +103,8 @@ class NewPalletRack extends Component {
                     description: $("#id-project-description").val(),
                     // projectCost: Number($("#id-project-cost").val()),
                     // projectRate: Number($("#id-project-rate").val()),
-                    projectCost: 140,
-                    projectRate: 170,
+                    racksDescription: $("#id-racks-description").val(),
+                    currentMetalPrices: $("#id-current-metal-prices").val(),
                     companyName: companyProjectTitle.companyName,
                     projectTitle: companyProjectTitle.projectTitle
                   },
@@ -123,7 +120,7 @@ class NewPalletRack extends Component {
                   };
     // console.log(rackingRequirements)
 
-    insert.call(rackingRequirements, displayError);
+    // insert.call(rackingRequirements, displayError);
     
     // browserHistory.push('/showquote');
     browserHistory.push({
@@ -145,10 +142,74 @@ class NewPalletRack extends Component {
 
   }
   render() {
-    const MAPLOG=true
+    const MAPLOG=false
     const companyProjectTitle = this.props.companyProjectTitle
     const defaultProjectSpecs = this.props.defaultProjectSpecs
-    if(MAPLOG)console.log("defaultProjectSpecs",defaultProjectSpecs);
+    if(MAPLOG)console.log("defaultProjectSpecs",defaultProjectSpecs)
+
+    var trBays = []
+    trBays = null
+    trBays=[]
+  trBays.length=0
+    if(trBays.length>0) trBays=[]
+      if(MAPLOG)console.log("trBays.length",trBays.length);
+
+    if(MAPLOG)console.log("trBays",trBays);
+    for (var i = 0; i < defaultProjectSpecs.bays.length; i++) {
+      trBays.push(
+        <tr key={"trBaysWithValues"+"tr"+i}>
+        <td>{i}</td>
+        <td><FormControl type="text" 
+                                // placeholder="12" 
+                          id={"id-bay"+i+"-length"}
+                          defaultValue={defaultProjectSpecs.bays[i].length}/></td>
+        <td><FormControl type="text" 
+                                // placeholder="10" 
+                          id={"id-bay"+i+"-qty"}
+                          defaultValue={defaultProjectSpecs.bays[i].qty}/></td>
+        <td><FormControl type="text" 
+                        // placeholder="5" 
+                        id={"id-bay"+i+"-levels"}
+                        defaultValue={defaultProjectSpecs.bays[i].levels}/></td>
+        <td><FormControl type="text" 
+                        // placeholder="3000" 
+                        id={"id-bay"+i+"-loadPerLevel"}
+                        defaultValue={defaultProjectSpecs.bays[i].loadPerLevel}/></td>
+                      </tr>           
+        )
+      
+    }
+
+    if(MAPLOG)console.log("trBays",trBays);
+
+    if(trBays.length<4){
+      for (var j = trBays.length; j <4 ; j++) {
+        trBays.push(
+                  <tr key={"trBays"+"tr"+j}>
+        <td>{j}</td>
+        <td><FormControl type="text" 
+                                // placeholder="12" 
+                          id={"id-bay"+j+"-length"}
+                          defaultValue=""/></td>
+        <td><FormControl type="text" 
+                                // placeholder="10" 
+                          id={"id-bay"+j+"-qty"}
+                          defaultValue=""/></td>
+        <td><FormControl type="text" 
+                        // placeholder="5" 
+                          id={"id-bay"+j+"-levels"}
+                          defaultValue=""/></td>
+        <td><FormControl type="text" 
+                        // placeholder="3000" 
+                          id={"id-bay"+j+"-loadPerLevel"}
+                          defaultValue=""/></td>
+                      </tr>
+          )
+      }
+    }
+
+    if(MAPLOG)console.log("trBays",trBays);
+
 
     return (
           <div>   
@@ -188,15 +249,15 @@ class NewPalletRack extends Component {
                     <FormControl 
                       type="text" 
                       id="id-racks-description"
-                      defaultValue="140" />
+                      defaultValue={defaultProjectSpecs.projectSettings.racksDescription} />
 
                   </div>
                   <div className="col-xs-6">
-                    <ControlLabel>Current Metal Prices</ControlLabel>
+                    <ControlLabel>Current Metal Price</ControlLabel>
                     <FormControl 
                       type="text" 
-                      defaultValue="90"
-                      id="id-metal-prices"/>
+                      defaultValue={defaultProjectSpecs.projectSettings.currentMetalPrice}
+                      id="id-current-metal-prices"/>
                       
                   </div>
                 </div>
@@ -218,17 +279,17 @@ class NewPalletRack extends Component {
                       <tr>
                         <td>1</td>
                         <td><FormControl type="text" 
-                              placeholder="15" 
+                              // placeholder="15" 
                               id="id-frame1-height"
-                              defaultValue="15"/></td>
+                              defaultValue={defaultProjectSpecs.frame.frameHeight}/></td>
                         <td><FormControl type="text" 
-                              placeholder="3" 
+                              // placeholder="3" 
                               id="id-frame1-depth"
-                              defaultValue="3"/></td>
+                              defaultValue={defaultProjectSpecs.frame.frameDepth}/></td>
                         <td><FormControl type="text" 
-                              placeholder="10" 
+                              // placeholder="10" 
                               id="id-frame1-qty"
-                              defaultValue="10"/></td>
+                              defaultValue={defaultProjectSpecs.frame.frameQty}/></td>
                       </tr>
                     </tbody>
                   </Table>
@@ -249,70 +310,7 @@ class NewPalletRack extends Component {
 
                     </thead>
                     <tbody>
-                      <tr>
-                        <td>1</td>
-                        <td><FormControl type="text" 
-                                placeholder="12" 
-                                id="id-bay1-length"
-                                defaultValue="12"/></td>
-                        <td><FormControl type="text" 
-                                placeholder="10" 
-                                id="id-bay1-qty"
-                                defaultValue="10"/></td>
-                        <td><FormControl type="text" placeholder="5" 
-                        id="id-bay1-levels"
-                        defaultValue="5"/></td>
-                        <td><FormControl type="text" placeholder="3000" 
-                        id="id-bay1-loadPerLevel"
-                        defaultValue="3000"/></td>
-                      </tr>
-                      <tr>
-                        <td>2</td>
-                        <td><FormControl type="text" placeholder="8.5" 
-                              id="id-bay2-length"
-                              defaultValue="8.5"/></td>
-                        <td><FormControl type="text" placeholder="4" 
-                              id="id-bay2-qty"
-                              defaultValue="4"/></td>
-                        <td><FormControl type="text" placeholder="4" 
-                              id="id-bay2-levels"
-                              defaultValue="4"/></td>
-                        <td><FormControl type="text" placeholder="2000" 
-                              id="id-bay2-loadPerLevel"
-                              defaultValue="2000"/></td>
-                      </tr>
-                      <tr>
-                        <td>3</td>
-                        <td><FormControl type="text" placeholder="4" 
-                              id="id-bay3-length"
-                              defaultValue="4"/></td>
-                        <td><FormControl type="text" 
-                              placeholder="2" 
-                              id="id-bay3-qty"
-                              defaultValue="2"/></td>
-                        <td><FormControl type="text" placeholder="3" 
-                              id="id-bay3-levels"
-                              defaultValue="2"/></td>
-                        <td><FormControl type="text" placeholder="1000" 
-                              id="id-bay3-loadPerLevel"
-                              defaultValue="1000"/></td>
-                      </tr>
-                      <tr>
-                        <td>4</td>
-                        <td><FormControl type="text" placeholder="4" 
-                              id="id-bay4-length"
-                              defaultValue="4"/></td>
-                        <td><FormControl type="text" 
-                              placeholder="2" 
-                              id="id-bay4-qty"
-                              defaultValue="2"/></td>
-                        <td><FormControl type="text" placeholder="3" 
-                              id="id-bay4-levels"
-                              defaultValue="2"/></td>
-                        <td><FormControl type="text" placeholder="1000" 
-                              id="id-bay4-loadPerLevel"
-                              defaultValue="1000"/></td>
-                      </tr>
+                      {trBays}
                     </tbody>
                   </Table>
                   

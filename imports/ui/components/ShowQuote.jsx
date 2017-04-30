@@ -2,8 +2,10 @@ import React, { Component, PropTypes } from 'react';
 import { Meteor } from 'meteor/meteor';
 import { browserHistory } from 'react-router';
 import $ from "jquery"
+import { connect } from 'react-redux'
 // import {UprightWeightTable, BeamConnectorTable} from '../helpers/WeightCapacityTables'
 import {PricingTable} from '../helpers/PricingTable'
+import {CostPriceAddOns} from '../helpers/PricingTable'
 // import { getFrameSpecsAndCost } from '../helpers/getFrameSpecsAndCost'
 import {getUprightSpecsAndCost} from '../helpers/getUprightSpecsAndCost'
 import {getBeamSpecsAndCost} from '../helpers/getBeamSpecsAndCost'
@@ -14,6 +16,7 @@ import {getNutBoltSpecsAndCost} from '../helpers/getNutBoltSpecsAndCost'
 import {getShelfSpecsAndCost} from '../helpers/getShelfSpecsAndCost'
 import {getTotalRacksQty} from '../helpers/getTotalRacksQty'
 import {numberWithCommas} from '../helpers/numberWithCommas'
+import {setProjectSpecs} from '../../redux/actions/actions'
 // import FrameTable from './FrameTable'
 // import BaysTable from './BaysTable'
 
@@ -28,7 +31,7 @@ var Table = ReactBootstrap.Table;
 // var FieldGroup = ReactBootstrap.FieldGroup
 // var Input = ReactBootstrap.Input;
 
-export default class ShowQuote extends Component {
+class ShowQuote extends Component {
   
   // constructor(props) {
     // super(props);
@@ -76,26 +79,31 @@ export default class ShowQuote extends Component {
   render() {
     // console.log(this.context.user)
     
-    const MAPLOG=false
-    
-    if(MAPLOG)console.log("this.props.location.state",this.props.location.state);
+    const MAPLOG=true
+   
+    //save last specs object
+    const { saveLastSpecsObject } = this.props;
+    saveLastSpecsObject(this.props.location.state.rackingRequirements) 
+
+    if(MAPLOG)console.log("this.props.location.state",this.props.location.state)
     var arrayCostObjects = []
     const bays = this.props.location.state.rackingRequirements.bays
 
     //1. upright object
     arrayCostObjects.push(getUprightSpecsAndCost(this.props.location.state.rackingRequirements))
     
-    //2. bays objects
+    //2. Beams objects
     for (var i=0; i<bays.length; i++) {
-      arrayCostObjects.push(getBeamSpecsAndCost(bays[i]))   
+      arrayCostObjects.push(getBeamSpecsAndCost(i, bays[i]))   
     }
+    if(MAPLOG)console.log("arrayCostObjects",arrayCostObjects);
 
     //3. Bracing Object
     arrayCostObjects.push(getBracingSpecsAndCost(this.props.location.state.rackingRequirements))
 
     //4. Beam Connector Object:
     for (var j=0; j<bays.length; j++) {
-      arrayCostObjects.push(getBeamConnectorSpecsAndCost(bays[j]))   
+      arrayCostObjects.push(getBeamConnectorSpecsAndCost(j, bays[j]))   
     }
 
     //5.Base Plates Object
@@ -114,7 +122,7 @@ export default class ShowQuote extends Component {
     let specsOnly=[];
     for (var k = 0; k < arrayCostObjects.length; k++) {
           trArr.push(
-            <tr>
+            <tr key={"trArr"+"tr"+k}>
                         <td>{k+1}</td>
                         <td>{arrayCostObjects[k].description}</td>
                         <td>{arrayCostObjects[k].unitWeight.toFixed(2)}</td>
@@ -126,10 +134,10 @@ export default class ShowQuote extends Component {
 
           //get total rack description
           if(k===0) {
-            specsOnly.push(<span>{"-- "+arrayCostObjects[k].description}</span>)
+            specsOnly.push(<span key={"specsOnly"+k}>{"-- "+arrayCostObjects[k].description}</span>)
           } else {
-              specsOnly.push(<br />)
-              specsOnly.push(<span>{"-- "+arrayCostObjects[k].description}</span>)
+              specsOnly.push(<br key={"specsOnly"+"br"+k}/>)
+              specsOnly.push(<span key={"specsOnly"+"span"+k}>{"-- "+arrayCostObjects[k].description}</span>)
             }
         }
 
@@ -140,7 +148,7 @@ export default class ShowQuote extends Component {
     }
 
     trArr.push(
-            <tr key={l}>
+            <tr key={"trArr"+"tr"+l}>
               <td></td>
               <td></td>
               <td></td>
@@ -151,15 +159,19 @@ export default class ShowQuote extends Component {
     
     const totalRacks = getTotalRacksQty(this.props.location.state.rackingRequirements)
     
+    const unitPrice = Number(this.props.location.state.rackingRequirements.projectSettings.currentMetalPrices)+Number(CostPriceAddOns.price)
+    
+    if(MAPLOG)console.log("unitPrice",unitPrice);
+    
     //load pricing table
     if(MAPLOG)console.log("PricingTable",PricingTable);
     let pricingTableArr = []
     for (var m = 0; m < PricingTable.length; m++) {
       pricingTableArr.push(
-        <tr key={m}>
+        <tr key={"pricingTableArr"+"tr"+m}>
               <td>{PricingTable[m].description}</td>
-              <td>{"Rs."+numberWithCommas((PricingTable[m].rate*175*totalProjectWeight/totalRacks).toFixed(2))+"/-"}</td>
-              <td>{"Rs."+numberWithCommas((PricingTable[m].rate*175*totalProjectWeight).toFixed(2))+"/-"}</td>
+              <td>{"Rs."+numberWithCommas((PricingTable[m].rate*unitPrice*totalProjectWeight/totalRacks).toFixed(2))+"/-"}</td>
+              <td>{"Rs."+numberWithCommas((PricingTable[m].rate*unitPrice*totalProjectWeight).toFixed(2))+"/-"}</td>
         </tr>
         
         )
@@ -206,9 +218,9 @@ export default class ShowQuote extends Component {
                     </thead>
                     <tbody>
                       <tr>
-                        <th>{("Rs. "+numberWithCommas((175*totalProjectWeight/totalRacks).toFixed(2))+"/-")}</th>
+                        <th>{("Rs. "+numberWithCommas((unitPrice*totalProjectWeight/totalRacks).toFixed(2))+"/-")}</th>
                         <th>{totalRacks}</th>
-                        <th>{("Rs. "+numberWithCommas((175*totalProjectWeight).toFixed(2))+"/-")}</th>
+                        <th>{("Rs. "+numberWithCommas((unitPrice*totalProjectWeight).toFixed(2))+"/-")}</th>
                       </tr>
                     </tbody>
                   </Table>
@@ -250,9 +262,30 @@ export default class ShowQuote extends Component {
 ShowQuote.propTypes = {
   user: React.PropTypes.object,      // current meteor user
   connected: React.PropTypes.bool,   // server connection status
-  location: React.PropTypes.object
+  location: React.PropTypes.object,
+  saveLastSpecsObject: React.PropTypes.func
 };
 
 ShowQuote.contextTypes = {
   user: React.PropTypes.object
 }
+
+const mapStateToProp =(state, ownProps)=>{
+  return {
+    // companyProjectTitle: state.companyProjectTitle,
+    // defaultProjectSpecs: state.defaultProjectSpecs
+  }
+}
+
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return {
+    saveLastSpecsObject(object){
+      const MAPLOG = true
+      if(MAPLOG)console.log("object",object);
+
+      dispatch(setProjectSpecs(object))
+    }
+  }
+}
+
+export default connect(mapStateToProp, mapDispatchToProps)(ShowQuote)

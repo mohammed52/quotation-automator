@@ -18,3 +18,10 @@ export const setCompanyProjectTitle = (obj) => {
     payload: obj
   }
 }
+
+export const setProjectSpecs = (obj) => {
+  return {
+    type: 'SET_PROJECT_SPECS',
+    payload: obj
+  }
+}

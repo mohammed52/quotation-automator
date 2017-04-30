@@ -110,4 +110,8 @@ shift+del , ST3 delete line
 Q: Error - can not find module? wasted 01 hour
 Ans: typo, check import declaration
 --
-Khurrum , 
+ctrl+shift+k : delete line in ST3
+--
+Q: Emptying trBays Array but its not being empty? 2 hours wasted
+Q: for some reason, unable to empty an array of bom elements
+ANS: Previous values of the Array log the last value of the array in the console, to log properly, use debugger 

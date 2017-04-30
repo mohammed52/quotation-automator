@@ -5,7 +5,7 @@ import {BoxBeamWeightCapacityTable} from './WeightCapacityTables'
 import {BeamWeightPerFootTable} from './WeightCapacityTables'
 // import {generateLog } from './generateLog' 
 
-export function getBeamSpecsAndCost(bay){
+export function getBeamSpecsAndCost(index, bay){
 	
 	const MAPLOG = false
 	var beamSpecsAndCost={description: "",
@@ -31,7 +31,7 @@ export function getBeamSpecsAndCost(bay){
 			// if(MAPLOG)console.log("BoxBeamWeightCapacityTable.table[j][selectedBeamIndex+1]",BoxBeamWeightCapacityTable.table[j][selectedBeamIndex+1]);	
 			// if(MAPLOG)console.log("BoxBeamWeightCapacityTable.table[j][0]",BoxBeamWeightCapacityTable.table[j][0]);
 			// if(MAPLOG)console.log("BeamWeightPerFootTable[j].weightPerFoot",BeamWeightPerFootTable[j].weightPerFoot);
-			beamSpecsAndCost.description = "Beam-"+bay.bay+": "+BoxBeamWeightCapacityTable.table[j][0]
+			beamSpecsAndCost.description = "Beam-"+(index+1)+": "+BoxBeamWeightCapacityTable.table[j][0]
 			beamSpecsAndCost.unitWeight = BeamWeightPerFootTable[j].weightPerFoot*bay.length
 			beamSpecsAndCost.qty = bay.levels*2
 			break

@@ -7,7 +7,7 @@ Meteor.startup(() => {
 
   Quotes.remove({});
 
-  Meteor.call("logStringToConsole", "fixtures logged-1");
+  Meteor.call("logStringToConsole", "fixtures logged-1")
   const tempData = {
           "projectSettings": {
             "description": "test description-1W",
