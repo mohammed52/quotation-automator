@@ -23,9 +23,10 @@ import {setProjectSpecs} from '../../redux/actions/actions'
 var ReactBootstrap = require('react-bootstrap');
 var Button = ReactBootstrap.Button;
 // var Modal = ReactBootstrap.Modal;
-// var FormGroup = ReactBootstrap.FormGroup;
-// var ControlLabel = ReactBootstrap.ControlLabel;
-// var FormControl = ReactBootstrap.FormControl;
+var Form = ReactBootstrap.Form;
+var ControlLabel = ReactBootstrap.ControlLabel;
+var FormControl = ReactBootstrap.FormControl;
+var FormGroup = ReactBootstrap.FormGroup
 // var Radio = ReactBootstrap.Radio;
 var Table = ReactBootstrap.Table;
 // var FieldGroup = ReactBootstrap.FieldGroup
@@ -36,6 +37,10 @@ class ShowQuote extends Component {
   constructor(props) {
     super(props);
     this.btnSaveAndClose = this.btnSaveAndClose.bind(this);
+    this.onMarginChange = this.onMarginChange.bind(this)
+    this.state = {
+        margin: 30
+    }
   }
 
 
@@ -75,6 +80,14 @@ class ShowQuote extends Component {
     const MAPLOG = false
     if(MAPLOG)console.log("btnSaveAndClose");
     browserHistory.push('/allquotes');
+  }
+
+  onMarginChange(){
+    const MAPLOG=true
+    if(MAPLOG)console.log("Margin Changed");
+    this.setState(
+      {margin: Number($("#id-margin").val())}
+    )
   }
 
   render() {
@@ -151,7 +164,7 @@ class ShowQuote extends Component {
     const totalRacks = getTotalRacksQty(this.props.location.state.rackingRequirements)
 
     trArr.push(
-            <tr>
+            <tr key="trArr-tr-totalProject-Weight">
               <td></td>
               <td></td>
               <td></td>
@@ -163,7 +176,7 @@ class ShowQuote extends Component {
 
 
     trArr.push(
-            <tr>
+            <tr key="trArr-tr-weightPerRack">
               <td></td>
               <td></td>
               <td></td>
@@ -194,6 +207,8 @@ class ShowQuote extends Component {
         )
       
     }
+
+    const margin = (this.state.margin+100)/100
     return (
           <div> Show Quote
           <div className='row testbg-1'>
@@ -223,10 +238,40 @@ class ShowQuote extends Component {
                   </Table>
 
               </div>
-              <h4>Specificaions</h4>
+              <h4>Custom Quote</h4>
+
               <div className="well">
-                {specsOnly}
+              <Form horizontal>
+                <FormGroup controlId="formInlineMargin">
+                  <ControlLabel>Increase Margin(%): </ControlLabel>
+                        <FormControl 
+                          type="text" 
+                          id="id-margin"
+                          defaultValue={30} 
+                          onChange={this.onMarginChange}/>
+                </FormGroup>
+              </Form>
+
+                <Table className="table">
+                    <thead>
+                      <tr>
+                        <th>Price With Margin</th>
+                        <th>Qty. of Racks</th>
+                        <th>Total Project Cost</th>
+                      </tr>
+
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th>{("Rs. "+numberWithCommas((unitPrice*totalProjectWeight*margin/totalRacks).toFixed(2))+"/-")}</th>
+                        <th>{totalRacks}</th>
+                        <th>{("Rs. "+numberWithCommas((unitPrice*totalProjectWeight*margin).toFixed(2))+"/-")}</th>
+                      </tr>
+                    </tbody>
+                  </Table>
+
               </div>
+
 
               <h4>Higher Prices</h4>
               <div className="well">
@@ -268,6 +313,11 @@ class ShowQuote extends Component {
                     </tbody>
                   </Table>
                   </div>
+
+              <h4>Specificaions</h4>
+              <div className="well">
+                {specsOnly}
+              </div>
             </div>
           </div>
           <div className="container-fluid testbg-1 text-center">
