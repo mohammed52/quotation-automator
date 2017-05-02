@@ -9,6 +9,7 @@ import Footer from '../components/Footer'
 
 import { Router, Route, Link, IndexRoute, browserHistory } from 'react-router'
 import { createContainer } from 'meteor/react-meteor-data'
+import { Quotes } from '../../api/quotes/quotes.js';
 // import { Polls } from '../../api/polls/polls.js'
 
 import 'bootstrap/dist/css/bootstrap.css';
@@ -19,9 +20,12 @@ var Button = ReactBootstrap.Button;
 // App component - represents the whole app
 
 export default createContainer(() => {
+	const privateHandle = Meteor.subscribe('lists.private');
+
   return {
     user: Meteor.user(),
     connected: Meteor.status().connected,
+    quotes: Quotes.find({userId: Meteor.userId()}).fetch()
   };
 }, App);
 

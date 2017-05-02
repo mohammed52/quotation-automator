@@ -3,10 +3,11 @@ import { Meteor } from 'meteor/meteor';
 import { browserHistory } from 'react-router';
 import $ from "jquery"
 import { connect } from 'react-redux'
-// import {UprightWeightTable, BeamConnectorTable} from '../helpers/WeightCapacityTables'
+import { displayError } from '../helpers/errors.js';
+import { insert } from '../../api/quotes/methods.js';
+
 import {PricingTable} from '../helpers/PricingTable'
 import {CostPriceAddOns} from '../helpers/PricingTable'
-// import { getFrameSpecsAndCost } from '../helpers/getFrameSpecsAndCost'
 import {getUprightSpecsAndCost} from '../helpers/getUprightSpecsAndCost'
 import {getBeamSpecsAndCost} from '../helpers/getBeamSpecsAndCost'
 import {getBracingSpecsAndCost} from '../helpers/getBracingSpecsAndCost'
@@ -38,6 +39,8 @@ class ShowQuote extends Component {
     super(props);
     this.btnSaveAndClose = this.btnSaveAndClose.bind(this);
     this.onMarginChange = this.onMarginChange.bind(this)
+    this.btnBack = this.btnBack.bind(this)
+
     this.state = {
         margin: 30
     }
@@ -77,8 +80,10 @@ class ShowQuote extends Component {
   }
 
   btnSaveAndClose(){
-    const MAPLOG = false
+    const MAPLOG = true
     if(MAPLOG)console.log("btnSaveAndClose");
+    if(MAPLOG)console.log("this.props.location.state.rackingRequirements",this.props.location.state.rackingRequirements);
+    insert.call(this.props.location.state.rackingRequirements, displayError);
     browserHistory.push('/allquotes');
   }
 
@@ -88,6 +93,11 @@ class ShowQuote extends Component {
     this.setState(
       {margin: Number($("#id-margin").val())}
     )
+  }
+
+  btnBack(){
+    const MAPLOG = true
+    if(MAPLOG)console.log("Back Btn");
   }
 
   render() {
@@ -322,6 +332,10 @@ class ShowQuote extends Component {
           </div>
           <div className="container-fluid testbg-1 text-center">
             <Button onClick={this.btnSaveAndClose} bsStyle="primary">Save and Close</Button>
+            <br/>
+            <br/>
+            <Button onClick={browserHistory.goBack}>Go Back</Button>
+
           </div>
           </div>
           </div>

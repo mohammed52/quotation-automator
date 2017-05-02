@@ -100,14 +100,6 @@ class HomeLoggedIn extends Component {
               <br/>
             </div>
             <div className="col-sm-6 container-fluid testbg-2">
-              <ul>
-                <li>Quotes Count: 10</li>
-                <li>Quotes Value: $$$</li>
-                <li>Time Spent vs Time Saved Graph</li>
-                <li>$$$ saved: $$$</li>
-              </ul>
-              <div>* at $25 an Hour</div>
-
             </div>
 
             <Modal show={this.state.showModal} onHide={this.close}>
@@ -131,7 +123,7 @@ class HomeLoggedIn extends Component {
           placeholder="project name" 
           // defaultValue="Name of project"
           id="id-project-title"
-          defaultValue={defaultProjectSpecs.projectSettings.perojectTitle}/>
+          defaultValue={defaultProjectSpecs.projectSettings.projectTitle}/>
 
           </FormGroup>
           </Modal.Body>

@@ -31,32 +31,39 @@ Quotes.deny({
 
 Quotes.schema = schemaQuotes;
 
+var rnCurrentMetalPrices = {
+  min:  60, 
+  max:  120, 
+  integer: true,
+  label: "rnCurrentMetalPrices",
+}
+
 var rnOptions = {
   min:  100, 
   max:  300, 
   integer: true,
-  label: "Frame Height",
+  label: "rnOptions",
 }
 
 var rnFrameDepth = {
   min:  2.5, 
   max:  4.5, 
   integer: false,
-  label: "Frame Height",
+  label: "rnFrameDepth",
 }
 
 var rnFrameHeight = {
   min:  5, 
   max:  120, 
   integer: true,
-  label: "Frame Height",
+  label: "rnFrameHeight",
 }
 
 var rnFrameQty = {
   min:  1, 
   max:  200, 
   integer: true,
-  label: "Frame Height",
+  label: "rnFrameQty",
 }
 
 // factory helps us encode test data,A package for creating test data or for generating fixtures
@@ -64,9 +71,8 @@ Factory.define('quote', Quotes, {
   projectSettings: {
     companyName: () => faker.lorem.sentence(),
     projectTitle: ()=> faker.lorem.sentence(),
-    description: ()=> faker.lorem.sentence(),
-    projectRate: ()=> rn(rnOptions),
-    projectCost: ()=> rn(rnOptions),
+    racksDescription: ()=> faker.lorem.sentence(),
+    currentMetalPrices: ()=> rn(rnOptions),
   },
   shelfType: "no-shelf",
   frame: {
@@ -75,27 +81,23 @@ Factory.define('quote', Quotes, {
     frameQty: ()=> rn(rnFrameQty),
   },
   bays: [{
-              "bay": 1,
               "length": 120,
               "qty": 100,
               "levels": 50,
               "loadPerLevel": 30000
             },
             {
-              "bay": 2,
               "length": 8.05,
               "qty": 40,
               "levels": 40,
               "loadPerLevel": 30001
             },
             {
-              "bay": 3,
               "length": 4,
               "levels": 2,
               "loadPerLevel": 30001
             },
             {
-              "bay": 4,
               "length": "4",
               "levels": "2",
               "loadPerLevel": 30001

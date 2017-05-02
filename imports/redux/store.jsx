@@ -11,10 +11,10 @@ const middleware = applyMiddleware(promise(), thunk, createLogger())
 
 const tempData = {
           "projectSettings": {
-            "rackDescription": "",
-            "companyName": "MEK",
+            "racksDescription": "Test Description",
+            "companyName": "MEK-1",
             "projectTitle": "Yamaha Port Qasim",
-            "currentMetalPrices": "90"
+            "currentMetalPrices": 90
           },
           "frame": {
               "frameHeight": "12",
@@ -47,7 +47,8 @@ const tempData = {
               "loadPerLevel": ""
             }
           ],
-          "shelfType": "noShelf"
+          "shelfType": "noShelf",
+          "createdAt": new Date()
     }
 
 const sampleStore = {

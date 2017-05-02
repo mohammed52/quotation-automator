@@ -31,10 +31,11 @@ export default class App extends Component {
   }
 
   render() {
+    const MAPLOG = true
     const {user, connected} = this.props;
     // console.log("render()");
     // console.log(this.context.location.pathname);
-
+    if(MAPLOG)console.log("this.props.quotes",this.props.quotes);
     return (
       <div className="testbg-1">
       {user===null? <LoggedOutWrapperWithNavBar /> : <WrapperWithNavBar />} 
@@ -51,6 +52,7 @@ App.propTypes = {
   children: PropTypes.object,
   user: React.PropTypes.object,      // current meteor user
   connected: React.PropTypes.bool,   // server connection status
+  quotes: React.PropTypes.array
 };
 
 App.contextTypes = {

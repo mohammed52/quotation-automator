@@ -5,14 +5,13 @@ import { Quotes } from '../../api/quotes/quotes.js';
 // create some sample data.
 Meteor.startup(() => {
 
-  Quotes.remove({});
+  // Quotes.remove({});
 
   Meteor.call("logStringToConsole", "fixtures logged-1")
   const tempData = {
           "projectSettings": {
-            "description": "test description-1W",
-            "projectCost": 140,
-            "projectRate": 190,
+            "racksDescription": "test description-1W",
+            "currentMetalPrices": 90,
             "companyName": "MEKW",
             "projectTitle": "Yamaha Port QasimW"
           },
@@ -23,28 +22,24 @@ Meteor.startup(() => {
           },
           "bays": [
             {
-              "bay": 1,
               "length": 12,
               "qty": 100,
               "levels": 5,
               "loadPerLevel": 3500
             },
             {
-              "bay": 2,
               "length": 8.05,
               "qty": 40,
               "levels": 7,
               "loadPerLevel": 3000
             },
             {
-              "bay": 3,
               "length": 4,
               "qty": 10, 
               "levels": 2,
               "loadPerLevel": 2000
             },
             {
-              "bay": 4,
               "length": 4,
               "qty": 10,
               "levels": 2,

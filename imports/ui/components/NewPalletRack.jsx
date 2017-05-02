@@ -99,9 +99,8 @@ class NewPalletRack extends Component {
 
     const rackingRequirements = {
                   projectSettings: {
-                    description: $("#id-project-description").val(),
                     racksDescription: $("#id-racks-description").val(),
-                    currentMetalPrices: $("#id-current-metal-prices").val(),
+                    currentMetalPrices: Number($("#id-current-metal-prices").val()),
                     companyName: $("#id-company-name").val(),
                     projectTitle: $("#id-project-title").val()
                   },
@@ -115,7 +114,7 @@ class NewPalletRack extends Component {
                   userId: this.props.user._id,
                   createdAt: new Date()
                   };
-
+                      
     browserHistory.push({
       pathname: '/showquote',
       state: {rackingRequirements: rackingRequirements}});
@@ -225,7 +224,7 @@ class NewPalletRack extends Component {
 
                   </div>
                   <div className="col-xs-6">
-                    <ControlLabel>Project</ControlLabel>
+                    <ControlLabel>Project Title</ControlLabel>
                     <FormControl 
                       type="text" 
                       defaultValue={defaultProjectSpecs.projectSettings.projectTitle}

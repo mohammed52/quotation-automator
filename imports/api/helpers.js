@@ -1,12 +1,6 @@
 import SimpleSchema from 'simpl-schema'
 
 const schemaBay = new SimpleSchema({
-  bay: {
-    type: Number,
-    min: 1,
-    label: "Bay Number",
-    max: 4
-  },
   length: {
     type: Number,
     min: 0,
@@ -38,19 +32,19 @@ const schemaFrame = new SimpleSchema({
   frameHeight: {
     type: Number,
     min: 4,
-    label: "Frame Height",
+    label: "frameHeight",
     max: 60
   },
   frameDepth: {
     type: Number,
     min: 1,
-    label: "Frame Depth-1",
+    label: "frameDepth",
     max: 15
   },
   frameQty: {
     type: Number,
     min: 1,
-    label: "Frame Qty",
+    label: "frameQty",
     max: 600
   }
 });
@@ -59,42 +53,41 @@ const schemaProjectSettings = new SimpleSchema({
     companyName: {
       type: String,
       max: 100,
+      label: 'companyName'
     },
     projectTitle: {
       type: String,
       max: 100,
+      label: 'projectTitle'
     },
-    description: {
+    racksDescription: {
       type: String,
       max: 100,
+      label: 'racksDescription'
     },
-    projectRate: {
+    currentMetalPrices: {
       type: Number,
-      min: 160,
-      max: 300
-    },
-    projectCost: {
-      type: Number,
-      min: 100,
-      max: 150
+      min: 60,
+      max: 120,
+      label: 'currentMetalPrices'
     }
 });
 
 export const schemaQuotes = new SimpleSchema({
   projectSettings: {
     type: schemaProjectSettings,
-    label: "Project Settings",
+    label: "projectSettings",
   },
   frame: {
     type: schemaFrame,
     max: 100,
-    label: "Frame Object",
+    label: "frame",
   },
   bays: {
     type: Array,
     minCount: 1,
     maxCount: 4,
-    label: "Bays",
+    label: "bays",
   },
   'bays.$': {
     type: schemaBay
@@ -102,16 +95,17 @@ export const schemaQuotes = new SimpleSchema({
   shelfType: {
     type: String,
     max: 100,
-    label: "Shelf Type"
+    label: "shelfType"
   },
   createdAt: {
     type: Date,
     denyUpdate: true,
+    label: 'createdAt'
   },
   userId: { 
     type: String, 
     regEx: SimpleSchema.RegEx.Id, 
     optional: true,
-    label: "user Id"
+    label: "userId"
   }
 });

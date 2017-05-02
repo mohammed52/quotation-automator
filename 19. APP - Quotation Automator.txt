@@ -114,6 +114,9 @@ ctrl+shift+k : delete line in ST3
 
 ctrl+m : jump to closing bracket in ST3
 --
-Q: Emptying trBays Array but its not being empty? 2 hours wasted
+Q: Emptying trBays Array but its not showing as empty in console logs? 2 hours wasted
 Q: for some reason, unable to empty an array of bom elements
 ANS: Previous values of the Array log the last value of the array in the console, to log properly, use debugger 
+--
+When you break files, save time on scrolling
+--
