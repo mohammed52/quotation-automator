@@ -36,6 +36,7 @@ export default class App extends Component {
     // console.log("render()");
     // console.log(this.context.location.pathname);
     if(MAPLOG)console.log("this.props.quotes",this.props.quotes);
+    debugger
     return (
       <div className="testbg-1">
       {user===null? <LoggedOutWrapperWithNavBar /> : <WrapperWithNavBar />} 

@@ -66,6 +66,7 @@ export default class AllQuotes extends Component {
     const MAPLOG = true
     console.log(this.context.user)
     if(MAPLOG)console.log("this.props.quotes",this.props.quotes);
+    debugger
     return (
           <div> All Quotes
           </div>
@@ -79,9 +80,10 @@ export default class AllQuotes extends Component {
 // };
 
 AllQuotes.contextTypes = {
-  user: React.PropTypes.object
+  // user: React.PropTypes.object
 }
 
 AllQuotes.propTypes = {
-  quotes: React.PropTypes.array
+  quotes: React.PropTypes.array,
+  user: React.PropTypes.object
 };
