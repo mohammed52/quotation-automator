@@ -1,3 +1,10 @@
+// { "keys": ["ctrl+shift+x"],
+//         "command": "insert_snippet",
+//         "args": {
+//           "contents": "componentDidMount(){setTimeout(function(){debugger}, 10000)}"
+//         }
+//   }
+
 import React, { Component, PropTypes } from 'react';
 import { Meteor } from 'meteor/meteor';
 import { browserHistory } from 'react-router';
@@ -17,7 +24,7 @@ var Table = ReactBootstrap.Table;
 var FieldGroup = ReactBootstrap.FieldGroup;
 var Input = ReactBootstrap.Input;
 
-export default class AllQuotes extends Component {
+export default class ShowAllQuotes extends Component {
   
   constructor(props) {
     super(props);
@@ -63,15 +70,17 @@ export default class AllQuotes extends Component {
     // console.log("cancel...")
   }
 
+  componentDidMount(){setTimeout(function(){debugger}, 10000)}
+
   render() {
     const MAPLOG = true
     console.log(this.context.user)
     
     const quotes = this.props.quotes
-    const quotesTableRows = loadQuotesTable(quotes)
-    if(MAPLOG)console.log("quotes",quotes);
+    let quotesTableRows = []
+    quotesTableRows = loadQuotesTable(quotes)
+    if(MAPLOG)console.log("quotes",quotes)
 
-    // debugger
     return (
           <div> All Quotes
           <div className="well">
@@ -79,9 +88,13 @@ export default class AllQuotes extends Component {
                     <thead>
                       <tr>
                         <th>S/N</th>
+                        <th>Date</th>
                         <th>Company Name</th>
                         <th>Project Title</th>
                         <th>Racks Description</th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
                       </tr>
                     </thead>
                     <tbody>
@@ -99,11 +112,11 @@ export default class AllQuotes extends Component {
 //   connected: React.PropTypes.bool,   // server connection status
 // };
 
-AllQuotes.contextTypes = {
+ShowAllQuotes.contextTypes = {
   user: React.PropTypes.object
 }
 
-AllQuotes.propTypes = {
+ShowAllQuotes.propTypes = {
   quotes: React.PropTypes.array,
   user: React.PropTypes.object
 };

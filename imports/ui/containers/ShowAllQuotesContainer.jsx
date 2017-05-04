@@ -3,7 +3,7 @@ import React, { Component, PropTypes } from 'react';
 import ReactDOM from 'react-dom';
 
 import WrapperWithNavBar from '../components/WrapperWithNavBar'
-import AllQuotes from '../components/AllQuotes'
+import ShowAllQuotes from '../components/ShowAllQuotes'
 import AccountsUIWrapper from '../components/AccountsUIWrapper.jsx';
 import Footer from '../components/Footer'
 
@@ -32,5 +32,5 @@ export default createContainer(() => {
     connected: Meteor.status().connected,
     quotes: quotes
   };
-}, AllQuotes);
+}, ShowAllQuotes);
 

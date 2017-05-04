@@ -133,3 +133,8 @@ THIS IS FOR SECURITY
 --
 Specific Meteor React Containers subscribe to specific publications for data
 --
+async await promise , to handle http requests
+--
+egghead.io => awesome JS resources
+--
+

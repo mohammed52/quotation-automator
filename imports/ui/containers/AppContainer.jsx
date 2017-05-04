@@ -14,6 +14,7 @@ import { Quotes } from '../../api/quotes/quotes.js';
 
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import '../../../font-awesome-4.7.0/css/font-awesome.min.css'
 
 var ReactBootstrap = require('react-bootstrap');
 var Button = ReactBootstrap.Button;

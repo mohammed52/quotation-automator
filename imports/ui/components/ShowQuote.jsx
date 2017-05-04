@@ -94,7 +94,7 @@ class ShowQuote extends Component {
     if(MAPLOG)console.log("btnSaveAndClose");
     if(MAPLOG)console.log("this.props.location.state.rackingRequirements",this.props.location.state.rackingRequirements);
     insert.call(this.props.location.state.rackingRequirements, displayError);
-    browserHistory.push('/allquotes');
+    browserHistory.push('/showallquotes');
   }
 
   onMarginChange(){
