@@ -17,7 +17,9 @@ import {getNutBoltSpecsAndCost} from '../helpers/getNutBoltSpecsAndCost'
 import {getShelfSpecsAndCost} from '../helpers/getShelfSpecsAndCost'
 import {getTotalRacksQty} from '../helpers/getTotalRacksQty'
 import {numberWithCommas} from '../helpers/numberWithCommas'
+import {loadDefaultSpecs} from '../helpers/loadDefaultSpecs'
 import {setProjectSpecs} from '../../redux/actions/actions'
+import {setMargin} from '../../redux/actions/actions'
 // import FrameTable from './FrameTable'
 // import BaysTable from './BaysTable'
 
@@ -42,7 +44,7 @@ class ShowQuote extends Component {
     this.btnBack = this.btnBack.bind(this)
 
     this.state = {
-        margin: 30
+        margin: this.props.margin
     }
   }
 
@@ -69,6 +71,14 @@ class ShowQuote extends Component {
     // console.log("componentDidUpdate")
     //   const user = this.props.user
     // console.log(user) 
+  }
+
+  componentWillUnmount(){
+    console.log("componentWillUnmount")
+    const {setProjectMargin} = this.props
+
+    setProjectMargin(this.state.margin)
+
   }
 
   btnGenerateQuote(){
@@ -144,6 +154,10 @@ class ShowQuote extends Component {
     if(MAPLOG)console.log("arrayCostObjects",arrayCostObjects);
     var trArr = []
     let specsOnly=[];
+
+    specsOnly = loadDefaultSpecs(specsOnly, this.props.location.state.rackingRequirements)
+
+
     for (var k = 0; k < arrayCostObjects.length; k++) {
           trArr.push(
             <tr key={"trArr"+"tr"+k}>
@@ -218,46 +232,24 @@ class ShowQuote extends Component {
       
     }
 
-    const margin = (this.state.margin+100)/100
+    const customMargin = (this.state.margin+100)/100
     return (
           <div> Show Quote
           <div className='row testbg-1'>
             <div className="container-fluid row">
             
             <div className="col-sm-6 testbg-2">
-              <h4>Project Quote</h4>
 
-              <div className="well">
-                <Table className="table">
-                    <thead>
-                      <tr>
-                        <th>Rock Bottom Price</th>
-                        <th>Qty. of Racks</th>
-                        <th>Total Project Cost</th>
-                        
-                      </tr>
-
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <th>{("Rs. "+numberWithCommas((unitPrice*totalProjectWeight/totalRacks).toFixed(2))+"/-")}</th>
-                        <th>{totalRacks}</th>
-                        <th>{("Rs. "+numberWithCommas((unitPrice*totalProjectWeight).toFixed(2))+"/-")}</th>
-                      </tr>
-                    </tbody>
-                  </Table>
-
-              </div>
               <h4>Custom Quote</h4>
 
               <div className="well">
               <Form horizontal>
                 <FormGroup controlId="formInlineMargin">
-                  <ControlLabel>Increase Margin(%): </ControlLabel>
+                  <ControlLabel>Increase Price(%): </ControlLabel>
                         <FormControl 
                           type="text" 
                           id="id-margin"
-                          defaultValue={30} 
+                          defaultValue={this.state.margin} 
                           onChange={this.onMarginChange}/>
                 </FormGroup>
               </Form>
@@ -265,7 +257,7 @@ class ShowQuote extends Component {
                 <Table className="table">
                     <thead>
                       <tr>
-                        <th>Price With Margin</th>
+                        <th>Increased Price</th>
                         <th>Qty. of Racks</th>
                         <th>Total Project Cost</th>
                       </tr>
@@ -273,9 +265,9 @@ class ShowQuote extends Component {
                     </thead>
                     <tbody>
                       <tr>
-                        <th>{("Rs. "+numberWithCommas((unitPrice*totalProjectWeight*margin/totalRacks).toFixed(2))+"/-")}</th>
+                        <th>{("Rs. "+numberWithCommas((unitPrice*totalProjectWeight*customMargin/totalRacks).toFixed(2))+"/-")}</th>
                         <th>{totalRacks}</th>
-                        <th>{("Rs. "+numberWithCommas((unitPrice*totalProjectWeight*margin).toFixed(2))+"/-")}</th>
+                        <th>{("Rs. "+numberWithCommas((unitPrice*totalProjectWeight*customMargin).toFixed(2))+"/-")}</th>
                       </tr>
                     </tbody>
                   </Table>
@@ -283,12 +275,12 @@ class ShowQuote extends Component {
               </div>
 
 
-              <h4>Higher Prices</h4>
+              <h4>Standard Prices</h4>
               <div className="well">
                 <Table className="table">
                     <thead>
                       <tr>
-                        <th>Project Type</th>
+                        <th>Price Bracket</th>
                         <th>Rock Bottom Price</th>
                         <th>Unit Price</th>
                       </tr>
@@ -347,7 +339,9 @@ ShowQuote.propTypes = {
   user: React.PropTypes.object,      // current meteor user
   connected: React.PropTypes.bool,   // server connection status
   location: React.PropTypes.object,
-  saveLastSpecsObject: React.PropTypes.func
+  saveLastSpecsObject: React.PropTypes.func,
+  setProjectMargin: React.PropTypes.func,
+  margin: React.PropTypes.number
 };
 
 ShowQuote.contextTypes = {
@@ -356,7 +350,7 @@ ShowQuote.contextTypes = {
 
 const mapStateToProp =(state, ownProps)=>{
   return {
-    // companyProjectTitle: state.companyProjectTitle,
+    margin: state.margin,
     // defaultProjectSpecs: state.defaultProjectSpecs
   }
 }
@@ -368,6 +362,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
       if(MAPLOG)console.log("object",object);
 
       dispatch(setProjectSpecs(object))
+    },
+    setProjectMargin(newMargin){
+      dispatch(setMargin(newMargin))
     }
   }
 }

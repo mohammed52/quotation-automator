@@ -25,3 +25,10 @@ export const setProjectSpecs = (obj) => {
     payload: obj
   }
 }
+
+export const setMargin = (newVal) => {
+  return {
+    type: 'SET_MARGIN',
+    payload: newVal
+  }
+}

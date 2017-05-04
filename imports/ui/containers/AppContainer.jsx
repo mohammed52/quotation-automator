@@ -20,12 +20,12 @@ var Button = ReactBootstrap.Button;
 // App component - represents the whole app
 
 export default createContainer(() => {
-	const privateHandle = Meteor.subscribe('lists.private');
+	// const privateHandle = Meteor.subscribe('lists.private');
+  // Meteor.subscribe('quotes')
 
   return {
     user: Meteor.user(),
-    connected: Meteor.status().connected,
-    quotes: Quotes.find({userId: Meteor.userId()}).fetch()
+    connected: Meteor.status().connected
   };
 }, App);
 

@@ -14,20 +14,23 @@ export function getShelfSpecsAndCost(rackingRequirements){
 		
 		let weightPerSqInch = 0;
 		let tmpDescription = ""
+		const size = rackingRequirements.frame.frameDepth+"feet x 1feet x ";
+		const shelfTotalQty = getQtyOfShelves(rackingRequirements)
+		
 		if (rackingRequirements.shelfType=="metalShelf1.2mm") {
 			weightPerSqInch = 0.006299894
-			tmpDescription="Metal Shelf 1.2mm"
+			tmpDescription="Metal Shelf "+size+"1.2mm"
 
 		} else if (rackingRequirements.shelfType=="metalShelf1.5mm"){
 			weightPerSqInch = 0.007874867			
-			tmpDescription="Metal Shelf 1.5mm"
+			tmpDescription="Metal Shelf "+size+"1.5mm"
 		} else if (rackingRequirements.shelfType=="metalShelf2.0mm"){
 			weightPerSqInch = 0.009843584	
-			tmpDescription="Metal Shelf 2.0mm"		
+			tmpDescription="Metal Shelf "+size+"2.0mm"		
 		}
 		
 		const frameDepth = rackingRequirements.frame.frameDepth
-		const shelfTotalQty = getQtyOfShelves(rackingRequirements)
+		
 		
 		let shelfUnitWeight = 16*(frameDepth*12+4)*weightPerSqInch
 

@@ -2,24 +2,35 @@
 
 import { Meteor } from 'meteor/meteor';
 
-import { Lists } from '../quotes.js';
+import { Quotes } from '../quotes.js';
+
+Meteor.publish('quotes', function quotesPublic() {
+  // debugger
+  return Quotes.find({
+    userId: this.userId 
+  },{
+    fields: Quotes.publicFields,
+  });
+});
 
 Meteor.publish('quotes.public', function quotesPublic() {
-  return Lists.find({
+  // debugger
+  return Quotes.find({
     userId: { $exists: false },
   }, {
-    fields: Lists.publicFields,
+    fields: Quotes.publicFields,
   });
 });
 
 Meteor.publish('quotes.private', function quotesPrivate() {
+  // debugger
   if (!this.userId) {
     return this.ready();
   }
 
-  return Lists.find({
+  return Quotes.find({
     userId: this.userId,
   }, {
-    fields: Lists.publicFields,
+    fields: Quotes.publicFields,
   });
 });

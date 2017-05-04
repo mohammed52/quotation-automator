@@ -20,16 +20,17 @@ var Button = ReactBootstrap.Button;
 // App component - represents the whole app
 
 export default createContainer(() => {
-	const privateHandle = Meteor.subscribe('lists.private');
+	Meteor.subscribe('quotes');
+
 	const MAPLOG = true
-	if(MAPLOG)console.log("Quotes.find({userId: Meteor.userId()}).fetch()",Quotes.find({userId: Meteor.userId()}).fetch());
-	Meteor.call("logStringToConsole", "Quotes.find({userId: Meteor.userId()}).fetch()")
-	Meteor.call("logStringToConsole", Quotes.find({userId: Meteor.userId()}).fetch())
-	debugger
+  const quotes = Quotes.find({userId: Meteor.userId()}).fetch()
+	if(MAPLOG)console.log("quotes",quotes);
+	
+  // debugger
   return {
     user: Meteor.user(),
     connected: Meteor.status().connected,
-    quotes: Quotes.find({userId: Meteor.userId()}).fetch()
+    quotes: quotes
   };
 }, AllQuotes);
 

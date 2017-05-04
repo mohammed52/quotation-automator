@@ -120,3 +120,16 @@ ANS: Previous values of the Array log the last value of the array in the console
 --
 When you break files, save time on scrolling
 --
+Q: Unable to display all quotes from the db in the component? Wasted 6 Hours
+Ans: All methods have to be in the server publications file  AND
+1. you have to subcribe to those publication in your container wrappers
+2. you have to import those apis in server
+SOLVED
+--
+when you subscrbe to a publication,
+only that published data is available on the client to run the client
+queries e.g. find().fetch() etc.
+THIS IS FOR SECURITY
+--
+Specific Meteor React Containers subscribe to specific publications for data
+--

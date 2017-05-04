@@ -55,7 +55,8 @@ const sampleStore = {
         backgroundColor: "lightgrey",
         showModalFlag: true,
         companyProjectTitle: {companyName: "", projectTitle: ""},
-        defaultProjectSpecs: tempData
+        defaultProjectSpecs: tempData,
+        margin: 30
       }
 
 let store = createStore(TodosCombinedReducers, sampleStore, middleware)

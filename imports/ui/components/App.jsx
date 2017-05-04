@@ -26,17 +26,20 @@ export default class App extends Component {
   }
   
   componentWillMount(){
-    // console.log("componentWillMount")
+    console.log("componentWillMount")
     // console.log("")
+  }
+  componentWillUnmount(){
+    console.log("componentWillUnmount")
   }
 
   render() {
-    const MAPLOG = true
+    const MAPLOG = false
     const {user, connected} = this.props;
     // console.log("render()");
     // console.log(this.context.location.pathname);
-    if(MAPLOG)console.log("this.props.quotes",this.props.quotes);
-    debugger
+    // if(MAPLOG)console.log("this.props.quotes",this.props.quotes);
+    // debugger
     return (
       <div className="testbg-1">
       {user===null? <LoggedOutWrapperWithNavBar /> : <WrapperWithNavBar />} 
@@ -53,7 +56,7 @@ App.propTypes = {
   children: PropTypes.object,
   user: React.PropTypes.object,      // current meteor user
   connected: React.PropTypes.bool,   // server connection status
-  quotes: React.PropTypes.array
+  // quotes: React.PropTypes.array
 };
 
 App.contextTypes = {
