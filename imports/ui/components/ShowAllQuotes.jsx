@@ -1,17 +1,8 @@
-// { "keys": ["ctrl+shift+x"],
-//         "command": "insert_snippet",
-//         "args": {
-//           "contents": "componentDidMount(){setTimeout(function(){debugger}, 10000)}"
-//         }
-//   }
-
 import React, { Component, PropTypes } from 'react';
 import { Meteor } from 'meteor/meteor';
 import { browserHistory } from 'react-router';
 import $ from "jquery"
-import {loadQuotesTable} from '../helpers/loadQuotesTable'
-// import FrameTable from './FrameTable'
-// import BaysTable from './BaysTable'
+import SingleQuoteRow from './SingleQuoteRow'
 
 var ReactBootstrap = require('react-bootstrap');
 var Button = ReactBootstrap.Button;
@@ -28,12 +19,8 @@ export default class ShowAllQuotes extends Component {
   
   constructor(props) {
     super(props);
-    // this.btnGenerateQuote = this.btnGenerateQuote.bind(this);
-    // this.btnCancel = this.btnCancel.bind(this);
-    // this.handleOptionChange = this.handleOptionChange.bind(this);
 
     this.state = {
-        // selectedShelfOption: "noShelf"
     }
   }
 
@@ -43,9 +30,7 @@ export default class ShowAllQuotes extends Component {
   }
 
   componentWillUpdate(){
-    // console.log("componentWillUpdate");
-    // const user = this.props.user;
-    // console.log(user)    
+
   }
 
   componentWillReceiveProps(nextProps, nextContext){
@@ -57,9 +42,7 @@ export default class ShowAllQuotes extends Component {
   }
   
   componentDidUpdate(){
-    // console.log("componentDidUpdate")
-    //   const user = this.props.user;
-    // console.log(user) 
+
   }
 
   btnGenerateQuote(){
@@ -67,19 +50,23 @@ export default class ShowAllQuotes extends Component {
   }
 
   btnCancel(){
-    // console.log("cancel...")
   }
 
-  componentDidMount(){setTimeout(function(){debugger}, 10000)}
 
   render() {
     const MAPLOG = true
-    console.log(this.context.user)
     
     const quotes = this.props.quotes
     let quotesTableRows = []
-    quotesTableRows = loadQuotesTable(quotes)
-    if(MAPLOG)console.log("quotes",quotes)
+    
+    for (var i = 0; i < quotes.length; i++) {
+    quotesTableRows.push(
+        <SingleQuoteRow key={"SingleQuoteRow"+i} i={i} quote={quotes[i]} />
+      )
+  }
+
+
+    // if(MAPLOG)console.log("quotes",quotes)
 
     return (
           <div> All Quotes
@@ -106,11 +93,6 @@ export default class ShowAllQuotes extends Component {
     );
   }
 }
-
-// NewPalletRack.propTypes = {
-//   user: React.PropTypes.object,      // current meteor user
-//   connected: React.PropTypes.bool,   // server connection status
-// };
 
 ShowAllQuotes.contextTypes = {
   user: React.PropTypes.object

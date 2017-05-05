@@ -32,3 +32,14 @@ export const insert = new ValidatedMethod({
     Quotes.insert(quote);
   },
 });
+
+export const remove = new ValidatedMethod({
+  name: 'quotes.remove',
+  validate: new SimpleSchema({
+    quoteId: { type: String },
+  }).validator(),
+  run({ quoteId }) {
+    const todo = Quotes.findOne(quoteId);
+    Quotes.remove(quoteId);
+  },
+});

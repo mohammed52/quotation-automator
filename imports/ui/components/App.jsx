@@ -33,6 +33,8 @@ export default class App extends Component {
     console.log("componentWillUnmount")
   }
 
+  componentDidMount(){setTimeout(function(){debugger}, 20000)}
+  
   render() {
     const MAPLOG = false
     const {user, connected} = this.props;

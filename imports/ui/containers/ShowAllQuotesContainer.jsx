@@ -24,7 +24,7 @@ export default createContainer(() => {
 
 	const MAPLOG = true
   const quotes = Quotes.find({userId: Meteor.userId()}).fetch()
-	if(MAPLOG)console.log("quotes",quotes);
+	// if(MAPLOG)console.log("quotes",quotes);
 	
   // debugger
   return {
