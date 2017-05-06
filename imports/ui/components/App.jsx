@@ -16,6 +16,11 @@ var Button = ReactBootstrap.Button;
 // App component - represents the whole app
 export default class App extends Component {
 
+  constructor(props) {
+    super(props);
+    this.activateDebugger = this.activateDebugger.bind(this);
+  }
+
   getChildContext() {
     // console.log("getChildContext()")
     // console.log(this.props.user)
@@ -33,8 +38,14 @@ export default class App extends Component {
     console.log("componentWillUnmount")
   }
 
-  componentDidMount(){setTimeout(function(){debugger}, 20000)}
-  
+  activateDebugger(){
+    const MAPLOG=true
+    if(MAPLOG)console.log("activateDebugger");
+    debugger
+  }
+
+  componentDidMount(){setTimeout(function(){debugger}, 60*1000)}
+
   render() {
     const MAPLOG = false
     const {user, connected} = this.props;
@@ -44,6 +55,7 @@ export default class App extends Component {
     // debugger
     return (
       <div className="testbg-1">
+      <Button onClick={this.activateDebugger}>Debugger</Button>
       {user===null? <LoggedOutWrapperWithNavBar /> : <WrapperWithNavBar />} 
       <AccountsUIWrapper />
 

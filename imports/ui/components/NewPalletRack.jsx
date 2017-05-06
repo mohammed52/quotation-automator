@@ -63,7 +63,7 @@ class NewPalletRack extends Component {
   }
 
   btnGenerateQuote(){
-  
+    const defaultProjectSpecs = this.props.defaultProjectSpecs
     var bays = [
                     {
                       
@@ -112,7 +112,8 @@ class NewPalletRack extends Component {
                   bays: bays,
                   shelfType: this.state.selectedShelfOption,
                   userId: this.props.user._id,
-                  createdAt: new Date()
+                  createdAt: new Date(),
+                  _id: defaultProjectSpecs._id
                   };
                       
     browserHistory.push({

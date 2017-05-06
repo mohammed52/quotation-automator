@@ -4,7 +4,7 @@ import { browserHistory } from 'react-router';
 import $ from "jquery"
 import { connect } from 'react-redux'
 import { displayError } from '../helpers/errors.js';
-import { insert } from '../../api/quotes/methods.js';
+import { insert, updateQuote } from '../../api/quotes/methods.js';
 
 import {PricingTable} from '../helpers/PricingTable'
 import {CostPriceAddOns} from '../helpers/PricingTable'
@@ -91,9 +91,18 @@ class ShowQuote extends Component {
 
   btnSaveAndClose(){
     const MAPLOG = true
-    if(MAPLOG)console.log("btnSaveAndClose");
+    if(MAPLOG)console.log("btnSaveAndClose")
     if(MAPLOG)console.log("this.props.location.state.rackingRequirements",this.props.location.state.rackingRequirements);
-    insert.call(this.props.location.state.rackingRequirements, displayError);
+    
+    if(this.props.location.state.rackingRequirements._id!==null){
+      if(MAPLOG)console.log("quote id exists");
+      updateQuote.call(this.props.location.state.rackingRequirements._id, this.props.location.state.rackingRequirements);
+    
+    } else {
+      if(MAPLOG)console.log("quote id not found")
+      insert.call(this.props.location.state.rackingRequirements, displayError);
+    }
+    
     browserHistory.push('/showallquotes');
   }
 

@@ -48,7 +48,8 @@ const tempData = {
             }
           ],
           "shelfType": "noShelf",
-          "createdAt": new Date()
+          "createdAt": new Date(),
+          _id: null
     }
 
 const sampleStore = {

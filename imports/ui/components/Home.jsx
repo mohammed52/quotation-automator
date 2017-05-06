@@ -2,7 +2,6 @@ import React, { Component, PropTypes } from 'react';
 import { Meteor } from 'meteor/meteor';
 import { LinkContainer } from 'react-router-bootstrap'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
-import SlidingWrapperComponent from './SlidingWrapperComponent'
 import HomeLoggedIn from './HomeLoggedin'
 import HomeLoggedOut from './HomeLoggedOut'
 

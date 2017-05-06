@@ -43,3 +43,24 @@ export const remove = new ValidatedMethod({
     Quotes.remove(quoteId);
   },
 });
+
+export const updateQuote = new ValidatedMethod({
+  name: 'quotes.updateQuote',
+  validate: new SimpleSchema({
+    todoId: { type: String },
+    newQuoteValues: { type: String },
+  }).validator(),
+  run({ quoteId, newQuoteValues }) {
+    // This is complex auth stuff - perhaps denormalizing a userId onto todos
+    // would be correct here?
+
+    Quotes.update(quoteId, {
+      $set: { 
+        projectSettings: newQuoteValues.projectSettings,
+        frame: newQuoteValues.frame,
+        bays: newQuoteValues.bays,
+        shelfType: newQuoteValues.shelfType,
+       },
+    });
+  },
+});

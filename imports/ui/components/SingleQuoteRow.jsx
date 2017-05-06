@@ -1,10 +1,3 @@
-// { "keys": ["ctrl+shift+x"],
-//         "command": "insert_snippet",
-//         "args": {
-//           "contents": "componentDidMount(){setTimeout(function(){debugger}, 10000)}"
-//         }
-//   }
-
 import React, { Component, PropTypes } from 'react';
 import { Meteor } from 'meteor/meteor';
 import { browserHistory } from 'react-router';
@@ -12,6 +5,9 @@ import $ from "jquery"
 import {loadQuotesTable} from '../helpers/loadQuotesTable'
 import {remove} from '../../api/quotes/methods'
 import { displayError } from '../helpers/errors.js';
+import {setProjectSpecs} from '../../redux/actions/actions'
+import { connect } from 'react-redux'
+
 // import FrameTable from './FrameTable'
 // import BaysTable from './BaysTable'
 
@@ -24,15 +20,16 @@ var FormControl = ReactBootstrap.FormControl
 var Radio = ReactBootstrap.Radio;
 var Table = ReactBootstrap.Table;
 var FieldGroup = ReactBootstrap.FieldGroup;
-var Input = ReactBootstrap.Input;
+var Input = ReactBootstrap.Input
 
-export default class SingleQuoteRow extends Component {
+class SingleQuoteRow extends Component {
   
   constructor(props) {
     super(props);
     // this.btnGenerateQuote = this.btnGenerateQuote.bind(this);
     // this.btnCancel = this.btnCancel.bind(this);
     this.deleteQuote = this.deleteQuote.bind(this);
+    this.editQuote = this.editQuote.bind(this)
 
     this.state = {
         // selectedShelfOption: "noShelf"
@@ -72,6 +69,14 @@ export default class SingleQuoteRow extends Component {
     // console.log("cancel...")
   }
 
+  editQuote(){
+    const MAPLOG=true
+    if(MAPLOG)console.log("edit");
+    const { saveLastSpecsObject } = this.props;
+    saveLastSpecsObject(this.props.quote) 
+    browserHistory.push({pathname: '/newpalletrack'})
+  }
+
   deleteQuote(){
     const MAPLOG=true
     if(MAPLOG)console.log("delete");
@@ -97,8 +102,7 @@ export default class SingleQuoteRow extends Component {
                         <a
                           // className="delete-item"
                           href="#delete"
-                          onClick={this.deleteTodo}
-                          onMouseDown={this.deleteTodo}
+                          onClick={this.editQuote}
                         >
                           <i className="fa fa-pencil-square-o" aria-hidden="true"/>
                         </a>
@@ -137,5 +141,25 @@ SingleQuoteRow.contextTypes = {
 
 SingleQuoteRow.propTypes = {
   quote: React.PropTypes.object,
-  i: React.PropTypes.number
+  i: React.PropTypes.number,
+  saveLastSpecsObject: React.PropTypes.func,
 };
+
+const mapStateToProp =(state, ownProps)=>{
+  return {
+    defaultProjectSpecs: state.defaultProjectSpecs
+  }
+}
+
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return {
+    saveLastSpecsObject(object){
+      const MAPLOG = false
+      if(MAPLOG)console.log("object",object);
+
+      dispatch(setProjectSpecs(object))
+    }
+  }
+}
+
+export default connect(mapStateToProp, mapDispatchToProps)(SingleQuoteRow)

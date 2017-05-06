@@ -21,6 +21,10 @@ class QuotesCollection extends Mongo.Collection {
     const result = super.insert(ourDoc, callback);
     return result;
   }
+  update(selector, modifier) {
+    const result = super.update(selector, modifier);
+    return result;
+  }
 }
 
 export const Quotes = new QuotesCollection('quotes');
