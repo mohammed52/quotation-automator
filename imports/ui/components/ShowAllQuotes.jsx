@@ -65,7 +65,15 @@ export default class ShowAllQuotes extends Component {
       )
   }
 
-
+  if(quotes.length<=0){
+    return (
+      <div className="well">
+        <div className="container-fluid center-text">
+          No Quotes to Display
+        </div>
+    </div>
+    );
+  } else {
     // if(MAPLOG)console.log("quotes",quotes)
 
     return (
@@ -91,6 +99,7 @@ export default class ShowAllQuotes extends Component {
           </div>
           </div>
     );
+  }
   }
 }
 

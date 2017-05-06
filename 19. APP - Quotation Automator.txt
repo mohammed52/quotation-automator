@@ -137,4 +137,8 @@ async await promise , to handle http requests
 --
 egghead.io => awesome JS resources
 --
+Twitter BOT - TUT - Google Engineer
+--
+setup secrets and tokens in environment variables instad of copyying them in files
+--
 

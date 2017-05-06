@@ -83,7 +83,7 @@ class HomeLoggedIn extends Component {
   }
 
   viewAll(){
-    browserHistory.push('/allquotes');
+    browserHistory.push('/showallquotes');
   }
   render() {
     const defaultProjectSpecs = this.props.defaultProjectSpecs
