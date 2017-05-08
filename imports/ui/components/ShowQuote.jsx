@@ -42,9 +42,8 @@ class ShowQuote extends Component {
     this.btnSaveAndClose = this.btnSaveAndClose.bind(this);
     this.onMarginChange = this.onMarginChange.bind(this)
     this.btnBack = this.btnBack.bind(this)
-
     this.state = {
-        margin: this.props.margin
+        margin: this.props.location.state.rackingRequirements.margin
     }
   }
 
@@ -76,8 +75,7 @@ class ShowQuote extends Component {
   componentWillUnmount(){
     console.log("componentWillUnmount")
     const {setProjectMargin} = this.props
-
-    setProjectMargin(this.state.margin)
+    
 
   }
 
@@ -94,21 +92,23 @@ class ShowQuote extends Component {
     if(MAPLOG)console.log("btnSaveAndClose")
     if(MAPLOG)console.log("this.props.location.state.rackingRequirements",this.props.location.state.rackingRequirements);
     
-    if(this.props.location.state.rackingRequirements._id!==null && 
-      this.props.location.state.rackingRequirements._id!==undefined){
+    // const { saveLastSpecsObject } = this.props
+    let rackingRequirements = this.props.location.state.rackingRequirements
+    rackingRequirements.margin = this.state.margin
+    // saveLastSpecsObject(rackingRequirements)
+
+    if(rackingRequirements._id!==null && 
+      rackingRequirements._id!==undefined){
       if(MAPLOG)console.log("quote id exists");
-      let newQuoteValues = this.props.location.state.rackingRequirements
-      const quoteId = this.props.location.state.rackingRequirements._id
+      let newQuoteValues = rackingRequirements
+      const quoteId = rackingRequirements._id
       if(MAPLOG)console.log("quoteId",quoteId);
       delete newQuoteValues._id
       updateQuote.call({newQuoteValues, quoteId}, displayError);
     
     } else {
       if(MAPLOG)console.log("quote id not found")
-      let rackingRequirements = this.props.location.state.rackingRequirements
       delete rackingRequirements._id
-        
-
       insert.call(rackingRequirements, displayError);
     }
     
@@ -135,6 +135,8 @@ class ShowQuote extends Component {
    
     //save last specs object
     const { saveLastSpecsObject } = this.props;
+    let rackingRequirements = this.props.location.state.rackingRequirements
+    rackingRequirements.margin = this.state.margin
     saveLastSpecsObject(this.props.location.state.rackingRequirements) 
 
     if(MAPLOG)console.log("this.props.location.state",this.props.location.state)
@@ -358,8 +360,7 @@ ShowQuote.propTypes = {
   connected: React.PropTypes.bool,   // server connection status
   location: React.PropTypes.object,
   saveLastSpecsObject: React.PropTypes.func,
-  setProjectMargin: React.PropTypes.func,
-  margin: React.PropTypes.number
+  setProjectMargin: React.PropTypes.func
 };
 
 ShowQuote.contextTypes = {
@@ -368,7 +369,6 @@ ShowQuote.contextTypes = {
 
 const mapStateToProp =(state, ownProps)=>{
   return {
-    margin: state.margin,
     // defaultProjectSpecs: state.defaultProjectSpecs
   }
 }

@@ -11,9 +11,9 @@ const middleware = applyMiddleware(promise(), thunk, createLogger())
 
 const tempData = {
           "projectSettings": {
-            "racksDescription": "Test Description",
-            "companyName": "MEK-1",
-            "projectTitle": "Yamaha Port Qasim",
+            "racksDescription": "10x4x5, 3level, 1000kgs/lvl",
+            "companyName": "MEK",
+            "projectTitle": "Yamaha Project",
             "currentMetalPrices": 90
           },
           "frame": {
@@ -49,15 +49,15 @@ const tempData = {
           ],
           "shelfType": "noShelf",
           "createdAt": new Date(),
-          _id: null
+          _id: null,
+          margin: 10,
     }
 
 const sampleStore = {
         backgroundColor: "lightgrey",
         showModalFlag: false,
         companyProjectTitle: {companyName: "", projectTitle: ""},
-        defaultProjectSpecs: tempData,
-        margin: 30
+        defaultProjectSpecs: tempData
       }
 
 let store = createStore(TodosCombinedReducers, sampleStore, middleware)

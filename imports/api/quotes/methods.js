@@ -12,7 +12,7 @@ import {schemaQuotes} from '../helpers';
 export const insert = new ValidatedMethod({
   name: 'quotes.insert',
   validate: schemaQuotes.validator(),
-  run({ projectSettings, shelfType, userId, frame, bays, createdAt }) {
+  run({ projectSettings, shelfType, userId, frame, bays, createdAt, margin }) {
     // const list = Lists.findOne(listId);
 
     // if (list.isPrivate() && list.userId !== this.userId) {
@@ -26,7 +26,8 @@ export const insert = new ValidatedMethod({
       userId: userId,
       frame: frame,
       bays: bays,
-      createdAt: new Date()
+      createdAt: new Date(),
+      margin: margin
     };
 
     Quotes.insert(quote);
@@ -60,6 +61,7 @@ export const updateQuote = new ValidatedMethod({
         frame: newQuoteValues.frame,
         bays: newQuoteValues.bays,
         shelfType: newQuoteValues.shelfType,
+        margin: newQuoteValues.margin
        },
     });
   },

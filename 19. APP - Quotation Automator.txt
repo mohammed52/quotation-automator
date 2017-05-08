@@ -154,3 +154,9 @@ Ans: bind the lower level call back to this in react constructor of .bind(this) 
 Meteor React Router redirect on authentication:
 https://alexgaribay.com/2015/10/13/authenticated-routes-with-meteor-and-react-router/
 --
+Q: $.fn.modal is not defined error when using bootbox? wasted 30min 
+Ans: React Bootstrap only compatible with jQuery<3
+--
+Q: Unable to change db schema and make it work? wasted 02 hours
+Ans: Update: 1. Schema, 2. All Methods, 3. All Public Fields, 4. All Publications, All UI Code to handle new schema
+--

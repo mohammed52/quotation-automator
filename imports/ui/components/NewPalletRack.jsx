@@ -113,7 +113,8 @@ class NewPalletRack extends Component {
                   shelfType: this.state.selectedShelfOption,
                   userId: this.props.user._id,
                   createdAt: new Date(),
-                  _id: defaultProjectSpecs._id
+                  _id: defaultProjectSpecs._id,
+                  margin: defaultProjectSpecs.margin
                   };
                       
     browserHistory.push({
@@ -229,6 +230,7 @@ class NewPalletRack extends Component {
                     <FormControl 
                       type="text" 
                       id="id-company-name"
+                      required="true" 
                       defaultValue={defaultProjectSpecs.projectSettings.companyName} />
 
                   </div>

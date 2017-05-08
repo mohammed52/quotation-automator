@@ -7,17 +7,19 @@ import {remove} from '../../api/quotes/methods'
 import { displayError } from '../helpers/errors.js';
 import {setProjectSpecs} from '../../redux/actions/actions'
 import { connect } from 'react-redux'
+
 // import {bootbox} from 'bootbox/bootbox.min'
 
 // import FrameTable from './FrameTable'
 // import BaysTable from './BaysTable'
 
 var ReactBootstrap = require('react-bootstrap');
+var Modal = ReactBootstrap.Modal
 
 var bootbox = require('bootbox');
 
 var Button = ReactBootstrap.Button;
-var Modal = ReactBootstrap.Modal;
+
 var FormGroup = ReactBootstrap.FormGroup;
 var ControlLabel = ReactBootstrap.ControlLabel;
 var FormControl = ReactBootstrap.FormControl

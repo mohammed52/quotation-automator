@@ -23,7 +23,7 @@ export default createContainer(() => {
 	Meteor.subscribe('quotes');
 
 	const MAPLOG = true
-  const quotes = Quotes.find({userId: Meteor.userId()}).fetch()
+  const quotes = Quotes.find({userId: Meteor.userId()}, { sort: { createdAt: -1 } }).fetch()
 	// if(MAPLOG)console.log("quotes",quotes);
 	
   // debugger

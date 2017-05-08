@@ -18,8 +18,14 @@ export default class App extends Component {
 
   constructor(props) {
     super(props);
+    this.state = this.getMeteorData();
     this.activateDebugger = this.activateDebugger.bind(this);
   }
+
+  getMeteorData(){
+    return { isAuthenticated: Meteor.userId() !== null };
+  }
+
 
   getChildContext() {
     // console.log("getChildContext()")
@@ -41,10 +47,12 @@ export default class App extends Component {
   //   }
   // }
   
-  componentWillMount(){
-    console.log("componentWillMount")
-    // console.log("")
+componentWillMount(){
+    if (!this.state.isAuthenticated) {
+      browserHistory.push('/showallquotes');
+    }
   }
+
   componentWillUnmount(){
     console.log("componentWillUnmount")
   }

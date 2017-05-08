@@ -107,5 +107,11 @@ export const schemaQuotes = new SimpleSchema({
     regEx: SimpleSchema.RegEx.Id, 
     optional: true,
     label: "userId"
+  },
+  margin: {
+    type: Number,
+    min: 0,
+    label: "margin",
+    max: 80
   }
 });

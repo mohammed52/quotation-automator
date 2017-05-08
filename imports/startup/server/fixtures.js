@@ -47,11 +47,12 @@ Meteor.startup(() => {
             }
           ],
           "shelfType": "noShelfW",
-          createdAt: new Date()
+          createdAt: new Date(),
+          
     }
 
     let timestamp = (new Date()).getTime();
-    const quoteId = Quotes.insert(tempData);
+    // const quoteId = Quotes.insert(tempData);
 
     
 });

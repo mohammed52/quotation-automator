@@ -116,5 +116,6 @@ Quotes.publicFields = {
   userId: 1,
   frame: 1,
   createdAt: 1,
-  bays: 1
+  bays: 1,
+  margin: 1
 };
