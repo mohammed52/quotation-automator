@@ -151,3 +151,6 @@ Ans: bootbox only compatible with require('booxtbox') , can not do import ...
 Q: how to pass react this in a call back method?
 Ans: bind the lower level call back to this in react constructor of .bind(this) at the end of the function
 --
+Meteor React Router redirect on authentication:
+https://alexgaribay.com/2015/10/13/authenticated-routes-with-meteor-and-react-router/
+--
