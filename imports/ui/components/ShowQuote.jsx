@@ -94,13 +94,22 @@ class ShowQuote extends Component {
     if(MAPLOG)console.log("btnSaveAndClose")
     if(MAPLOG)console.log("this.props.location.state.rackingRequirements",this.props.location.state.rackingRequirements);
     
-    if(this.props.location.state.rackingRequirements._id!==null){
+    if(this.props.location.state.rackingRequirements._id!==null && 
+      this.props.location.state.rackingRequirements._id!==undefined){
       if(MAPLOG)console.log("quote id exists");
-      updateQuote.call(this.props.location.state.rackingRequirements._id, this.props.location.state.rackingRequirements);
+      let newQuoteValues = this.props.location.state.rackingRequirements
+      const quoteId = this.props.location.state.rackingRequirements._id
+      if(MAPLOG)console.log("quoteId",quoteId);
+      delete newQuoteValues._id
+      updateQuote.call({newQuoteValues, quoteId}, displayError);
     
     } else {
       if(MAPLOG)console.log("quote id not found")
-      insert.call(this.props.location.state.rackingRequirements, displayError);
+      let rackingRequirements = this.props.location.state.rackingRequirements
+      delete rackingRequirements._id
+        
+
+      insert.call(rackingRequirements, displayError);
     }
     
     browserHistory.push('/showallquotes');

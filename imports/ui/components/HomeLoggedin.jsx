@@ -39,6 +39,7 @@ class HomeLoggedIn extends Component {
   
   open() {
     this.setState({ showModal: true });
+    browserHistory.push({pathname: '/newpalletrack'})
   }
 
   onCreateNew(){
@@ -102,7 +103,7 @@ class HomeLoggedIn extends Component {
             <div className="col-sm-6 container-fluid testbg-2">
             </div>
 
-            <Modal show={this.state.showModal} onHide={this.close}>
+            <Modal show={false} onHide={this.close}>
           <Modal.Header closeButton>
             <Modal.Title>Create New Project</Modal.Title>
           </Modal.Header>

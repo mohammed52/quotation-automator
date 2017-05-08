@@ -47,8 +47,8 @@ export const remove = new ValidatedMethod({
 export const updateQuote = new ValidatedMethod({
   name: 'quotes.updateQuote',
   validate: new SimpleSchema({
-    todoId: { type: String },
-    newQuoteValues: { type: String },
+    quoteId: { type: String, regEx: SimpleSchema.RegEx.Id },
+    newQuoteValues: { type: schemaQuotes },
   }).validator(),
   run({ quoteId, newQuoteValues }) {
     // This is complex auth stuff - perhaps denormalizing a userId onto todos

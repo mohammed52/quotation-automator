@@ -54,7 +54,7 @@ const tempData = {
 
 const sampleStore = {
         backgroundColor: "lightgrey",
-        showModalFlag: true,
+        showModalFlag: false,
         companyProjectTitle: {companyName: "", projectTitle: ""},
         defaultProjectSpecs: tempData,
         margin: 30

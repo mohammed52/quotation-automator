@@ -7,11 +7,15 @@ import {remove} from '../../api/quotes/methods'
 import { displayError } from '../helpers/errors.js';
 import {setProjectSpecs} from '../../redux/actions/actions'
 import { connect } from 'react-redux'
+// import {bootbox} from 'bootbox/bootbox.min'
 
 // import FrameTable from './FrameTable'
 // import BaysTable from './BaysTable'
 
 var ReactBootstrap = require('react-bootstrap');
+
+var bootbox = require('bootbox');
+
 var Button = ReactBootstrap.Button;
 var Modal = ReactBootstrap.Modal;
 var FormGroup = ReactBootstrap.FormGroup;
@@ -29,7 +33,8 @@ class SingleQuoteRow extends Component {
     // this.btnGenerateQuote = this.btnGenerateQuote.bind(this);
     // this.btnCancel = this.btnCancel.bind(this);
     this.deleteQuote = this.deleteQuote.bind(this);
-    this.editQuote = this.editQuote.bind(this)
+    this.editQuote = this.editQuote.bind(this);
+    this.copyQuote = this.copyQuote.bind(this);
 
     this.state = {
         // selectedShelfOption: "noShelf"
@@ -78,11 +83,45 @@ class SingleQuoteRow extends Component {
   }
 
   deleteQuote(){
-    const MAPLOG=true
-    if(MAPLOG)console.log("delete");
-    remove.call({quoteId: this.props.quote._id}, displayError)
+    const MAPLOG = true
+        
+        const deleteQuoteMessage = "Do you want to delete quote? This cannot be undone."
+        bootbox.confirm({
+        title: "Delete Quote?",
+        message: deleteQuoteMessage,
+        buttons: {
+            cancel: {
+                label: '<i class="fa fa-times"></i> Cancel',
+                className: 'btn-default'
+            },
+            confirm: {
+                label: '<i class="fa fa-check"></i> Delete',
+                className: 'btn-danger'
+            }
+        },
+        callback: function (result) {
+    const MAPLOG = true
+    if(result===true){
+      
+      if(MAPLOG)console.log("delete");
+      remove.call({quoteId: this.props.quote._id}, displayError)
+    }else{
+      if(MAPLOG)console.log("result",result);
+    }
+  }.bind(this)
+    });
   }
 
+  copyQuote(){
+    const MAPLOG = true
+    if(MAPLOG)console.log("edit");
+    const { saveLastSpecsObject } = this.props;
+    var quoteSpecs = this.props.quote
+    delete quoteSpecs._id
+    saveLastSpecsObject(quoteSpecs) 
+    browserHistory.push({pathname: '/newpalletrack'})
+
+  }
   // componentDidMount(){setTimeout(function(){debugger}, 10000)}
 
   render() {
@@ -110,8 +149,7 @@ class SingleQuoteRow extends Component {
                         <th><a
                           // className="delete-item"
                           href="#delete"
-                          onClick={this.deleteTodo}
-                          onMouseDown={this.deleteTodo}
+                          onClick={this.copyQuote}
                         >
                           <i className="fa fa-clone" aria-hidden="true"/>
                         </a></th>

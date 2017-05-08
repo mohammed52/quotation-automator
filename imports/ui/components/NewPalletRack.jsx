@@ -202,10 +202,18 @@ class NewPalletRack extends Component {
 
     if(MAPLOG)console.log("trBays",trBays);
 
+    let headerText="";
+    if(defaultProjectSpecs._id===null || defaultProjectSpecs._id===undefined){
+      headerText = "New Pallet Rack Specs"
+    } else {
+      headerText = "Edit Pallet Rack Specs"
+    }
+     
+
 
     return (
           <div>   
-          New Pallet Rack
+          {headerText}
           <form className="testbg-1">
 
           <div className="container-fluid row">

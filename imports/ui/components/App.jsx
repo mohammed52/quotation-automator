@@ -29,6 +29,17 @@ export default class App extends Component {
 
     return {user: this.props.user};
   }
+
+  //   componentWillReceiveProps(nextProps){
+  //   const MAPLOG = false
+  //   if(MAPLOG)console.log("componentWillReceiveProps");
+  //   const user = nextProps.user;
+  //   if(user!==null){
+      
+  //   } else {
+  //     browserHistory.push('/');
+  //   }
+  // }
   
   componentWillMount(){
     console.log("componentWillMount")

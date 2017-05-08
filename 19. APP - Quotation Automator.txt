@@ -142,3 +142,12 @@ Twitter BOT - TUT - Google Engineer
 setup secrets and tokens in environment variables instad of copyying them in files
 --
 
+git log -1 --pretty=%B
+git log -1
+--
+Q: bootbox not defined error , unable to import bootbox in react? wasted 01 hour
+Ans: bootbox only compatible with require('booxtbox') , can not do import ...
+--
+Q: how to pass react this in a call back method?
+Ans: bind the lower level call back to this in react constructor of .bind(this) at the end of the function
+--
