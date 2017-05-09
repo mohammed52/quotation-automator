@@ -28,26 +28,11 @@ export default class App extends Component {
 
 
   getChildContext() {
-    // console.log("getChildContext()")
-    // console.log(this.props.user)
-    // console.log("Meteor.user()")
-    // console.log(Meteor.user())
-
     return {user: this.props.user};
   }
-
-  //   componentWillReceiveProps(nextProps){
-  //   const MAPLOG = false
-  //   if(MAPLOG)console.log("componentWillReceiveProps");
-  //   const user = nextProps.user;
-  //   if(user!==null){
-      
-  //   } else {
-  //     browserHistory.push('/');
-  //   }
-  // }
   
 componentWillMount(){
+  // debugger
     if (!this.state.isAuthenticated) {
       browserHistory.push('/showallquotes');
     }
@@ -64,6 +49,13 @@ componentWillMount(){
   }
 
   componentDidMount(){setTimeout(function(){debugger}, 60*1000)}
+
+    componentDidUpdate(prevProps, prevState){
+      // debugger
+    // if (!this.state.isAuthenticated) {
+    //   browserHistory.push('/showallquotes');
+    // }
+  }
 
   render() {
     const MAPLOG = false
