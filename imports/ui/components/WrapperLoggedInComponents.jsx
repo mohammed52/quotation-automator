@@ -14,12 +14,11 @@ import { createContainer } from 'meteor/react-meteor-data'
 var ReactBootstrap = require('react-bootstrap');
 var Button = ReactBootstrap.Button;
 // App component - represents the whole app
-export default class App extends Component {
+export default class WrapperLogginInComponents extends Component {
 
   constructor(props) {
     super(props);
     this.state = this.getMeteorData();
-    this.activateDebugger = this.activateDebugger.bind(this);
   }
 
   getMeteorData(){
@@ -44,15 +43,9 @@ componentWillMount(){
     console.log("componentWillUnmount")
   }
 
-  activateDebugger(){
-    const MAPLOG=true
-    if(MAPLOG)console.log("activateDebugger");
-    debugger
-  }
-
   componentDidMount(){setTimeout(function(){debugger}, 60*1000)}
 
-    componentDidUpdate(prevProps, prevState){
+  componentDidUpdate(prevProps, prevState){
     // if (!this.state.isAuthenticated) {
     //   browserHistory.push('/signin');
     // }
@@ -60,36 +53,33 @@ componentWillMount(){
 
   render() {
     const MAPLOG = false
-    const {user, connected} = this.props;
+    // const {user, connected} = this.props;
     // console.log("render()");
     // console.log(this.context.location.pathname);
     // if(MAPLOG)console.log("this.props.quotes",this.props.quotes);
     // debugger
     return (
-      <div className="testbg-1">
-      <Button onClick={this.activateDebugger}>Debugger</Button>
-      {user===null? <LoggedOutWrapperWithNavBar /> : <WrapperWithNavBar />} 
-      <AccountsUIWrapper /> 
+      <div>
+      <div>wrapper for logged in components</div>
         {this.props.children}
-        <Footer />
       </div>
     );
   }
 }
  
-App.propTypes = {
+WrapperLogginInComponents.propTypes = {
   children: PropTypes.object,
   user: React.PropTypes.object,      // current meteor user
   connected: React.PropTypes.bool,   // server connection status
   // quotes: React.PropTypes.array
 };
 
-App.contextTypes = {
+WrapperLogginInComponents.contextTypes = {
   // router: React.PropTypes.object.isRequired
   // location: React.PropTypes.object,
   // user: React.PropTypes.object
 };
 
-App.childContextTypes = {
+WrapperLogginInComponents.childContextTypes = {
   user: React.PropTypes.object
 }

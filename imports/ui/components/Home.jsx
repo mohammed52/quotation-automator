@@ -33,7 +33,7 @@ export default class Home extends Component {
 
     return (
           <div>   
-          {user===null ?  <HomeLoggedOut />: <HomeLoggedIn />}         
+          {<HomeLoggedIn />}         
           </div>
     );
   }

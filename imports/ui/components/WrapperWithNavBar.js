@@ -40,17 +40,17 @@ export default class WrapperWithNavBar extends Component {
     </Navbar.Header>
     <Navbar.Collapse>
       <Nav>
-        <LinkContainer to="/home">
+        <LinkContainer to="/wrapper/home">
     <NavItem eventKey={1}>Home</NavItem>
   </LinkContainer>
 
       </Nav>
       <Nav pullRight>
-        <LinkContainer to="/home">
+        <LinkContainer to="/wrapper/home">
     <NavItem eventKey={1}>New Quote</NavItem>
   </LinkContainer>
 
-  <LinkContainer to="/home">
+  <LinkContainer to="/wrapper/home">
     <NavItem eventKey={1}>View All</NavItem>
   </LinkContainer>
 

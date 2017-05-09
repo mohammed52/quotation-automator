@@ -3,6 +3,7 @@ import { Meteor } from 'meteor/meteor';
 import { browserHistory } from 'react-router';
 import $ from "jquery"
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
 import { displayError } from '../helpers/errors.js';
 import { insert, updateQuote } from '../../api/quotes/methods.js';
 
@@ -49,7 +50,8 @@ class ShowQuote extends Component {
 
 
   componentWillMount(){
-    // console.log("componentWillMount")
+    const MAPLOG=true
+    if(MAPLOG)console.log("componentWillMount");
   }
 
   componentWillUpdate(){
@@ -60,10 +62,10 @@ class ShowQuote extends Component {
 
   componentWillReceiveProps(nextProps, nextContext){
 
-    const user = nextContext.user;
-    if(user==null){
-      browserHistory.push('/');
-    }
+    // const user = nextContext.user;
+    // if(user==null){
+    //   browserHistory.push('/');
+    // }
   }
   
   componentDidUpdate(){
@@ -112,7 +114,7 @@ class ShowQuote extends Component {
       insert.call(rackingRequirements, displayError);
     }
     
-    browserHistory.push('/showallquotes');
+    browserHistory.push('/wrapper/showallquotes');
   }
 
   onMarginChange(){
@@ -387,4 +389,4 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   }
 }
 
-export default connect(mapStateToProp, mapDispatchToProps)(ShowQuote)
+export default withRouter(connect(mapStateToProp, mapDispatchToProps)(ShowQuote))

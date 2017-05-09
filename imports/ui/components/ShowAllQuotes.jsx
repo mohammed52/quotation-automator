@@ -26,7 +26,7 @@ export default class ShowAllQuotes extends Component {
 
 
   componentWillMount(){
-    // console.log("componentWillMount")
+    console.log("componentWillMount")
   }
 
   componentWillUpdate(){
@@ -50,6 +50,10 @@ export default class ShowAllQuotes extends Component {
   }
 
   btnCancel(){
+  }
+
+  componentWillUnmount(){
+    console.log("componentWillUnmount")
   }
 
 

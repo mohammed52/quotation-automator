@@ -3,6 +3,7 @@ import { browserHistory } from 'react-router';
 import {updateModalFlag, setCompanyProjectTitle} from '../../redux/actions/actions' 
 import {connect} from 'react-redux'
 import $ from "jquery"
+import { withRouter } from 'react-router-dom'
 import {setProjectSpecs} from '../../redux/actions/actions'
 
 var ReactBootstrap = require('react-bootstrap');
@@ -39,7 +40,7 @@ class HomeLoggedIn extends Component {
   
   open() {
     this.setState({ showModal: true });
-    browserHistory.push({pathname: '/newpalletrack'})
+    browserHistory.push({pathname: '/wrapper/newpalletrack'})
   }
 
   onCreateNew(){
@@ -61,11 +62,14 @@ class HomeLoggedIn extends Component {
     defaultProjectSpecs.projectSettings.projectTitle = $("#id-project-title").val()
     saveLastSpecsObject(defaultProjectSpecs)
 
-    browserHistory.push({pathname: '/newpalletrack'})
+    browserHistory.push({pathname: '/wrapper/newpalletrack'})
 
   }
   
   componentWillMount(){
+    const MAPLOG=true
+    if(MAPLOG)console.log("componentWillMount");
+    
     const showModalFlag = this.props.showModalFlag
     if(showModalFlag){
       this.setState({
@@ -84,7 +88,7 @@ class HomeLoggedIn extends Component {
   }
 
   viewAll(){
-    browserHistory.push('/showallquotes');
+    browserHistory.push('/wrapper/showallquotes');
   }
   render() {
     const defaultProjectSpecs = this.props.defaultProjectSpecs
@@ -174,4 +178,4 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   }
 }
 
-export default connect(mapStateToProp, mapDispatchToProps)(HomeLoggedIn)
+export default withRouter(connect(mapStateToProp, mapDispatchToProps)(HomeLoggedIn))

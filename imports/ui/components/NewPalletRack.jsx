@@ -6,6 +6,7 @@ import {connect} from 'react-redux'
 import { insert } from '../../api/quotes/methods.js';
 import { displayError } from '../helpers/errors.js';
 import {removeZeroValueBays} from '../helpers/removeZeroValueBays'
+import { withRouter } from 'react-router-dom'
 
 // import FrameTable from './FrameTable'
 // import BaysTable from './BaysTable'
@@ -46,14 +47,14 @@ class NewPalletRack extends Component {
   }
 
   componentWillReceiveProps(nextProps){
-    const MAPLOG = false
-    if(MAPLOG)console.log("componentWillReceiveProps");
-    const user = nextProps.user;
-    if(user!==null){
-// 
-    } else {
-      browserHistory.push('/');
-    }
+//     const MAPLOG = false
+//     if(MAPLOG)console.log("componentWillReceiveProps");
+//     const user = nextProps.user;
+//     if(user!==null){
+// // 
+//     } else {
+//       browserHistory.push('/');
+//     }
   }
   
   componentDidUpdate(){
@@ -118,7 +119,7 @@ class NewPalletRack extends Component {
                   };
                       
     browserHistory.push({
-      pathname: '/showquote',
+      pathname: '/wrapper/showquote',
       state: {rackingRequirements: rackingRequirements}});
     // insert.call(specs, displayError);
 
@@ -390,4 +391,4 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   }
 }
 
-export default connect(mapStateToProp, mapDispatchToProps)(NewPalletRack)
+export default withRouter(connect(mapStateToProp, mapDispatchToProps)(NewPalletRack))

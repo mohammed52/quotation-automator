@@ -45,7 +45,11 @@ class SingleQuoteRow extends Component {
 
 
   componentWillMount(){
-    // console.log("componentWillMount")
+    console.log("componentWillMount")
+  }
+
+  componentWillUnmount(){
+    console.log("componentWillUnmount")
   }
 
   componentWillUpdate(){
@@ -81,37 +85,39 @@ class SingleQuoteRow extends Component {
     if(MAPLOG)console.log("edit");
     const { saveLastSpecsObject } = this.props;
     saveLastSpecsObject(this.props.quote) 
-    browserHistory.push({pathname: '/newpalletrack'})
+    browserHistory.push({pathname: '/wrapper/newpalletrack'})
   }
 
   deleteQuote(){
     const MAPLOG = true
+    if(MAPLOG)console.log("deletequote");
         
-        const deleteQuoteMessage = "Do you want to delete quote? This cannot be undone."
-        bootbox.confirm({
-        title: "Delete Quote?",
-        message: deleteQuoteMessage,
-        buttons: {
-            cancel: {
-                label: '<i class="fa fa-times"></i> Cancel',
-                className: 'btn-default'
-            },
-            confirm: {
-                label: '<i class="fa fa-check"></i> Delete',
-                className: 'btn-danger'
-            }
-        },
-        callback: function (result) {
-    const MAPLOG = true
-    if(result===true){
-      
-      if(MAPLOG)console.log("delete");
-      remove.call({quoteId: this.props.quote._id}, displayError)
-    }else{
-      if(MAPLOG)console.log("result",result);
-    }
-  }.bind(this)
-    });
+        // const deleteQuoteMessage = "Do you want to delete quote? This cannot be undone."
+        // bootbox.confirm({
+        // title: "Delete Quote?",
+        // message: deleteQuoteMessage,
+        // buttons: {
+        //     cancel: {
+        //         label: '<i class="fa fa-times"></i> Cancel',
+        //         className: 'btn-default'
+        //     },
+        //     confirm: {
+        //         label: '<i class="fa fa-check"></i> Delete',
+        //         className: 'btn-danger'
+        //     }
+        // },
+        // callback: function (result) {
+        //   const MAPLOG = true
+        //   if(result===true){
+            
+        //     if(MAPLOG)console.log("delete");
+        //     remove.call({quoteId: this.props.quote._id}, displayError)
+        //     browserHistory.push({pathname: '/wrapper/showallquotes'})
+        //   }else{
+        //     if(MAPLOG)console.log("result",result)
+        //   }
+        // }.bind(this)
+        //   });
   }
 
   copyQuote(){
@@ -121,7 +127,7 @@ class SingleQuoteRow extends Component {
     var quoteSpecs = this.props.quote
     delete quoteSpecs._id
     saveLastSpecsObject(quoteSpecs) 
-    browserHistory.push({pathname: '/newpalletrack'})
+    browserHistory.push({pathname: '/wrapper/newpalletrack'})
 
   }
   // componentDidMount(){setTimeout(function(){debugger}, 10000)}
