@@ -85,7 +85,7 @@ class SingleQuoteRow extends Component {
     if(MAPLOG)console.log("edit");
     const { saveLastSpecsObject } = this.props;
     saveLastSpecsObject(this.props.quote) 
-    browserHistory.push({pathname: '/wrapper/newpalletrack'})
+    browserHistory.push({pathname: '/newpalletrack'})
   }
 
   deleteQuote(){
@@ -112,7 +112,7 @@ class SingleQuoteRow extends Component {
             
         //     if(MAPLOG)console.log("delete");
         //     remove.call({quoteId: this.props.quote._id}, displayError)
-        //     browserHistory.push({pathname: '/wrapper/showallquotes'})
+        //     browserHistory.push({pathname: '/showallquotes'})
         //   }else{
         //     if(MAPLOG)console.log("result",result)
         //   }
@@ -127,7 +127,7 @@ class SingleQuoteRow extends Component {
     var quoteSpecs = this.props.quote
     delete quoteSpecs._id
     saveLastSpecsObject(quoteSpecs) 
-    browserHistory.push({pathname: '/wrapper/newpalletrack'})
+    browserHistory.push({pathname: '/newpalletrack'})
 
   }
   // componentDidMount(){setTimeout(function(){debugger}, 10000)}

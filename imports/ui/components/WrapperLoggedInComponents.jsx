@@ -43,8 +43,6 @@ componentWillMount(){
     console.log("componentWillUnmount")
   }
 
-  componentDidMount(){setTimeout(function(){debugger}, 60*1000)}
-
   componentDidUpdate(prevProps, prevState){
     // if (!this.state.isAuthenticated) {
     //   browserHistory.push('/signin');

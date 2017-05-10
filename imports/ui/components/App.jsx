@@ -36,7 +36,7 @@ componentWillMount(){
   if(MAPLOG)console.log("componentWillMount");
   // debugger
     // if (!this.state.isAuthenticated) {
-    //   browserHistory.push('/signin');
+    //   browserHistory.push('signin');
     // }
   }
 
@@ -54,7 +54,7 @@ componentWillMount(){
 
     componentDidUpdate(prevProps, prevState){
     // if (!this.state.isAuthenticated) {
-    //   browserHistory.push('/signin');
+    //   browserHistory.push('signin');
     // }
   }
 

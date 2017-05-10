@@ -16,10 +16,8 @@ export const renderRoutes = () => (
     <Router history={browserHistory}>
     
     <Route path="/" component={AppContainer}>
-        <IndexRoute component={WrapperLoggedInComponents} />
-          <Route path="/signin" component={SignIn} />  
-          <Route path="/wrapper" component={WrapperLoggedInComponents}>
-            <IndexRoute component={HomeContainer} />
+          <Route path="signin" component={SignIn} />  
+          <Route component={WrapperLoggedInComponents}>
               <Route path="home" component={HomeContainer} />
               <Route path="newpalletrack" component={NewPalletRackContainer} />
               <Route path="showallquotes" component={ShowAllQuotesContainer} />

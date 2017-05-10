@@ -119,7 +119,7 @@ class NewPalletRack extends Component {
                   };
                       
     browserHistory.push({
-      pathname: '/wrapper/showquote',
+      pathname: '/showquote',
       state: {rackingRequirements: rackingRequirements}});
     // insert.call(specs, displayError);
 

@@ -163,6 +163,6 @@ Ans: Update: 1. Schema, 2. All Methods, 3. All Public Fields, 4. All Publication
 Q: App gets stuck, Maximum Stack reached, redirecting at componentDidUpdate in App.jsx? wasted 01 hour
 Ans: 
 --
-React Router training:
-https://reacttraining.com/react-router/web/example/basic
+React Router Auth:
+https://medium.com/the-many/adding-login-and-authentication-sections-to-your-react-or-react-native-app-7767fd251bd1
 --

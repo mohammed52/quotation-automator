@@ -40,7 +40,7 @@ class HomeLoggedIn extends Component {
   
   open() {
     this.setState({ showModal: true });
-    browserHistory.push({pathname: '/wrapper/newpalletrack'})
+    browserHistory.push({pathname: '/newpalletrack'})
   }
 
   onCreateNew(){
@@ -62,7 +62,7 @@ class HomeLoggedIn extends Component {
     defaultProjectSpecs.projectSettings.projectTitle = $("#id-project-title").val()
     saveLastSpecsObject(defaultProjectSpecs)
 
-    browserHistory.push({pathname: '/wrapper/newpalletrack'})
+    browserHistory.push({pathname: '/newpalletrack'})
 
   }
   
@@ -88,7 +88,7 @@ class HomeLoggedIn extends Component {
   }
 
   viewAll(){
-    browserHistory.push('/wrapper/showallquotes');
+    browserHistory.push('/showallquotes');
   }
   render() {
     const defaultProjectSpecs = this.props.defaultProjectSpecs

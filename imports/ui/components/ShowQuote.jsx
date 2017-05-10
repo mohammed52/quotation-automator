@@ -114,7 +114,7 @@ class ShowQuote extends Component {
       insert.call(rackingRequirements, displayError);
     }
     
-    browserHistory.push('/wrapper/showallquotes');
+    browserHistory.push('/showallquotes');
   }
 
   onMarginChange(){
