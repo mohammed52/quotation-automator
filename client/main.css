@@ -26,6 +26,13 @@ body {
 .no-margin {
   margin: 0 !important; }
 
+.fake-link {
+  color: blue; }
+
+.fake-link:hover {
+  text-decoration: underline;
+  cursor: pointer; }
+
 .wrapper-bottom-buttons {
   width: 90vw;
   margin-top: 10px; }

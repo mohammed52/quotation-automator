@@ -16,12 +16,13 @@ export const renderRoutes = () => (
     <Router history={browserHistory}>
     
     <Route path="/" component={AppContainer}>
-          <Route path="signin" component={SignIn} />  
+      <IndexRoute component={HomeContainer} />
+          <Route path="/signin" component={SignIn} />  
           <Route component={WrapperLoggedInComponents}>
-              <Route path="home" component={HomeContainer} />
-              <Route path="newpalletrack" component={NewPalletRackContainer} />
-              <Route path="showallquotes" component={ShowAllQuotesContainer} />
-              <Route path="showquote" component={ShowQuote} />
+              <Route path="/home" component={HomeContainer} />
+              <Route path="/newpalletrack" component={NewPalletRackContainer} />
+              <Route path="/showallquotes" component={ShowAllQuotesContainer} />
+              <Route path="/showquote" component={ShowQuote} />
           </Route>
       </Route>    
   </Router>

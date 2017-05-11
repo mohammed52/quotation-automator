@@ -20,8 +20,8 @@ export default class ShowAllQuotes extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-    }
+    // this.state = {
+    // }
   }
 
 
@@ -30,19 +30,19 @@ export default class ShowAllQuotes extends Component {
   }
 
   componentWillUpdate(){
-
+    const MAPLOG = true
+    if(MAPLOG)console.log("componentWillUpdate");
   }
 
   componentWillReceiveProps(nextProps, nextContext){
 
-    // const user = nextContext.user;
-    // if(user==null){
-    //   browserHistory.push('/');
-    // }
+    const MAPLOG = true
+    if(MAPLOG)console.log("componentWillReceiveProps");
   }
   
   componentDidUpdate(){
-
+    const MAPLOG = true
+      if(MAPLOG)console.log("componentDidUpdate");
   }
 
   btnGenerateQuote(){
@@ -55,7 +55,6 @@ export default class ShowAllQuotes extends Component {
   componentWillUnmount(){
     console.log("componentWillUnmount")
   }
-
 
   render() {
     const MAPLOG = true
@@ -107,9 +106,9 @@ export default class ShowAllQuotes extends Component {
   }
 }
 
-ShowAllQuotes.contextTypes = {
-  user: React.PropTypes.object
-}
+// ShowAllQuotes.contextTypes = {
+//   user: React.PropTypes.object
+// }
 
 ShowAllQuotes.propTypes = {
   quotes: React.PropTypes.array,

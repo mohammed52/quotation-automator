@@ -48,9 +48,9 @@ SignIn.propTypes = {
 
   }
 
-SignIn.contextTypes = {
+// SignIn.contextTypes = {
   // user: React.PropTypes.object
-}
+// }
 
 const mapStateToProp =(state, ownProps)=>{
   return {

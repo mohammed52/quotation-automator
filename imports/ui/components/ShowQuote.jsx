@@ -365,9 +365,9 @@ ShowQuote.propTypes = {
   setProjectMargin: React.PropTypes.func
 };
 
-ShowQuote.contextTypes = {
-  user: React.PropTypes.object
-}
+// ShowQuote.contextTypes = {
+//   user: React.PropTypes.object
+// }
 
 const mapStateToProp =(state, ownProps)=>{
   return {
@@ -389,4 +389,4 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   }
 }
 
-export default withRouter(connect(mapStateToProp, mapDispatchToProps)(ShowQuote))
+export default connect(mapStateToProp, mapDispatchToProps)(ShowQuote)

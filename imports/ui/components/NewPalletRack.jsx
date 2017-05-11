@@ -371,9 +371,9 @@ NewPalletRack.propTypes = {
 
 };
 
-NewPalletRack.contextTyoes = {
-  router: PropTypes.object
-}
+// NewPalletRack.contextTyoes = {
+//   router: PropTypes.object
+// }
 
 const mapStateToProp =(state, ownProps)=>{
   return {
@@ -391,4 +391,4 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   }
 }
 
-export default withRouter(connect(mapStateToProp, mapDispatchToProps)(NewPalletRack))
+export default connect(mapStateToProp, mapDispatchToProps)(NewPalletRack)

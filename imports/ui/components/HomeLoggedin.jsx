@@ -88,7 +88,7 @@ class HomeLoggedIn extends Component {
   }
 
   viewAll(){
-    browserHistory.push('/showallquotes');
+    browserHistory.push('showallquotes');
   }
   render() {
     const defaultProjectSpecs = this.props.defaultProjectSpecs
@@ -150,9 +150,9 @@ HomeLoggedIn.propTypes = {
 
   }
 
-HomeLoggedIn.contextTypes = {
-  user: React.PropTypes.object
-}
+// HomeLoggedIn.contextTypes = {
+//   user: React.PropTypes.object
+// }
 
 const mapStateToProp =(state, ownProps)=>{
   return {
@@ -178,4 +178,4 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   }
 }
 
-export default withRouter(connect(mapStateToProp, mapDispatchToProps)(HomeLoggedIn))
+export default connect(mapStateToProp, mapDispatchToProps)(HomeLoggedIn)

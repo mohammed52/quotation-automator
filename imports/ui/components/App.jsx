@@ -27,17 +27,17 @@ export default class App extends Component {
   }
 
 
-  getChildContext() {
-    return {user: this.props.user};
-  }
+  // getChildContext() {
+  //   return {user: this.props.user};
+  // }
   
 componentWillMount(){
   const MAPLOG=true
   if(MAPLOG)console.log("componentWillMount");
   // debugger
-    // if (!this.state.isAuthenticated) {
-    //   browserHistory.push('signin');
-    // }
+    if (!this.state.isAuthenticated) {
+      browserHistory.push('signin');
+    }
   }
 
   componentWillUnmount(){
@@ -84,12 +84,12 @@ App.propTypes = {
   // quotes: React.PropTypes.array
 };
 
-App.contextTypes = {
+// App.contextTypes = {
   // router: React.PropTypes.object.isRequired
   // location: React.PropTypes.object,
   // user: React.PropTypes.object
-};
+// };
 
-App.childContextTypes = {
-  user: React.PropTypes.object
-}
+// App.childContextTypes = {
+//   user: React.PropTypes.object
+// }

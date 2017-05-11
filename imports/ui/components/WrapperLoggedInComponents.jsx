@@ -26,27 +26,28 @@ export default class WrapperLogginInComponents extends Component {
   }
 
 
-  getChildContext() {
-    return {user: this.props.user};
+  componentWillMount(){
+    console.log("componentWillMount")
+  }
+
+  componentWillUpdate(){
+    const MAPLOG = true
+    if(MAPLOG)console.log("componentWillUpdate");
+  }
+
+  componentWillReceiveProps(nextProps, nextContext){
+
+    const MAPLOG = true
+    if(MAPLOG)console.log("componentWillReceiveProps");
   }
   
-componentWillMount(){
-  const MAPLOG=true
-  if(MAPLOG)console.log("componentWillMount");
-  // debugger
-    // if (!this.state.isAuthenticated) {
-    //   browserHistory.push('/signin');
-    // }
+  componentDidUpdate(){
+    const MAPLOG = true
+      if(MAPLOG)console.log("componentDidUpdate");
   }
 
   componentWillUnmount(){
     console.log("componentWillUnmount")
-  }
-
-  componentDidUpdate(prevProps, prevState){
-    // if (!this.state.isAuthenticated) {
-    //   browserHistory.push('/signin');
-    // }
   }
 
   render() {
@@ -72,12 +73,12 @@ WrapperLogginInComponents.propTypes = {
   // quotes: React.PropTypes.array
 };
 
-WrapperLogginInComponents.contextTypes = {
+// WrapperLogginInComponents.contextTypes = {
   // router: React.PropTypes.object.isRequired
   // location: React.PropTypes.object,
   // user: React.PropTypes.object
-};
+// };
 
-WrapperLogginInComponents.childContextTypes = {
-  user: React.PropTypes.object
-}
+// WrapperLogginInComponents.childContextTypes = {
+//   user: React.PropTypes.object
+// }

@@ -92,32 +92,33 @@ class SingleQuoteRow extends Component {
     const MAPLOG = true
     if(MAPLOG)console.log("deletequote");
         
-        // const deleteQuoteMessage = "Do you want to delete quote? This cannot be undone."
-        // bootbox.confirm({
-        // title: "Delete Quote?",
-        // message: deleteQuoteMessage,
-        // buttons: {
-        //     cancel: {
-        //         label: '<i class="fa fa-times"></i> Cancel',
-        //         className: 'btn-default'
-        //     },
-        //     confirm: {
-        //         label: '<i class="fa fa-check"></i> Delete',
-        //         className: 'btn-danger'
-        //     }
-        // },
-        // callback: function (result) {
-        //   const MAPLOG = true
-        //   if(result===true){
+        const deleteQuoteMessage = "Do you want to delete quote? This cannot be undone."
+        bootbox.confirm({
+        title: "Delete Quote?",
+        message: deleteQuoteMessage,
+        buttons: {
+            cancel: {
+                label: '<i class="fa fa-times"></i> Cancel',
+                className: 'btn-default'
+            },
+            confirm: {
+                label: '<i class="fa fa-check"></i> Delete',
+                className: 'btn-danger'
+            }
+        },
+        callback: function (result) {
+          const MAPLOG = true
+          if(result===true){
             
-        //     if(MAPLOG)console.log("delete");
-        //     remove.call({quoteId: this.props.quote._id}, displayError)
-        //     browserHistory.push({pathname: '/showallquotes'})
-        //   }else{
-        //     if(MAPLOG)console.log("result",result)
-        //   }
-        // }.bind(this)
-        //   });
+            if(MAPLOG)console.log("delete");
+            remove.call({quoteId: this.props.quote._id}, displayError)
+            if(MAPLOG)console.log("QUOTE DELETED");
+            // browserHistory.push({pathname: '/showallquotes'})
+          }else{
+            if(MAPLOG)console.log("result",result)
+          }
+        }.bind(this)
+          });
   }
 
   copyQuote(){
@@ -146,29 +147,32 @@ class SingleQuoteRow extends Component {
                         <th>{quote.projectSettings.racksDescription}</th>
                         
                         <th>
-                        <a
+                        <span
                           // className="delete-item"
-                          href="#delete"
+                          // href=""
+                          className="fake-link"
                           onClick={this.editQuote}
                         >
                           <i className="fa fa-pencil-square-o" aria-hidden="true"/>
-                        </a>
+                        </span>
                         </th>
-                        <th><a
+                        <th><span
                           // className="delete-item"
-                          href="#delete"
+                          // href=""
+                          className="fake-link"
                           onClick={this.copyQuote}
                         >
                           <i className="fa fa-clone" aria-hidden="true"/>
-                        </a></th>
-                        <th><a
+                        </span></th>
+                        <th><span
                           // className="delete-item"
-                          href="#delete"
+                          // href=""
+                          className="fake-link"
                           onClick={this.deleteQuote}
                           // onMouseDown={this.deleteQuote}
                         >
                           <i className="fa fa-trash-o" aria-hidden="true"/>
-                        </a></th>
+                        </span></th>
 
       </tr>
     );
@@ -180,10 +184,10 @@ class SingleQuoteRow extends Component {
 //   connected: React.PropTypes.bool,   // server connection status
 // };
 
-SingleQuoteRow.contextTypes = {
-  user: React.PropTypes.object,
+// SingleQuoteRow.contextTypes = {
+//   user: React.PropTypes.object,
 
-}
+// }
 
 SingleQuoteRow.propTypes = {
   quote: React.PropTypes.object,

@@ -166,3 +166,9 @@ Ans:
 React Router Auth:
 https://medium.com/the-many/adding-login-and-authentication-sections-to-your-react-or-react-native-app-7767fd251bd1
 --
+hashHistory and browserHistory , both imported from 'react-router'
+--
+Q: Reat-router Auth routes not working? 02 days wasted
+Ans: The links in <a href="#delete" ... in 
+fa icons is generating unknown links for the react router
+--
