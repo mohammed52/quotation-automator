@@ -16,6 +16,8 @@ class SignIn extends Component {
   }
 
   componentWillMount(){
+    const MAPLOG=true
+    if(MAPLOG)console.log("componentWillMount");
     // if (this.state.isAuthenticated) {
     //   browserHistory.push('/wrapper');
     // }
@@ -32,6 +34,20 @@ class SignIn extends Component {
     // }
   }
 
+  componentWillReceiveProps(nextProps, nextContext){
+    const MAPLOG=true
+    if(MAPLOG)console.log("componentWillReceiveProps");
+    // const user = nextContext.user;
+    // if(user==null){
+    //   browserHistory.push('/');
+    // }
+  }
+
+  componentWillUpdate(){
+    const MAPLOG=true
+    if(MAPLOG)console.log("componentWillUpdate");
+  }
+
   render() {
     
     return (
@@ -41,6 +57,7 @@ class SignIn extends Component {
 }
 
 SignIn.propTypes = {
+  user: PropTypes.object
     // showModalFlag: PropTypes.bool,
     // switchFlag: PropTypes.func,
     // defaultProjectSpecs: PropTypes.object,

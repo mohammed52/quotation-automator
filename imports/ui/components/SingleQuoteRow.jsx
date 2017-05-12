@@ -60,10 +60,10 @@ class SingleQuoteRow extends Component {
 
   componentWillReceiveProps(nextProps, nextContext){
 
-    const user = nextContext.user;
-    if(user==null){
-      browserHistory.push('/');
-    }
+    // const user = nextContext.user;
+    // if(user==null){
+    //   browserHistory.push('/');
+    // }
   }
   
   componentDidUpdate(){
