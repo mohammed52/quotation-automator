@@ -18,9 +18,10 @@ class SignIn extends Component {
   componentWillMount(){
     const MAPLOG=true
     if(MAPLOG)console.log("componentWillMount");
-    // if (this.state.isAuthenticated) {
-    //   browserHistory.push('/wrapper');
-    // }
+        const {user} = this.props
+    if(user!==null && user!==undefined){
+      browserHistory.push('/home');
+    }
   }
 
   componentDidMount(){
@@ -37,15 +38,16 @@ class SignIn extends Component {
   componentWillReceiveProps(nextProps, nextContext){
     const MAPLOG=true
     if(MAPLOG)console.log("componentWillReceiveProps");
-    // const user = nextContext.user;
-    // if(user==null){
-    //   browserHistory.push('/');
-    // }
+    const user = nextProps.user;
+    if(user!==null && user!==undefined){
+      browserHistory.push('/home');
+    }
   }
 
   componentWillUpdate(){
     const MAPLOG=true
     if(MAPLOG)console.log("componentWillUpdate");
+
   }
 
   render() {

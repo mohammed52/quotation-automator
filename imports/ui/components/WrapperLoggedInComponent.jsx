@@ -14,7 +14,7 @@ import { createContainer } from 'meteor/react-meteor-data'
 var ReactBootstrap = require('react-bootstrap');
 var Button = ReactBootstrap.Button;
 // App component - represents the whole app
-export default class WrapperLogginInComponents extends Component {
+export default class WrapperLogginInComponent extends Component {
 
   constructor(props) {
     super(props);
@@ -27,23 +27,31 @@ export default class WrapperLogginInComponents extends Component {
 
 
   componentWillMount(){
-    console.log("componentWillMount")
+    const MAPLOG=true
+    if(MAPLOG)console.log("componentWillMount");
+        const {user} = this.props
+    if(user==null || user==undefined ){
+      browserHistory.push('/signin');
+    }
   }
 
   componentWillUpdate(){
     const MAPLOG = true
     if(MAPLOG)console.log("componentWillUpdate");
   }
-
+  
   componentWillReceiveProps(nextProps, nextContext){
-
-    const MAPLOG = true
+    const MAPLOG=true
     if(MAPLOG)console.log("componentWillReceiveProps");
+    const user = nextProps.user;
+    if(user==null || user==undefined){
+      browserHistory.push('/signin');
+    }
   }
   
   componentDidUpdate(){
     const MAPLOG = true
-      if(MAPLOG)console.log("componentDidUpdate");
+      if(MAPLOG)console.log("componentDidUpdate")
   }
 
   componentWillUnmount(){
@@ -66,7 +74,7 @@ export default class WrapperLogginInComponents extends Component {
   }
 }
  
-WrapperLogginInComponents.propTypes = {
+WrapperLogginInComponent.propTypes = {
   children: PropTypes.object,
   user: React.PropTypes.object,      // current meteor user
   connected: React.PropTypes.bool,   // server connection status

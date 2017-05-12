@@ -9,7 +9,7 @@ import HomeContainer from '../../ui/containers/HomeContainer'
 import ShowAllQuotes from '../../ui/components/ShowAllQuotes'
 import ShowQuote from '../../ui/components/ShowQuote'
 import SignInContainer from '../../ui/containers/SignInContainer'
-import WrapperLoggedInComponents from '../../ui/components/WrapperLoggedInComponents'
+import WrapperLoggedInContainer from '../../ui/containers/WrapperLoggedInContainer'
 import NewPalletRackContainer from '../../ui/containers/NewPalletRackContainer'
 
 export const renderRoutes = () => (
@@ -18,7 +18,7 @@ export const renderRoutes = () => (
     <Route path="/" component={AppContainer}>
       <IndexRoute component={SignInContainer} />
         <Route path="/signin" component={SignInContainer} />  
-        <Route component={WrapperLoggedInComponents} >
+        <Route component={WrapperLoggedInContainer} >
           <Route path="/home" component={HomeContainer} />
           <Route path="/newpalletrack" component={NewPalletRackContainer} />
           <Route path="/showallquotes" component={ShowAllQuotesContainer} />
