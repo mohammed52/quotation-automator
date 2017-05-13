@@ -5,6 +5,8 @@ import {connect} from 'react-redux'
 import $ from "jquery"
 import { withRouter } from 'react-router-dom'
 import {setProjectSpecs} from '../../redux/actions/actions'
+import {defaultEmptyProject} from '../helpers/defaultEmptyProject'
+
 
 var ReactBootstrap = require('react-bootstrap');
 var Button = ReactBootstrap.Button;
@@ -40,7 +42,14 @@ class HomeLoggedIn extends Component {
   
   open() {
     this.setState({ showModal: true });
+    var {saveLastSpecsObject} = this.props
+    
+    saveLastSpecsObject(defaultEmptyProject)
+    
     browserHistory.push({pathname: '/newpalletrack'})
+    
+
+
   }
 
   onCreateNew(){

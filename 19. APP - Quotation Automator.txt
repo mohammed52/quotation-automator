@@ -173,3 +173,5 @@ Ans: The links in <a href="#delete" ... in
 fa icons is generating unknown links for the react router
 5-min Solution: search ST3 for browserrHistory.push('/') , delete it
 --
+Remaining: form validation, remove colored borders, reset store when creating a new project
+--
