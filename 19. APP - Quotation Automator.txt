@@ -175,3 +175,8 @@ fa icons is generating unknown links for the react router
 --
 Remaining: form validation, remove colored borders, reset store when creating a new project
 --
+dont use context, its likely to break in future react releases
+--
+No to Excel -> Yes to Web App
+http://blog.caspio.com/paas-in-action/4-reasons-why-you-should-turn-excel-into-web-apps-now/
+--

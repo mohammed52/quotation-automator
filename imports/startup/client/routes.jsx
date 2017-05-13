@@ -11,12 +11,13 @@ import ShowQuote from '../../ui/components/ShowQuote'
 import SignInContainer from '../../ui/containers/SignInContainer'
 import WrapperLoggedInContainer from '../../ui/containers/WrapperLoggedInContainer'
 import NewPalletRackContainer from '../../ui/containers/NewPalletRackContainer'
+import TestComponent from '../../ui/components/TestComponent'
 
 export const renderRoutes = () => (
     <Router history={browserHistory}>
     
     <Route path="/" component={AppContainer}>
-      <IndexRoute component={SignInContainer} />
+      <IndexRoute component={TestComponent} />
         <Route path="/signin" component={SignInContainer} />  
         <Route component={WrapperLoggedInContainer} >
           <Route path="/home" component={HomeContainer} />
