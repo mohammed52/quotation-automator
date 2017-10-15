@@ -17,6 +17,7 @@
     "factory": "^1.0.3",
     "faker": "^4.1.0",
     "meteor-node-stubs": "~0.2.0",
+    "node-pre-gyp": "^0.6.38",
     "random-number": "0.0.7",
     "react": "^15.4.2",
     "react-addons-css-transition-group": "^15.4.2",
