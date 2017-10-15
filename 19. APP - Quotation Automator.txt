@@ -40,7 +40,7 @@ If contextType is note defined, context will be an empty object
 react no longeer likes commas at the end of method declarations
 --
 Wasted 01 say on re routing when user not available, was already implement in Home Component
-Meteor.user() property does not update instantly,  
+Meteor.user() property does not update instantly - WRONG
 --
 ppl have a lot to say about Meteor dying, as long as Galaxy Revenues are solid, Meteor framework has a future, similar to Apple
 --
@@ -67,6 +67,7 @@ update simple schema package, check github page
 --
 Problem: can't find npm module meteor/factory? ANS: use import { Factory } from 'meteor/dburles:factory'
 --
+Meteor Pros:
 JS, React and Anguar UI areas are covered, lots of npm modules for lots of uses, 
 leadership vaccum present in other areas to lead the future of JS development, to gell together full stack JS development
 remove Web app experience pain points for the end users/visitors: Optimistic UI and Code splitting, 
@@ -115,7 +116,7 @@ ctrl+shift+k : delete line in ST3
 ctrl+m : jump to closing bracket in ST3
 --
 Q: Emptying trBays Array but its not showing as empty in console logs? 2 hours wasted
-Q: for some reason, unable to empty an array of bom elements
+Q: for some reason, unable to empty an array of dom elements
 ANS: Previous values of the Array log the last value of the array in the console, to log properly, use debugger 
 --
 When you break files, save time on scrolling
@@ -175,8 +176,8 @@ fa icons is generating unknown links for the react router
 --
 Remaining: form validation, remove colored borders, reset store when creating a new project
 --
-dont use context, its likely to break in future react releases
+Blockchain Coding:
+https://www.quora.com/What-are-the-best-open-source-projects-to-study-blockchain-technology-in-terms-of-simplicity
 --
-No to Excel -> Yes to Web App
-http://blog.caspio.com/paas-in-action/4-reasons-why-you-should-turn-excel-into-web-apps-now/
+Structural Engineer for Hire
 --

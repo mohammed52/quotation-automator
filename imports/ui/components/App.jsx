@@ -50,7 +50,7 @@ componentWillMount(){
     debugger
   }
 
-  componentDidMount(){setTimeout(function(){debugger}, 60*1000)}
+  // componentDidMount(){setTimeout(function(){debugger}, 60*1000)}
 
     componentDidUpdate(prevProps, prevState){
     // if (!this.state.isAuthenticated) {

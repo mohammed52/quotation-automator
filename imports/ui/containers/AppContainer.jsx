@@ -12,16 +12,16 @@ import { createContainer } from 'meteor/react-meteor-data'
 import { Quotes } from '../../api/quotes/quotes.js';
 // import { Polls } from '../../api/polls/polls.js'
 
-import 'bootstrap/dist/css/bootstrap.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import '../../../font-awesome-4.7.0/css/font-awesome.min.css'
+// import 'bootstrap/dist/css/bootstrap.css';
+// import 'bootstrap/dist/css/bootstrap.min.css';
+// import '../../../font-awesome-4.7.0/css/font-awesome.min.css'
 
 var ReactBootstrap = require('react-bootstrap');
 var Button = ReactBootstrap.Button;
 // App component - represents the whole app
 
 export default createContainer(() => {
-	// const privateHandle = Meteor.subscribe('lists.private');
+  // const privateHandle = Meteor.subscribe('lists.private');
   // Meteor.subscribe('quotes')
 
   return {

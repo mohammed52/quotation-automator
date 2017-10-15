@@ -16,22 +16,23 @@ export default class TestComponent extends Component {
       showdiv: true
     };
 
-  } 
-
-  componentDidMount(){
   }
 
-  btnClicked(){
-    this.setState({showdiv: !this.state.showdiv});
+  componentDidMount() {}
+
+  btnClicked() {
+    this.setState({
+      showdiv: !this.state.showdiv
+    });
   }
 
   render() {
     // const {user, connected} = this.props;
 
     return (
-          <div>   
-          Test Component    
-          </div>
+      <div>
+        Test Component-2
+      </div>
     );
   }
 }
