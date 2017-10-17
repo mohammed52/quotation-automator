@@ -2,13 +2,13 @@
 export const UprightWeightTable = [{
   upright: "70x50x2mm",
   weightPerFoot: 0.75,
-  maxCapacityPerRack: 5000,
+  maxCapacityPerRack: 4000,
   maxCapacityPerLevel: 600
 },
   {
     upright: "80x70x1.5mm",
     weightPerFoot: 0.79,
-    maxCapacityPerRack: 5500,
+    maxCapacityPerRack: 5000,
     maxCapacityPerLevel: 1000
   },
   {
