@@ -115,6 +115,6 @@ export const BracingTable = [
   {
     bracing: "25x25x2.0mm",
     maxCapacityPerLevel: 4000,
-    maxCapacityPerRack: 16000,
+    maxCapacityPerRack: 30000,
     weightPerFoot: 0.35
   }];
