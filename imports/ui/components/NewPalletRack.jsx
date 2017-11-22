@@ -331,6 +331,13 @@ class NewPalletRack extends Component {
                     No Shelf (Pallet Only)
                   </Radio>
                   {' '}
+                  <Radio inline name="option" 
+                      onChange={this.handleOptionChange}
+                      value = "metalShelf1.0mm"
+                      checked={this.state.selectedShelfOption === 'metalShelf1.0mm'}>
+                    Metal Shelf 1.0mm
+                  </Radio>
+                  {' '}
                   <Radio 
                       inline name="option" 
                       onChange={this.handleOptionChange}
@@ -345,6 +352,14 @@ class NewPalletRack extends Component {
                       value = "metalShelf1.5mm"
                       checked={this.state.selectedShelfOption === 'metalShelf1.5mm'}>
                     Metal Shelf 1.5mm
+                  </Radio>
+                {' '}
+                  <Radio 
+                      inline name="option" 
+                      onChange={this.handleOptionChange}
+                      value = "metalShelf2.0mm"
+                      checked={this.state.selectedShelfOption === 'metalShelf2.0mm'}>
+                    Metal Shelf 2.0mm
                   </Radio>
                 </FormGroup>
 
