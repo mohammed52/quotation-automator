@@ -23,7 +23,7 @@ const schemaBay = new SimpleSchema({
     type: Number,
     min: 100,
     label: "Load Per Level",
-    max: 3500
+    max: 4000
   },
 
 });
@@ -50,27 +50,27 @@ const schemaFrame = new SimpleSchema({
 });
 
 const schemaProjectSettings = new SimpleSchema({
-    companyName: {
-      type: String,
-      max: 100,
-      label: 'companyName'
-    },
-    projectTitle: {
-      type: String,
-      max: 100,
-      label: 'projectTitle'
-    },
-    racksDescription: {
-      type: String,
-      max: 100,
-      label: 'racksDescription'
-    },
-    currentMetalPrices: {
-      type: Number,
-      min: 60,
-      max: 120,
-      label: 'currentMetalPrices'
-    }
+  companyName: {
+    type: String,
+    max: 100,
+    label: 'companyName'
+  },
+  projectTitle: {
+    type: String,
+    max: 100,
+    label: 'projectTitle'
+  },
+  racksDescription: {
+    type: String,
+    max: 100,
+    label: 'racksDescription'
+  },
+  currentMetalPrices: {
+    type: Number,
+    min: 60,
+    max: 120,
+    label: 'currentMetalPrices'
+  }
 });
 
 export const schemaQuotes = new SimpleSchema({
@@ -102,9 +102,9 @@ export const schemaQuotes = new SimpleSchema({
     denyUpdate: true,
     label: 'createdAt'
   },
-  userId: { 
-    type: String, 
-    regEx: SimpleSchema.RegEx.Id, 
+  userId: {
+    type: String,
+    regEx: SimpleSchema.RegEx.Id,
     optional: true,
     label: "userId"
   },

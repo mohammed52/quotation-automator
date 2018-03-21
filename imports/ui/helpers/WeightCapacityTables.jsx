@@ -49,7 +49,7 @@ export const BeamConnectorTable = [{
   {
     connector: "4 Hooks, 4mm",
     weight: 1.05,
-    capacityPerLevel: 3500
+    capacityPerLevel: 4000
   }]
 
 export const BeamWeightPerFootTable = [
