@@ -68,7 +68,7 @@ const schemaProjectSettings = new SimpleSchema({
   currentMetalPrices: {
     type: Number,
     min: 60,
-    max: 120,
+    max: 150,
     label: 'currentMetalPrices'
   }
 });
@@ -112,6 +112,6 @@ export const schemaQuotes = new SimpleSchema({
     type: Number,
     min: 0,
     label: "margin",
-    max: 80
+    max: 200
   }
 });

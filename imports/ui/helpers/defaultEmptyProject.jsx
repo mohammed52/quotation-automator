@@ -4,7 +4,7 @@ export const defaultEmptyProject = {
     "racksDescription": "",
     "companyName": "",
     "projectTitle": "",
-    "currentMetalPrices": 115
+    "currentMetalPrices": 125
   },
   "frame": {
     "frameHeight": "",
@@ -12,30 +12,30 @@ export const defaultEmptyProject = {
     "frameDepth": "",
   },
   "bays": [
-    {
-      "length": "",
-      "qty": "",
-      "levels": "",
-      "loadPerLevel": ""
-    },
-    {
-      "length": "",
-      "qty": "",
-      "levels": "",
-      "loadPerLevel": ""
-    },
-    {
-      "length": "",
-      "qty": "",
-      "levels": "",
-      "loadPerLevel": ""
-    },
-    {
-      "length": "",
-      "qty": "",
-      "levels": "",
-      "loadPerLevel": ""
-    }
+  {
+    "length": "",
+    "qty": "",
+    "levels": "",
+    "loadPerLevel": ""
+  },
+  {
+    "length": "",
+    "qty": "",
+    "levels": "",
+    "loadPerLevel": ""
+  },
+  {
+    "length": "",
+    "qty": "",
+    "levels": "",
+    "loadPerLevel": ""
+  },
+  {
+    "length": "",
+    "qty": "",
+    "levels": "",
+    "loadPerLevel": ""
+  }
   ],
   "shelfType": "noShelf",
   "createdAt": new Date(),
