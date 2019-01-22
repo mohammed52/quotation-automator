@@ -40,5 +40,5 @@ export const defaultEmptyProject = {
   "shelfType": "noShelf",
   "createdAt": new Date(),
   _id: null,
-  margin: 30,
+  margin: 0,
 }
