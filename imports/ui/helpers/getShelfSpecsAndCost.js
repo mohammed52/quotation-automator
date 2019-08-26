@@ -34,7 +34,7 @@ export function getShelfSpecsAndCost(rackingRequirements) {
 
   const frameDepth = rackingRequirements.frame.frameDepth;
 
-  let shelfUnitWeight = 15 * (frameDepth * 12 + 3) * weightPerSqInch;
+  let shelfUnitWeight = 15 * (frameDepth * 12 + 0) * weightPerSqInch;
 
   shelfSpecsAndCost.description = tmpDescription;
   shelfSpecsAndCost.unitWeight = shelfUnitWeight;
