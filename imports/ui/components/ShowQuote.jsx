@@ -228,7 +228,7 @@ class ShowQuote extends Component {
         arrayCostObjects[l].unitWeight * arrayCostObjects[l].qty;
     }
 
-    totalProjectWeight = totalProjectWeight * 1.1;
+    totalProjectWeight = totalProjectWeight * 1.12;
 
     const totalRacks = getTotalRacksQty(
       this.props.location.state.rackingRequirements
