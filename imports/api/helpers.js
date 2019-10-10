@@ -5,13 +5,13 @@ const schemaBay = new SimpleSchema({
     type: Number,
     min: 0,
     label: "Bay Length",
-    max: 12
+    max: 14
   },
   qty: {
     type: Number,
     min: 1,
     label: "Bay Qty",
-    max: 500
+    max: 1000
   },
   levels: {
     type: Number,
