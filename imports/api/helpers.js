@@ -1,4 +1,4 @@
-import SimpleSchema from 'simpl-schema'
+import SimpleSchema from "simpl-schema";
 
 const schemaBay = new SimpleSchema({
   length: {
@@ -24,8 +24,7 @@ const schemaBay = new SimpleSchema({
     min: 100,
     label: "Load Per Level",
     max: 4000
-  },
-
+  }
 });
 
 const schemaFrame = new SimpleSchema({
@@ -45,7 +44,7 @@ const schemaFrame = new SimpleSchema({
     type: Number,
     min: 1,
     label: "frameQty",
-    max: 600
+    max: 1000
   }
 });
 
@@ -53,43 +52,43 @@ const schemaProjectSettings = new SimpleSchema({
   companyName: {
     type: String,
     max: 100,
-    label: 'companyName'
+    label: "companyName"
   },
   projectTitle: {
     type: String,
     max: 100,
-    label: 'projectTitle'
+    label: "projectTitle"
   },
   racksDescription: {
     type: String,
     max: 100,
-    label: 'racksDescription'
+    label: "racksDescription"
   },
   currentMetalPrices: {
     type: Number,
     min: 60,
     max: 150,
-    label: 'currentMetalPrices'
+    label: "currentMetalPrices"
   }
 });
 
 export const schemaQuotes = new SimpleSchema({
   projectSettings: {
     type: schemaProjectSettings,
-    label: "projectSettings",
+    label: "projectSettings"
   },
   frame: {
     type: schemaFrame,
     max: 100,
-    label: "frame",
+    label: "frame"
   },
   bays: {
     type: Array,
     minCount: 1,
     maxCount: 4,
-    label: "bays",
+    label: "bays"
   },
-  'bays.$': {
+  "bays.$": {
     type: schemaBay
   },
   shelfType: {
@@ -100,7 +99,7 @@ export const schemaQuotes = new SimpleSchema({
   createdAt: {
     type: Date,
     denyUpdate: true,
-    label: 'createdAt'
+    label: "createdAt"
   },
   userId: {
     type: String,
